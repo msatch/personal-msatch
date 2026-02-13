@@ -1,3 +1,6 @@
 # personal-msatch
 
-Landing page for technical/business consulting services in Spanish/LatAm markets.
+Personal brand repository for technical/business consulting.
+
+## Master plan
+- See `docs/personal-brand-master-plan.md`
