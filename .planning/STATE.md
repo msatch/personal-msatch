@@ -5,33 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 1 - Foundation & i18n Scaffolding
+**Current focus:** Phase 2 - Layout Shell & Navigation
 
 ## Current Position
 
-Phase: 1 of 7 (Foundation & i18n Scaffolding)
-Plan: 1 of 2 in current phase
-Status: Executing phase 1
-Last activity: 2026-02-18 -- Completed 01-01-PLAN.md (project scaffolding + i18n infrastructure)
+Phase: 2 of 7 (Layout Shell & Navigation)
+Plan: 1 of TBD in current phase
+Status: Phase 1 complete, ready for Phase 2 planning
+Last activity: 2026-02-18 -- Completed 01-02-PLAN.md (design tokens + bilingual test page)
 
-Progress: [#░░░░░░░░░] 7%
+Progress: [##░░░░░░░░] 14%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 7 min
-- Total execution time: 0.12 hours
+- Total plans completed: 2
+- Average duration: 5.5 min
+- Total execution time: 0.18 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Foundation & i18n | 1/2 | 7 min | 7 min |
+| 1. Foundation & i18n | 2/2 | 11 min | 5.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 7 min
-- Trend: Starting
+- Last 5 plans: 7 min, 4 min
+- Trend: Accelerating
 
 *Updated after each plan completion*
 
@@ -49,6 +49,9 @@ Recent decisions affecting current work:
 - [01-01]: Set defaultLocale to es (Spanish primary, LatAm target market)
 - [01-01]: Used localePrefix: always for explicit locale in every URL
 - [01-01]: Nested namespace structure in translation JSON from day one
+- [01-02]: Separated @theme (static) from @theme inline (runtime fonts) to avoid build-time resolution failures
+- [01-02]: Root passthrough layout pattern -- Next.js 16 requires root layout.tsx even with [locale] segment
+- [01-02]: Touch targets enforced globally in base layer (44x44px min for button, a, [role=button])
 
 ### Pending Todos
 
@@ -63,5 +66,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 01-01-PLAN.md, ready for 01-02-PLAN.md
+Stopped at: Completed Phase 1 (01-02-PLAN.md), ready for Phase 2 planning
 Resume file: None

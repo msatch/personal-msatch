@@ -12,7 +12,7 @@ This roadmap delivers a bilingual personal brand website for M. Gripe, targeting
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & i18n Scaffolding** - Next.js project with bilingual routing, design tokens, and responsive baseline
+- [x] **Phase 1: Foundation & i18n Scaffolding** - Next.js project with bilingual routing, design tokens, and responsive baseline
 - [ ] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
 - [ ] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
 - [ ] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md -- Scaffold Next.js 16 project, install deps, configure next-intl i18n infrastructure and translation files
-- [ ] 01-02-PLAN.md -- Design tokens via Tailwind CSS 4 @theme, locale layout, bilingual test page
+- [x] 01-02-PLAN.md -- Design tokens via Tailwind CSS 4 @theme, locale layout, bilingual test page
 
 ### Phase 2: Layout Shell & Navigation
 **Goal**: Every page renders inside a shared layout with a responsive navigation bar, language toggle, footer, and a styled 404 page
@@ -140,7 +140,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation & i18n Scaffolding | 1/2 | In Progress | - |
+| 1. Foundation & i18n Scaffolding | 2/2 | Complete | 2026-02-18 |
 | 2. Layout Shell & Navigation | 0/TBD | Not started | - |
 | 3. Home Page | 0/TBD | Not started | - |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |
