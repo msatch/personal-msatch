@@ -32,11 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Browser language detection routes a first-time visitor to the correct locale
   4. Locale preference persists across page refreshes (cookie-based)
   5. Design tokens (colors, fonts, spacing) are defined in Tailwind config and a test page renders with correct typography, accent color, and mobile-first responsive layout
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Scaffold Next.js 16 project, install deps, configure next-intl i18n infrastructure and translation files
+- [ ] 01-02-PLAN.md -- Design tokens via Tailwind CSS 4 @theme, locale layout, bilingual test page
 
 ### Phase 2: Layout Shell & Navigation
 **Goal**: Every page renders inside a shared layout with a responsive navigation bar, language toggle, footer, and a styled 404 page
@@ -140,7 +140,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation & i18n Scaffolding | 0/TBD | Not started | - |
+| 1. Foundation & i18n Scaffolding | 0/2 | Planned | - |
 | 2. Layout Shell & Navigation | 0/TBD | Not started | - |
 | 3. Home Page | 0/TBD | Not started | - |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |
