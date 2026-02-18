@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "title": "M. Gripe | Consultoría Técnica y de Negocios",
+    "description": "Ayudo a empresas en LatAm a convertir objetivos de negocio en ejecución técnica con claridad, velocidad y resultados medibles."
+  },
+  "common": {
+    "cta": "Agenda tu diagnóstico de 45 min",
+    "language": "Idioma",
+    "nav": {
+      "home": "Inicio",
+      "bio": "Bio",
+      "services": "Servicios",
+      "contact": "Contacto"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Convierto objetivos de negocio en ejecución técnica",
+      "subtitle": "Consultoría estratégica y técnica para fundadores, gerentes y PYMEs en Latinoamérica"
+    }
+  }
+}
