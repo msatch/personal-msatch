@@ -35,7 +35,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Scaffold Next.js 16 project, install deps, configure next-intl i18n infrastructure and translation files
+- [x] 01-01-PLAN.md -- Scaffold Next.js 16 project, install deps, configure next-intl i18n infrastructure and translation files
 - [ ] 01-02-PLAN.md -- Design tokens via Tailwind CSS 4 @theme, locale layout, bilingual test page
 
 ### Phase 2: Layout Shell & Navigation
@@ -140,7 +140,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation & i18n Scaffolding | 0/2 | Planned | - |
+| 1. Foundation & i18n Scaffolding | 1/2 | In Progress | - |
 | 2. Layout Shell & Navigation | 0/TBD | Not started | - |
 | 3. Home Page | 0/TBD | Not started | - |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |

@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 ## Current Position
 
 Phase: 1 of 7 (Foundation & i18n Scaffolding)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-17 -- Roadmap created
+Plan: 1 of 2 in current phase
+Status: Executing phase 1
+Last activity: 2026-02-18 -- Completed 01-01-PLAN.md (project scaffolding + i18n infrastructure)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [#░░░░░░░░░] 7%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 7 min
+- Total execution time: 0.12 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 1. Foundation & i18n | 1/2 | 7 min | 7 min |
 
 **Recent Trend:**
-- Last 5 plans: -
-- Trend: -
+- Last 5 plans: 7 min
+- Trend: Starting
 
 *Updated after each plan completion*
 
@@ -45,6 +45,10 @@ Recent decisions affecting current work:
 - [Roadmap]: i18n infrastructure in Phase 1 (costliest retrofit if deferred)
 - [Roadmap]: Phases 3, 4, 5 can run in parallel after Phase 2 (all depend only on layout shell)
 - [Roadmap]: Copy requirements (COPY-01/02/03) assigned to Phase 3 (Home), COPY-04 to Phase 4 (Bio/Services)
+- [01-01]: Used proxy.ts (Next.js 16 convention) instead of middleware.ts
+- [01-01]: Set defaultLocale to es (Spanish primary, LatAm target market)
+- [01-01]: Used localePrefix: always for explicit locale in every URL
+- [01-01]: Nested namespace structure in translation JSON from day one
 
 ### Pending Todos
 
@@ -58,6 +62,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-17
-Stopped at: Roadmap created, ready to plan Phase 1
+Last session: 2026-02-18
+Stopped at: Completed 01-01-PLAN.md, ready for 01-02-PLAN.md
 Resume file: None
