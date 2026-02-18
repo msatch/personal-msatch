@@ -1,7 +1,7 @@
-# Requirements: M. Gripe — Personal Brand & Consulting Site
+# Requirements: M. Gripe -- Personal Brand & Consulting Site
 
 **Defined:** 2026-02-17
-**Core Value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him — all within 60 seconds.
+**Core Value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
 
 ## v1 Requirements
 
@@ -18,7 +18,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Home Page
 
 - [ ] **HOME-01**: Hero section with clear value proposition headline and subheadline in Spanish/English
-- [ ] **HOME-02**: Primary CTA button in hero ("Book your 45-min diagnostic" / "Agenda tu diagnóstico de 45 min")
+- [ ] **HOME-02**: Primary CTA button in hero ("Book your 45-min diagnostic" / "Agenda tu diagnostico de 45 min")
 - [ ] **HOME-03**: Problem/solution section mirroring LatAm pain points
 - [ ] **HOME-04**: Services preview cards linking to Services page
 - [ ] **HOME-05**: "How it works" summary (3-5 steps)
@@ -133,7 +133,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | Pop-ups (exit intent) | Hostile UX; damages premium brand perception |
 | Multi-page contact wizard | High abandonment; over-qualification before first contact |
 | Autoplay video | Increases load time; bad video worse than no video |
-| CRM automation | Beyond email notification — defer to later sprint |
+| CRM automation | Beyond email notification -- defer to later sprint |
 | A/B testing framework | Premature optimization for initial launch |
 | Multi-language beyond ES/EN | Not needed for target market |
 | Mobile native app | Web only |
@@ -177,10 +177,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | I18N-04 | Phase 2 | Pending |
 | I18N-05 | Phase 1 | Pending |
 | I18N-06 | Phase 1 | Pending |
-| COPY-01 | Phase 3-4 | Pending |
-| COPY-02 | Phase 3-4 | Pending |
-| COPY-03 | Phase 3-4 | Pending |
-| COPY-04 | Phase 3-5 | Pending |
+| COPY-01 | Phase 3 | Pending |
+| COPY-02 | Phase 3 | Pending |
+| COPY-03 | Phase 3 | Pending |
+| COPY-04 | Phase 4 | Pending |
 | DES-01 | Phase 1 | Pending |
 | DES-02 | Phase 1 | Pending |
 | DES-03 | Phase 1 | Pending |
@@ -198,10 +198,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | TECH-09 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 47 total
-- Mapped to phases: 47
-- Unmapped: 0 ✓
+- v1 requirements: 54 total
+- Mapped to phases: 54
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-17*
-*Last updated: 2026-02-17 after initial definition*
+*Last updated: 2026-02-17 after roadmap creation*
