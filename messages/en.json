@@ -18,5 +18,38 @@
       "title": "Converting business goals into technical execution",
       "subtitle": "Strategic and technical consulting for founders, managers, and SMEs in Latin America"
     }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contact",
+      "email": "hello@mgripe.com"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy policy"
+    },
+    "social": {
+      "title": "Social"
+    },
+    "copyright": "All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "Sorry, the page you are looking for does not exist.",
+    "backHome": "Back to home"
+  },
+  "pages": {
+    "bio": {
+      "title": "Bio",
+      "placeholder": "Content coming soon."
+    },
+    "services": {
+      "title": "Services",
+      "placeholder": "Content coming soon."
+    },
+    "contact": {
+      "title": "Contact",
+      "placeholder": "Content coming soon."
+    }
   }
 }

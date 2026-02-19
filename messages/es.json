@@ -18,5 +18,38 @@
       "title": "Convierto objetivos de negocio en ejecución técnica",
       "subtitle": "Consultoría estratégica y técnica para fundadores, gerentes y PYMEs en Latinoamérica"
     }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contacto",
+      "email": "hola@mgripe.com"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Politica de privacidad"
+    },
+    "social": {
+      "title": "Redes"
+    },
+    "copyright": "Todos los derechos reservados."
+  },
+  "notFound": {
+    "title": "Pagina no encontrada",
+    "message": "Lo sentimos, la pagina que buscas no existe.",
+    "backHome": "Volver al inicio"
+  },
+  "pages": {
+    "bio": {
+      "title": "Bio",
+      "placeholder": "Contenido disponible pronto."
+    },
+    "services": {
+      "title": "Servicios",
+      "placeholder": "Contenido disponible pronto."
+    },
+    "contact": {
+      "title": "Contacto",
+      "placeholder": "Contenido disponible pronto."
+    }
   }
 }
