@@ -13,7 +13,7 @@ This roadmap delivers a bilingual personal brand website for M. Gripe, targeting
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & i18n Scaffolding** - Next.js project with bilingual routing, design tokens, and responsive baseline
-- [ ] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
+- [x] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
 - [ ] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
 - [ ] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
 - [ ] **Phase 5: Contact Form & Conversion** - Form with validation, email delivery via Resend, anti-spam, and WhatsApp CTA
@@ -52,7 +52,7 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md -- Layout shell: Header, Footer, stub pages, translation keys, layout integration
-- [ ] 02-02-PLAN.md -- Localized 404 page (three-file pattern) and home page cleanup
+- [x] 02-02-PLAN.md -- Localized 404 page (three-file pattern) and home page cleanup
 
 ### Phase 3: Home Page
 **Goal**: A visitor lands on the Home page, immediately understands what M. Gripe does, sees the entry offer, and can click through to Services or Contact
@@ -141,7 +141,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
-| 2. Layout Shell & Navigation | 1/2 | In Progress | - |
+| 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
 | 3. Home Page | 0/TBD | Not started | - |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |
 | 5. Contact Form & Conversion | 0/TBD | Not started | - |

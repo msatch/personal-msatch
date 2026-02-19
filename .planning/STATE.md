@@ -9,29 +9,29 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 
 ## Current Position
 
-Phase: 2 of 7 (Layout Shell & Navigation)
-Plan: 2 of TBD in current phase
-Status: Executing Phase 2 -- Plan 01 (layout shell) complete
-Last activity: 2026-02-18 -- Completed 02-01-PLAN.md (layout shell with header, footer, stub pages)
+Phase: 2 of 7 (Layout Shell & Navigation) -- COMPLETE
+Plan: 2 of 2 in current phase -- COMPLETE
+Status: Phase 2 complete -- ready for Phase 3 (Home Page)
+Last activity: 2026-02-18 -- Completed 02-02-PLAN.md (404 page and home cleanup)
 
-Progress: [###░░░░░░░] 21%
+Progress: [###░░░░░░░] 29%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 4.7 min
-- Total execution time: 0.23 hours
+- Total plans completed: 4
+- Average duration: 4 min
+- Total execution time: 0.27 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Foundation & i18n | 2/2 | 11 min | 5.5 min |
-| 2. Layout Shell & Nav | 1/? | 3 min | 3 min |
+| 2. Layout Shell & Nav | 2/2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 7 min, 4 min, 3 min
+- Last 5 plans: 7 min, 4 min, 3 min, 2 min
 - Trend: Accelerating
 
 *Updated after each plan completion*
@@ -56,6 +56,9 @@ Recent decisions affecting current work:
 - [02-01]: Slide-down panel for mobile menu (not full-screen overlay) -- proportional for 4-link nav
 - [02-01]: Footer as client component with useTranslations for consistency with Header pattern
 - [02-01]: Removed Phase 1 temporary nav/locale-switch from home page -- redundant with Header
+- [02-02]: Three-file 404 pattern: catch-all + locale not-found + root bilingual fallback
+- [02-02]: Root not-found uses plain HTML (no design tokens) since it renders outside locale layout
+- [02-02]: Locale not-found uses next-intl Link to preserve locale prefix on back-home link
 
 ### Pending Todos
 
@@ -70,5 +73,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed 02-01-PLAN.md (layout shell), ready for 02-02 (404 page)
+Stopped at: Completed 02-02-PLAN.md (404 page + home cleanup) -- Phase 2 complete, ready for Phase 3
 Resume file: None
