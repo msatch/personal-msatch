@@ -30,6 +30,10 @@
 
 /* Base styles */
 @layer base {
+  html {
+    @apply scroll-pt-16;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
