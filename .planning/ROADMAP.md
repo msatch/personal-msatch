@@ -51,7 +51,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Layout shell: Header, Footer, stub pages, translation keys, layout integration
+- [x] 02-01-PLAN.md -- Layout shell: Header, Footer, stub pages, translation keys, layout integration
 - [ ] 02-02-PLAN.md -- Localized 404 page (three-file pattern) and home page cleanup
 
 ### Phase 3: Home Page
@@ -141,7 +141,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
-| 2. Layout Shell & Navigation | 0/2 | Planned | - |
+| 2. Layout Shell & Navigation | 1/2 | In Progress | - |
 | 3. Home Page | 0/TBD | Not started | - |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |
 | 5. Contact Form & Conversion | 0/TBD | Not started | - |

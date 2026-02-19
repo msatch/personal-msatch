@@ -10,27 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 ## Current Position
 
 Phase: 2 of 7 (Layout Shell & Navigation)
-Plan: 1 of TBD in current phase
-Status: Phase 1 complete, ready for Phase 2 planning
-Last activity: 2026-02-18 -- Completed 01-02-PLAN.md (design tokens + bilingual test page)
+Plan: 2 of TBD in current phase
+Status: Executing Phase 2 -- Plan 01 (layout shell) complete
+Last activity: 2026-02-18 -- Completed 02-01-PLAN.md (layout shell with header, footer, stub pages)
 
-Progress: [##░░░░░░░░] 14%
+Progress: [###░░░░░░░] 21%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 5.5 min
-- Total execution time: 0.18 hours
+- Total plans completed: 3
+- Average duration: 4.7 min
+- Total execution time: 0.23 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Foundation & i18n | 2/2 | 11 min | 5.5 min |
+| 2. Layout Shell & Nav | 1/? | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 7 min, 4 min
+- Last 5 plans: 7 min, 4 min, 3 min
 - Trend: Accelerating
 
 *Updated after each plan completion*
@@ -52,6 +53,9 @@ Recent decisions affecting current work:
 - [01-02]: Separated @theme (static) from @theme inline (runtime fonts) to avoid build-time resolution failures
 - [01-02]: Root passthrough layout pattern -- Next.js 16 requires root layout.tsx even with [locale] segment
 - [01-02]: Touch targets enforced globally in base layer (44x44px min for button, a, [role=button])
+- [02-01]: Slide-down panel for mobile menu (not full-screen overlay) -- proportional for 4-link nav
+- [02-01]: Footer as client component with useTranslations for consistency with Header pattern
+- [02-01]: Removed Phase 1 temporary nav/locale-switch from home page -- redundant with Header
 
 ### Pending Todos
 
@@ -66,5 +70,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-18
-Stopped at: Completed Phase 1 (01-02-PLAN.md), ready for Phase 2 planning
+Stopped at: Completed 02-01-PLAN.md (layout shell), ready for 02-02 (404 page)
 Resume file: None
