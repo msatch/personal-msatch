@@ -13,7 +13,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const tCommon = await getTranslations('common');
 
   return (
-    <section className="flex-1 flex flex-col items-center justify-center px-4 py-16 md:py-24">
+    <section className="flex flex-col items-center justify-center px-4 py-16 md:py-24">
       <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center max-w-4xl">
         {t('title')}
       </h1>
