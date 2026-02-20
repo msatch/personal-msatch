@@ -19,9 +19,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **HOME-01**: Hero section with clear value proposition headline and subheadline in Spanish/English
 - [x] **HOME-02**: Primary CTA button in hero ("Book your 45-min diagnostic" / "Agenda tu diagnostico de 45 min")
-- [ ] **HOME-03**: Problem/solution section mirroring LatAm pain points
-- [ ] **HOME-04**: Services preview cards linking to Services page
-- [ ] **HOME-05**: "How it works" summary (3-5 steps)
+- [x] **HOME-03**: Problem/solution section mirroring LatAm pain points
+- [x] **HOME-04**: Services preview cards linking to Services page
+- [x] **HOME-05**: "How it works" summary (3-5 steps)
 - [x] **HOME-06**: CTA band section repeating primary CTA
 
 ### Bio Page
@@ -149,9 +149,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | NAV-05 | Phase 2 | Pending |
 | HOME-01 | Phase 3 | Complete |
 | HOME-02 | Phase 3 | Complete |
-| HOME-03 | Phase 3 | Pending |
-| HOME-04 | Phase 3 | Pending |
-| HOME-05 | Phase 3 | Pending |
+| HOME-03 | Phase 3 | Complete |
+| HOME-04 | Phase 3 | Complete |
+| HOME-05 | Phase 3 | Complete |
 | HOME-06 | Phase 3 | Complete |
 | BIO-01 | Phase 4 | Pending |
 | BIO-02 | Phase 4 | Pending |

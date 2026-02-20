@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & i18n Scaffolding** - Next.js project with bilingual routing, design tokens, and responsive baseline
 - [x] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
-- [ ] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
+- [x] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
 - [ ] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
 - [ ] **Phase 5: Contact Form & Conversion** - Form with validation, email delivery via Resend, anti-spam, and WhatsApp CTA
 - [ ] **Phase 6: Polish, Accessibility & SEO** - Micro-interactions, SEO metadata, a11y audit, privacy policy, and performance
@@ -67,8 +67,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md -- Bilingual copy generation, translation JSON expansion, hero section and CTA band components
-- [ ] 03-02-PLAN.md -- Problem/solution, services preview, process sections, and full page composition
+- [x] 03-01-PLAN.md -- Bilingual copy generation, translation JSON expansion, hero section and CTA band components
+- [x] 03-02-PLAN.md -- Problem/solution, services preview, process sections, and full page composition
 
 ### Phase 4: Bio & Services Pages
 **Goal**: A visitor can learn about M. Gripe's background and expertise on the Bio page, and evaluate specific service offerings with clear outcomes on the Services page
@@ -142,7 +142,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 |-------|---------------|--------|-----------|
 | 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
 | 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
-| 3. Home Page | 0/2 | Not started | - |
+| 3. Home Page | 2/2 | Complete    | 2026-02-19 |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |
 | 5. Contact Form & Conversion | 0/TBD | Not started | - |
 | 6. Polish, Accessibility & SEO | 0/TBD | Not started | - |
