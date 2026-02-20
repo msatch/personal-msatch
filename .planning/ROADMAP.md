@@ -64,11 +64,11 @@ Plans:
   3. Services preview cards link to the Services page, and a "How it works" section summarizes the engagement process in 3-5 steps
   4. A CTA band repeats the primary call-to-action lower on the page
   5. All visible text comes from translation files with zero hardcoded strings, and the brand voice is clear, direct, and results-oriented
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md -- Bilingual copy generation, translation JSON expansion, hero section and CTA band components
+- [ ] 03-02-PLAN.md -- Problem/solution, services preview, process sections, and full page composition
 
 ### Phase 4: Bio & Services Pages
 **Goal**: A visitor can learn about M. Gripe's background and expertise on the Bio page, and evaluate specific service offerings with clear outcomes on the Services page
@@ -142,7 +142,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 |-------|---------------|--------|-----------|
 | 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
 | 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
-| 3. Home Page | 0/TBD | Not started | - |
+| 3. Home Page | 0/2 | Not started | - |
 | 4. Bio & Services Pages | 0/TBD | Not started | - |
 | 5. Contact Form & Conversion | 0/TBD | Not started | - |
 | 6. Polish, Accessibility & SEO | 0/TBD | Not started | - |
