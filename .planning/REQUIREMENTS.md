@@ -17,12 +17,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Home Page
 
-- [ ] **HOME-01**: Hero section with clear value proposition headline and subheadline in Spanish/English
-- [ ] **HOME-02**: Primary CTA button in hero ("Book your 45-min diagnostic" / "Agenda tu diagnostico de 45 min")
+- [x] **HOME-01**: Hero section with clear value proposition headline and subheadline in Spanish/English
+- [x] **HOME-02**: Primary CTA button in hero ("Book your 45-min diagnostic" / "Agenda tu diagnostico de 45 min")
 - [ ] **HOME-03**: Problem/solution section mirroring LatAm pain points
 - [ ] **HOME-04**: Services preview cards linking to Services page
 - [ ] **HOME-05**: "How it works" summary (3-5 steps)
-- [ ] **HOME-06**: CTA band section repeating primary CTA
+- [x] **HOME-06**: CTA band section repeating primary CTA
 
 ### Bio Page
 
@@ -62,9 +62,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Copy & Content
 
-- [ ] **COPY-01**: Generated Spanish copy in neutral-warm tone (Mexican Spanish base, conversational connectors)
-- [ ] **COPY-02**: Generated English copy matching Spanish content and brand voice
-- [ ] **COPY-03**: Brand voice: clear, direct, strategic, senior but approachable, results-oriented
+- [x] **COPY-01**: Generated Spanish copy in neutral-warm tone (Mexican Spanish base, conversational connectors)
+- [x] **COPY-02**: Generated English copy matching Spanish content and brand voice
+- [x] **COPY-03**: Brand voice: clear, direct, strategic, senior but approachable, results-oriented
 - [ ] **COPY-04**: Entry offer messaging throughout site ("45-minute diagnostic call")
 
 ### Design & Responsiveness
@@ -147,12 +147,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | NAV-03 | Phase 2 | Pending |
 | NAV-04 | Phase 2 | Pending |
 | NAV-05 | Phase 2 | Pending |
-| HOME-01 | Phase 3 | Pending |
-| HOME-02 | Phase 3 | Pending |
+| HOME-01 | Phase 3 | Complete |
+| HOME-02 | Phase 3 | Complete |
 | HOME-03 | Phase 3 | Pending |
 | HOME-04 | Phase 3 | Pending |
 | HOME-05 | Phase 3 | Pending |
-| HOME-06 | Phase 3 | Pending |
+| HOME-06 | Phase 3 | Complete |
 | BIO-01 | Phase 4 | Pending |
 | BIO-02 | Phase 4 | Pending |
 | BIO-03 | Phase 4 | Pending |
@@ -177,9 +177,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | I18N-04 | Phase 2 | Pending |
 | I18N-05 | Phase 1 | Pending |
 | I18N-06 | Phase 1 | Pending |
-| COPY-01 | Phase 3 | Pending |
-| COPY-02 | Phase 3 | Pending |
-| COPY-03 | Phase 3 | Pending |
+| COPY-01 | Phase 3 | Complete |
+| COPY-02 | Phase 3 | Complete |
+| COPY-03 | Phase 3 | Complete |
 | COPY-04 | Phase 4 | Pending |
 | DES-01 | Phase 1 | Pending |
 | DES-02 | Phase 1 | Pending |

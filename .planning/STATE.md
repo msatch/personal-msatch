@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 2 - Layout Shell & Navigation
+**Current focus:** Phase 3 - Home Page
 
 ## Current Position
 
-Phase: 2 of 7 (Layout Shell & Navigation) -- COMPLETE
-Plan: 2 of 2 in current phase -- COMPLETE
-Status: Phase 2 complete -- ready for Phase 3 (Home Page)
-Last activity: 2026-02-18 -- Completed 02-02-PLAN.md (404 page and home cleanup)
+Phase: 3 of 7 (Home Page)
+Plan: 1 of 2 in current phase
+Status: Completed 03-01-PLAN.md (copy & bookend sections) -- ready for Plan 02
+Last activity: 2026-02-19 -- Completed 03-01-PLAN.md (bilingual copy + hero section + CTA band)
 
-Progress: [###░░░░░░░] 29%
+Progress: [####░░░░░░] 36%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 4 min
-- Total execution time: 0.27 hours
+- Total execution time: 0.30 hours
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [###░░░░░░░] 29%
 |-------|-------|-------|----------|
 | 1. Foundation & i18n | 2/2 | 11 min | 5.5 min |
 | 2. Layout Shell & Nav | 2/2 | 5 min | 2.5 min |
+| 3. Home Page | 1/2 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 7 min, 4 min, 3 min, 2 min
+- Last 5 plans: 7 min, 4 min, 3 min, 2 min, 2 min
 - Trend: Accelerating
 
 *Updated after each plan completion*
@@ -59,6 +60,9 @@ Recent decisions affecting current work:
 - [02-02]: Three-file 404 pattern: catch-all + locale not-found + root bilingual fallback
 - [02-02]: Root not-found uses plain HTML (no design tokens) since it renders outside locale layout
 - [02-02]: Locale not-found uses next-intl Link to preserve locale prefix on back-home link
+- [03-01]: Kept existing hero title -- strong positioning statement
+- [03-01]: Used bg-foreground for CTA band background (guaranteed contrast vs bg-accent)
+- [03-01]: Spanish copy written first, English written independently (not translated)
 
 ### Pending Todos
 
@@ -72,6 +76,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-18
-Stopped at: Completed 02-02-PLAN.md (404 page + home cleanup) -- Phase 2 complete, ready for Phase 3
+Last session: 2026-02-19
+Stopped at: Completed 03-01-PLAN.md (bilingual copy + hero + CTA band) -- ready for 03-02
 Resume file: None
