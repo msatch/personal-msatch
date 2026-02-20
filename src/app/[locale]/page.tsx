@@ -1,6 +1,9 @@
 import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { HeroSection } from '@/components/home/hero-section';
+import { ProblemSection } from '@/components/home/problem-section';
+import { ServicesPreview } from '@/components/home/services-preview';
+import { ProcessSection } from '@/components/home/process-section';
 import { CtaBand } from '@/components/home/cta-band';
 
 export function generateStaticParams() {
@@ -14,6 +17,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <HeroSection />
+      <ProblemSection />
+      <ServicesPreview />
+      <ProcessSection />
       <CtaBand />
     </>
   );
