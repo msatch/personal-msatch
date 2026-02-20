@@ -16,7 +16,78 @@
   "home": {
     "hero": {
       "title": "Converting business goals into technical execution",
-      "subtitle": "Strategic and technical consulting for founders, managers, and SMEs in Latin America"
+      "subtitle": "Strategic consulting for founders, managers, and SMEs in Latin America who need clarity, speed, and measurable results from their technology projects."
+    },
+    "problem": {
+      "title": "The challenges holding your business back",
+      "subtitle": "If your company is facing any of these problems, you are not alone. These are the most common obstacles I see in tech teams across LatAm.",
+      "painPoints": {
+        "1": {
+          "title": "Slow delivery and missed deadlines",
+          "description": "Your team works hard but projects keep falling behind. Delivery dates slip and results do not arrive at the pace your business demands."
+        },
+        "2": {
+          "title": "Teams misaligned with the business",
+          "description": "Your technical team and business side speak different languages. Priorities clash and effort gets scattered across work that does not drive real impact."
+        },
+        "3": {
+          "title": "Weak planning and reactive execution",
+          "description": "There is no clear technical plan. Decisions are made on the fly, scope changes are constant, and the team spends its time firefighting instead of building."
+        },
+        "4": {
+          "title": "No senior technical guidance",
+          "description": "You lack an experienced technical leader who can connect business strategy with team execution. Architecture and technology decisions are made without the big picture in mind."
+        }
+      },
+      "solution": {
+        "title": "A different approach",
+        "description": "I work with you to close the gap between what your business needs and what your technical team delivers. I translate your business goals into clear execution plans with real metrics, realistic timelines, and hands-on support every step of the way."
+      }
+    },
+    "services": {
+      "title": "How I can help",
+      "subtitle": "Four service lines designed to solve the most common challenges facing growing tech teams.",
+      "viewAll": "View all services",
+      "items": {
+        "1": {
+          "title": "Strategic Technical Advisory",
+          "description": "Assessment of your architecture, stack, and technical processes to chart a clear path toward your business goals."
+        },
+        "2": {
+          "title": "Delivery Acceleration",
+          "description": "Workflow optimization, bottleneck removal, and improved delivery cadence for your engineering team."
+        },
+        "3": {
+          "title": "Product & Business Alignment",
+          "description": "Direct connection between business strategy and your product roadmap so every sprint delivers real value."
+        },
+        "4": {
+          "title": "Fractional Leadership",
+          "description": "Part-time senior technical leadership support without the cost of a full-time hire."
+        }
+      }
+    },
+    "process": {
+      "title": "How we work together",
+      "subtitle": "A simple, straightforward process to start delivering results from week one.",
+      "steps": {
+        "1": {
+          "title": "Initial diagnostic",
+          "description": "In a 45-minute call, we assess your current situation, your goals, and the obstacles in your way. No commitment, no cost."
+        },
+        "2": {
+          "title": "Action plan",
+          "description": "You receive a brief with key priorities, concrete actions, and an initial roadmap for the first few weeks."
+        },
+        "3": {
+          "title": "Execution with support",
+          "description": "I work alongside you and your team to implement the plan, adjust course as needed, and make sure results materialize."
+        }
+      }
+    },
+    "ctaBand": {
+      "title": "Ready to turn your goals into results?",
+      "subtitle": "Book a free diagnostic call and receive a personalized action plan for your company."
     }
   },
   "footer": {

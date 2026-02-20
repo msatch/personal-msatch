@@ -16,7 +16,78 @@
   "home": {
     "hero": {
       "title": "Convierto objetivos de negocio en ejecución técnica",
-      "subtitle": "Consultoría estratégica y técnica para fundadores, gerentes y PYMEs en Latinoamérica"
+      "subtitle": "Consultoría estratégica para fundadores, gerentes y PYMEs en Latinoamérica que necesitan claridad, velocidad y resultados medibles en sus proyectos de tecnología."
+    },
+    "problem": {
+      "title": "Los desafíos que frenan tu crecimiento",
+      "subtitle": "Si tu empresa enfrenta alguno de estos problemas, no estás solo. Son los obstáculos más comunes que veo en equipos de tecnología en LatAm.",
+      "painPoints": {
+        "1": {
+          "title": "Entregas lentas y plazos incumplidos",
+          "description": "Tu equipo trabaja duro pero los proyectos se retrasan una y otra vez. Las fechas de entrega se mueven y los resultados no llegan al ritmo que el negocio necesita."
+        },
+        "2": {
+          "title": "Equipos desalineados con el negocio",
+          "description": "El equipo técnico y el área de negocio hablan idiomas distintos. Las prioridades no coinciden y el esfuerzo se dispersa en tareas que no generan impacto real."
+        },
+        "3": {
+          "title": "Planificación débil y ejecución reactiva",
+          "description": "No hay un plan técnico claro. Las decisiones se toman sobre la marcha, los cambios de alcance son constantes y el equipo vive apagando incendios."
+        },
+        "4": {
+          "title": "Falta de guía técnica senior",
+          "description": "No cuentas con un líder técnico experimentado que conecte la estrategia de negocio con la ejecución del equipo. Las decisiones de arquitectura y tecnología se toman sin una visión integral."
+        }
+      },
+      "solution": {
+        "title": "Un enfoque distinto",
+        "description": "Trabajo contigo para cerrar la brecha entre lo que tu negocio necesita y lo que tu equipo técnico entrega. Es decir, traduzco tus objetivos de negocio en planes de ejecución claros, con métricas, plazos realistas y acompañamiento en cada paso."
+      }
+    },
+    "services": {
+      "title": "Cómo puedo ayudarte",
+      "subtitle": "Cuatro líneas de servicio diseñadas para resolver los problemas más comunes de equipos técnicos en crecimiento.",
+      "viewAll": "Ver todos los servicios",
+      "items": {
+        "1": {
+          "title": "Asesoría Técnica Estratégica",
+          "description": "Evaluación de tu arquitectura, stack y procesos técnicos para definir un camino claro hacia tus objetivos de negocio."
+        },
+        "2": {
+          "title": "Aceleración de Delivery",
+          "description": "Optimización de flujos de trabajo, eliminación de cuellos de botella y mejora en la cadencia de entregas de tu equipo."
+        },
+        "3": {
+          "title": "Alineación de Producto y Negocio",
+          "description": "Conexión directa entre la estrategia de negocio y la hoja de ruta del producto para que cada sprint genere valor real."
+        },
+        "4": {
+          "title": "Liderazgo Fraccional",
+          "description": "Apoyo de liderazgo técnico senior a tiempo parcial, sin el costo de una contratación permanente."
+        }
+      }
+    },
+    "process": {
+      "title": "Cómo trabajamos juntos",
+      "subtitle": "Un proceso simple y directo para empezar a generar resultados desde la primera semana.",
+      "steps": {
+        "1": {
+          "title": "Diagnóstico inicial",
+          "description": "En una llamada de 45 minutos analizamos tu situación actual, tus objetivos y los obstáculos que enfrentas. Sin compromiso, sin costo."
+        },
+        "2": {
+          "title": "Plan de acción",
+          "description": "Recibes un brief con las prioridades clave, las acciones concretas y una hoja de ruta inicial para las primeras semanas."
+        },
+        "3": {
+          "title": "Ejecución con acompañamiento",
+          "description": "Trabajo contigo y con tu equipo para implementar el plan, ajustar sobre la marcha y asegurar que los resultados se materialicen."
+        }
+      }
+    },
+    "ctaBand": {
+      "title": "¿Listo para convertir tus objetivos en resultados?",
+      "subtitle": "Agenda una llamada de diagnóstico gratuita y recibe un plan de acción personalizado para tu empresa."
     }
   },
   "footer": {
