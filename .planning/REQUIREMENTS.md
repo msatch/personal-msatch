@@ -33,11 +33,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Services Page
 
-- [ ] **SERV-01**: 4 outcome-based service cards (Strategic Technical Advisory, Delivery Acceleration, Product & Business Alignment, Fractional Leadership Support)
-- [ ] **SERV-02**: Each service card describes the client problem, approach, and expected outcome
-- [ ] **SERV-03**: "How it works" detailed process section (3-5 steps)
-- [ ] **SERV-04**: FAQ section addressing scope, timeline, pricing model, communication cadence
-- [ ] **SERV-05**: CTA linking to contact page with entry offer messaging
+- [x] **SERV-01**: 4 outcome-based service cards (Strategic Technical Advisory, Delivery Acceleration, Product & Business Alignment, Fractional Leadership Support)
+- [x] **SERV-02**: Each service card describes the client problem, approach, and expected outcome
+- [x] **SERV-03**: "How it works" detailed process section (3-5 steps)
+- [x] **SERV-04**: FAQ section addressing scope, timeline, pricing model, communication cadence
+- [x] **SERV-05**: CTA linking to contact page with entry offer messaging
 
 ### Contact & Conversion
 
@@ -157,11 +157,11 @@ Deferred to future release. Tracked but not in current roadmap.
 | BIO-02 | Phase 4 | Complete |
 | BIO-03 | Phase 4 | Complete |
 | BIO-04 | Phase 4 | Complete |
-| SERV-01 | Phase 4 | Pending |
-| SERV-02 | Phase 4 | Pending |
-| SERV-03 | Phase 4 | Pending |
-| SERV-04 | Phase 4 | Pending |
-| SERV-05 | Phase 4 | Pending |
+| SERV-01 | Phase 4 | Complete |
+| SERV-02 | Phase 4 | Complete |
+| SERV-03 | Phase 4 | Complete |
+| SERV-04 | Phase 4 | Complete |
+| SERV-05 | Phase 4 | Complete |
 | CONT-01 | Phase 5 | Pending |
 | CONT-02 | Phase 5 | Pending |
 | CONT-03 | Phase 5 | Pending |

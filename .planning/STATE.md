@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 4 in progress - Bio page complete, Services page next
+**Current focus:** Phase 4 complete - Bio and Services pages fully built
 
 ## Current Position
 
-Phase: 4 of 7 (Bio & Services Pages)
+Phase: 5 of 7 (Contact Form)
 Plan: 1 of 2 in current phase
-Status: Bio page complete -- narrative, credentials, social proof, CTA all built
-Last activity: 2026-02-21 -- Completed 04-01-PLAN.md (bio page)
+Status: Phase 4 complete -- Bio page and Services page both built with full bilingual copy
+Last activity: 2026-02-21 -- Completed 04-02-PLAN.md (services page)
 
-Progress: [#######░░░] 50%
+Progress: [########░░] 57%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: 4 min
-- Total execution time: 0.38 hours
+- Total execution time: 0.43 hours
 
 **By Phase:**
 
@@ -30,10 +30,10 @@ Progress: [#######░░░] 50%
 | 1. Foundation & i18n | 2/2 | 11 min | 5.5 min |
 | 2. Layout Shell & Nav | 2/2 | 5 min | 2.5 min |
 | 3. Home Page | 2/2 | 4 min | 2 min |
-| 4. Bio & Services | 1/2 | 3 min | 3 min |
+| 4. Bio & Services | 2/2 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 3 min, 2 min, 2 min, 2 min, 3 min
+- Last 5 plans: 2 min, 2 min, 2 min, 3 min, 3 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -69,6 +69,10 @@ Recent decisions affecting current work:
 - [04-01]: Used bg-accent/10 for photo placeholder background (subtle accent tint)
 - [04-01]: Inline CTA band in bio page rather than extracting shared component (messaging differs from home CTA)
 - [04-01]: Bio narrative framed entirely through client outcomes -- no job titles, company names, or dates
+- [04-02]: Service cards structured as problem/approach/outcome with distinct Spanish labels (El desafio/Enfoque/Resultado esperado)
+- [04-02]: Process section expanded to 5 detailed steps (vs home page 3-step) covering full engagement lifecycle
+- [04-02]: Static FAQ with no accordion or JavaScript -- all 6 Q&A pairs visible, keeping Server Component purity
+- [04-02]: Value-based pricing model explicitly stated in FAQ rather than avoiding the pricing question
 
 ### Pending Todos
 
@@ -83,5 +87,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 04-01-PLAN.md (bio page) -- Phase 4 plan 1 of 2 complete
+Stopped at: Completed 04-02-PLAN.md (services page) -- Phase 4 complete, ready for Phase 5
 Resume file: None
