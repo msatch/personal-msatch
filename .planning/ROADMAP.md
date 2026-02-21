@@ -83,7 +83,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md -- Bio page: bilingual copy, photo placeholder, credentials, narrative, social proof, CTA
+- [x] 04-01-PLAN.md -- Bio page: bilingual copy, photo placeholder, credentials, narrative, social proof, CTA
 - [ ] 04-02-PLAN.md -- Services page: 4 service cards, 5-step process, FAQ, CTA with entry offer
 
 ### Phase 5: Contact Form & Conversion
@@ -143,7 +143,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 | 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
 | 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
 | 3. Home Page | 2/2 | Complete    | 2026-02-19 |
-| 4. Bio & Services Pages | 0/TBD | Not started | - |
+| 4. Bio & Services Pages | 1/2 | In progress | - |
 | 5. Contact Form & Conversion | 0/TBD | Not started | - |
 | 6. Polish, Accessibility & SEO | 0/TBD | Not started | - |
 | 7. Deployment & Launch | 0/TBD | Not started | - |

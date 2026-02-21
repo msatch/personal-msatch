@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 3 complete - Ready for Phase 4
+**Current focus:** Phase 4 in progress - Bio page complete, Services page next
 
 ## Current Position
 
-Phase: 3 of 7 (Home Page)
-Plan: 2 of 2 in current phase
-Status: Phase 3 complete -- all home page sections built and composed
-Last activity: 2026-02-19 -- Completed 03-02-PLAN.md (middle sections + page composition)
+Phase: 4 of 7 (Bio & Services Pages)
+Plan: 1 of 2 in current phase
+Status: Bio page complete -- narrative, credentials, social proof, CTA all built
+Last activity: 2026-02-21 -- Completed 04-01-PLAN.md (bio page)
 
-Progress: [######░░░░] 43%
+Progress: [#######░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: 4 min
-- Total execution time: 0.33 hours
+- Total execution time: 0.38 hours
 
 **By Phase:**
 
@@ -30,9 +30,10 @@ Progress: [######░░░░] 43%
 | 1. Foundation & i18n | 2/2 | 11 min | 5.5 min |
 | 2. Layout Shell & Nav | 2/2 | 5 min | 2.5 min |
 | 3. Home Page | 2/2 | 4 min | 2 min |
+| 4. Bio & Services | 1/2 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 3 min, 2 min, 2 min, 2 min
+- Last 5 plans: 3 min, 2 min, 2 min, 2 min, 3 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -65,6 +66,9 @@ Recent decisions affecting current work:
 - [03-01]: Spanish copy written first, English written independently (not translated)
 - [03-02]: Used bg-muted/30 for services section background differentiation (hex supports opacity in Tailwind v4)
 - [03-02]: Centered "View all services" link below card grid for clear visual hierarchy
+- [04-01]: Used bg-accent/10 for photo placeholder background (subtle accent tint)
+- [04-01]: Inline CTA band in bio page rather than extracting shared component (messaging differs from home CTA)
+- [04-01]: Bio narrative framed entirely through client outcomes -- no job titles, company names, or dates
 
 ### Pending Todos
 
@@ -78,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-19
-Stopped at: Completed 03-02-PLAN.md (middle sections + page composition) -- Phase 3 complete
+Last session: 2026-02-21
+Stopped at: Completed 04-01-PLAN.md (bio page) -- Phase 4 plan 1 of 2 complete
 Resume file: None

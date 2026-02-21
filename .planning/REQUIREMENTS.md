@@ -26,10 +26,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Bio Page
 
-- [ ] **BIO-01**: Professional narrative framed through client outcomes, not CV-style
-- [ ] **BIO-02**: Photo placeholder (replaceable with real headshot)
-- [ ] **BIO-03**: Credentials and experience summary relevant to LatAm market
-- [ ] **BIO-04**: Social proof placeholder section (design accommodates future testimonials/logos)
+- [x] **BIO-01**: Professional narrative framed through client outcomes, not CV-style
+- [x] **BIO-02**: Photo placeholder (replaceable with real headshot)
+- [x] **BIO-03**: Credentials and experience summary relevant to LatAm market
+- [x] **BIO-04**: Social proof placeholder section (design accommodates future testimonials/logos)
 
 ### Services Page
 
@@ -65,7 +65,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **COPY-01**: Generated Spanish copy in neutral-warm tone (Mexican Spanish base, conversational connectors)
 - [x] **COPY-02**: Generated English copy matching Spanish content and brand voice
 - [x] **COPY-03**: Brand voice: clear, direct, strategic, senior but approachable, results-oriented
-- [ ] **COPY-04**: Entry offer messaging throughout site ("45-minute diagnostic call")
+- [x] **COPY-04**: Entry offer messaging throughout site ("45-minute diagnostic call")
 
 ### Design & Responsiveness
 
@@ -153,10 +153,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | HOME-04 | Phase 3 | Complete |
 | HOME-05 | Phase 3 | Complete |
 | HOME-06 | Phase 3 | Complete |
-| BIO-01 | Phase 4 | Pending |
-| BIO-02 | Phase 4 | Pending |
-| BIO-03 | Phase 4 | Pending |
-| BIO-04 | Phase 4 | Pending |
+| BIO-01 | Phase 4 | Complete |
+| BIO-02 | Phase 4 | Complete |
+| BIO-03 | Phase 4 | Complete |
+| BIO-04 | Phase 4 | Complete |
 | SERV-01 | Phase 4 | Pending |
 | SERV-02 | Phase 4 | Pending |
 | SERV-03 | Phase 4 | Pending |
@@ -180,7 +180,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | COPY-01 | Phase 3 | Complete |
 | COPY-02 | Phase 3 | Complete |
 | COPY-03 | Phase 3 | Complete |
-| COPY-04 | Phase 4 | Pending |
+| COPY-04 | Phase 4 | Complete |
 | DES-01 | Phase 1 | Pending |
 | DES-02 | Phase 1 | Pending |
 | DES-03 | Phase 1 | Pending |
