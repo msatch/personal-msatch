@@ -96,11 +96,11 @@ Plans:
   3. If submission fails, the visitor sees a clear error message with a retry option
   4. A honeypot hidden field silently discards bot submissions
   5. A WhatsApp CTA button with a pre-filled Spanish message is visible on all pages (sticky on mobile), linking via wa.me URL
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md -- Install deps, Zod schema, Resend client, server action, and bilingual contact translations
+- [ ] 05-02-PLAN.md -- Contact form UI with accessible validation, success/error states, and WhatsApp floating CTA button
 
 ### Phase 6: Polish, Accessibility & SEO
 **Goal**: The site meets professional quality standards for SEO discoverability, accessibility compliance, performance, and visual refinement
