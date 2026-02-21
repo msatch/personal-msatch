@@ -1,5 +1,9 @@
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import { OfferingsSection } from '@/components/services/offerings-section';
+import { ProcessSection } from '@/components/services/process-section';
+import { FaqSection } from '@/components/services/faq-section';
+import { ServicesCta } from '@/components/services/services-cta';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -9,14 +13,12 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations('pages.services');
-
   return (
-    <section className="py-16 px-4">
-      <div className="mx-auto max-w-4xl">
-        <h1 className="text-3xl md:text-4xl font-bold">{t('title')}</h1>
-        <p className="mt-4 text-muted">{t('placeholder')}</p>
-      </div>
-    </section>
+    <>
+      <OfferingsSection />
+      <ProcessSection />
+      <FaqSection />
+      <ServicesCta />
+    </>
   );
 }
