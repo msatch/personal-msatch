@@ -1,4 +1,49 @@
 {
+  "bio": {
+    "pageTitle": "Sobre M. Gripe",
+    "hero": {
+      "title": "Detrás de la consultoría",
+      "subtitle": "Conoce al consultor que ayuda a empresas en LatAm a ejecutar mejor, más rápido y con resultados medibles."
+    },
+    "narrative": {
+      "title": "Tu desafío técnico es mi especialidad",
+      "paragraphs": {
+        "1": "Trabajo con fundadores, gerentes y equipos de tecnología en Latinoamérica que saben lo que quieren lograr pero necesitan un puente entre sus objetivos de negocio y la ejecución técnica. Mi rol es darte claridad sobre qué hacer, en qué orden y cómo medir el progreso -- para que tu equipo avance con confianza y tus proyectos entreguen resultados reales.",
+        "2": "Mi enfoque combina liderazgo técnico senior con una mentalidad profundamente orientada al negocio. Entiendo tanto la arquitectura de software como las métricas que le importan a tu directorio. Eso me permite traducir problemas técnicos complejos en planes de acción ejecutables, y acompañarte en cada paso hasta que los resultados se materialicen.",
+        "3": "Elegí enfocarme en Latinoamérica porque conozco de primera mano los desafíos de escalar equipos técnicos en la región: presupuestos ajustados, talento distribuido, necesidad de hacer más con menos. Es un mercado con un potencial enorme, y me motiva ayudar a empresas de la región a competir con la misma claridad estratégica que las mejores del mundo."
+      }
+    },
+    "credentials": {
+      "title": "Experiencia que respalda resultados",
+      "items": {
+        "1": {
+          "title": "+15 años en liderazgo técnico",
+          "description": "Dirigiendo equipos de ingeniería y definiendo estrategia técnica desde startups hasta empresas establecidas."
+        },
+        "2": {
+          "title": "+50 empresas en LatAm",
+          "description": "Asesorando organizaciones de toda la región en transformación digital, delivery y alineación técnica-negocio."
+        },
+        "3": {
+          "title": "Bilingüe español-inglés",
+          "description": "Comunicación fluida con equipos, stakeholders y socios en ambos idiomas sin perder contexto ni matices."
+        },
+        "4": {
+          "title": "De startup a escala enterprise",
+          "description": "Experiencia con los desafíos únicos de cada etapa de crecimiento, desde el MVP hasta operaciones de gran escala."
+        }
+      }
+    },
+    "socialProof": {
+      "title": "Lo que dicen nuestros clientes",
+      "subtitle": "Estamos recopilando testimonios de clientes que han trabajado con nosotros.",
+      "comingSoon": "Próximamente compartiremos experiencias y resultados de clientes reales."
+    },
+    "cta": {
+      "title": "¿Quieres conversar sobre cómo puedo ayudar a tu equipo?",
+      "subtitle": "Empecemos con una llamada de diagnóstico de 45 minutos. Sin compromiso, sin costo -- solo una conversación directa sobre tus desafíos."
+    }
+  },
   "metadata": {
     "title": "M. Gripe | Consultoría Técnica y de Negocios",
     "description": "Ayudo a empresas en LatAm a convertir objetivos de negocio en ejecución técnica con claridad, velocidad y resultados medibles."

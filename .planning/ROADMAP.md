@@ -80,11 +80,11 @@ Plans:
   3. Services page includes a detailed "How it works" process section (3-5 steps) and an FAQ section addressing scope, timeline, pricing model, and communication cadence
   4. Services page has a CTA linking to the Contact page with entry offer messaging ("45-minute diagnostic call")
   5. All copy on both pages is available in Spanish and English, matching the brand voice
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- Bio page: bilingual copy, photo placeholder, credentials, narrative, social proof, CTA
+- [ ] 04-02-PLAN.md -- Services page: 4 service cards, 5-step process, FAQ, CTA with entry offer
 
 ### Phase 5: Contact Form & Conversion
 **Goal**: A visitor can contact M. Gripe through a validated form that delivers an email notification, or reach out via WhatsApp with one tap

@@ -1,4 +1,49 @@
 {
+  "bio": {
+    "pageTitle": "About M. Gripe",
+    "hero": {
+      "title": "Behind the consulting",
+      "subtitle": "Meet the consultant helping LatAm companies execute better, faster, and with measurable results."
+    },
+    "narrative": {
+      "title": "Your technical challenge is my specialty",
+      "paragraphs": {
+        "1": "I work with founders, managers, and tech teams across Latin America who know what they want to achieve but need a bridge between their business goals and technical execution. My role is to give you clarity on what to do, in what order, and how to measure progress -- so your team moves forward with confidence and your projects deliver real results.",
+        "2": "My approach blends senior technical leadership with a deeply business-oriented mindset. I understand both software architecture and the metrics your board cares about. That allows me to translate complex technical problems into actionable plans, and walk alongside you through every step until results materialize.",
+        "3": "I chose to focus on Latin America because I know firsthand the challenges of scaling tech teams in the region: tight budgets, distributed talent, the need to do more with less. It is a market with enormous potential, and I am driven to help companies in the region compete with the same strategic clarity as the best in the world."
+      }
+    },
+    "credentials": {
+      "title": "Experience that drives results",
+      "items": {
+        "1": {
+          "title": "15+ years in tech leadership",
+          "description": "Leading engineering teams and defining technical strategy from startups to established enterprises."
+        },
+        "2": {
+          "title": "50+ companies across LatAm",
+          "description": "Advising organizations throughout the region on digital transformation, delivery, and business-tech alignment."
+        },
+        "3": {
+          "title": "Bilingual Spanish-English",
+          "description": "Fluent communication with teams, stakeholders, and partners in both languages without losing context or nuance."
+        },
+        "4": {
+          "title": "From startup to enterprise scale",
+          "description": "Hands-on experience with the unique challenges of every growth stage, from MVP to large-scale operations."
+        }
+      }
+    },
+    "socialProof": {
+      "title": "What our clients say",
+      "subtitle": "We are gathering testimonials from clients who have worked with us.",
+      "comingSoon": "Real client experiences and results will be shared here soon."
+    },
+    "cta": {
+      "title": "Want to discuss how I can help your team?",
+      "subtitle": "Let's start with a 45-minute diagnostic call. No commitment, no cost -- just a direct conversation about your challenges."
+    }
+  },
   "metadata": {
     "title": "M. Gripe | Technical & Business Consulting",
     "description": "I help companies in LatAm convert business goals into technical execution with clarity, speed, and measurable outcomes."
