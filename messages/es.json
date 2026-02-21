@@ -1,4 +1,101 @@
 {
+  "services": {
+    "pageTitle": "Servicios",
+    "hero": {
+      "title": "Servicios diseñados para generar resultados",
+      "subtitle": "Cada línea de servicio está construida alrededor de los desafíos reales que enfrentan equipos técnicos en crecimiento. El objetivo siempre es el mismo: que tu empresa ejecute mejor, más rápido y con métricas claras."
+    },
+    "labels": {
+      "problem": "El desafío",
+      "approach": "Enfoque",
+      "outcome": "Resultado esperado"
+    },
+    "offerings": {
+      "1": {
+        "title": "Asesoría Técnica Estratégica",
+        "problem": "Tu equipo toma decisiones de arquitectura y tecnología sin una visión integral del negocio. Cada cambio técnico se siente como una apuesta, y no tienes certeza de si el stack actual puede sostener tu crecimiento.",
+        "approach": "Hago una evaluación profunda de tu arquitectura, stack y procesos técnicos. Identifico los riesgos y las oportunidades, y te entrego un mapa claro de las decisiones que necesitas tomar -- con prioridades, tradeoffs y un plan de ejecución realista.",
+        "outcome": "Obtienes una hoja de ruta técnica alineada con tus objetivos de negocio. Tu equipo deja de improvisar y empieza a ejecutar con dirección clara. Las decisiones técnicas se vuelven predecibles y justificables ante el directorio."
+      },
+      "2": {
+        "title": "Aceleración de Delivery",
+        "problem": "Los proyectos se retrasan constantemente. Tu equipo trabaja largas jornadas pero los resultados no llegan al ritmo que el negocio necesita. Los cuellos de botella se acumulan y las fechas de entrega perdieron credibilidad.",
+        "approach": "Analizo tu flujo de trabajo completo -- desde el backlog hasta producción. Identifico los puntos de fricción que frenan las entregas y diseño intervenciones específicas: mejor priorización, eliminación de dependencias innecesarias y ciclos de entrega más cortos.",
+        "outcome": "Tu equipo empieza a entregar con cadencia predecible. Los ciclos de desarrollo se acortan, las fechas de entrega recuperan credibilidad y el negocio puede planificar con confianza sobre lo que el equipo técnico va a entregar."
+      },
+      "3": {
+        "title": "Alineación de Producto y Negocio",
+        "problem": "El equipo técnico y el área de negocio operan como silos separados. Las prioridades del producto no reflejan las necesidades del mercado, y cada sprint se siente desconectado de los objetivos comerciales.",
+        "approach": "Construyo el puente entre tu estrategia de negocio y la hoja de ruta del producto. Trabajo con ambos equipos para definir prioridades compartidas, métricas de impacto y un proceso de decisión que conecte cada feature con un resultado de negocio medible.",
+        "outcome": "Cada sprint genera valor real para el negocio. Tu equipo de producto y tu equipo técnico hablan el mismo idioma, las prioridades son claras para todos y el esfuerzo se concentra en lo que mueve la aguja comercial."
+      },
+      "4": {
+        "title": "Liderazgo Fraccional",
+        "problem": "Necesitas guía técnica senior pero no justificas una contratación de tiempo completo. Las decisiones de arquitectura, equipo y procesos se toman sin alguien con la experiencia necesaria para conectar tecnología con estrategia de negocio.",
+        "approach": "Me integro a tu equipo como líder técnico a tiempo parcial. Participo en las decisiones clave, mentoreo a tus ingenieros, facilito la comunicación con stakeholders y aporto la perspectiva senior que tu equipo necesita -- sin el costo fijo de una posición permanente.",
+        "outcome": "Tu equipo tiene acceso a liderazgo técnico senior cuando lo necesita. La calidad de las decisiones técnicas sube, tus ingenieros crecen más rápido y el equipo opera con la confianza de tener un referente estratégico disponible."
+      }
+    },
+    "process": {
+      "title": "Cómo funciona el proceso",
+      "subtitle": "Un método probado en más de 50 empresas para pasar del diagnóstico a los resultados con rapidez y claridad.",
+      "steps": {
+        "1": {
+          "title": "Diagnóstico de 45 minutos",
+          "description": "Empezamos con una conversación gratuita donde entiendo tu situación actual, tus objetivos de negocio y los principales obstáculos que enfrenta tu equipo técnico. Al final de la llamada, ambos sabemos si tiene sentido trabajar juntos."
+        },
+        "2": {
+          "title": "Evaluación profunda",
+          "description": "Me sumerjo en tu operación: reviso tu arquitectura, procesos, flujos de trabajo y dinámicas de equipo. Hablo con las personas clave para construir una imagen completa de dónde están las fricciones y las oportunidades."
+        },
+        "3": {
+          "title": "Entrega del plan de acción",
+          "description": "Recibes un documento ejecutivo con las prioridades clave, las acciones concretas, los plazos realistas y las métricas que vamos a usar para medir progreso. Es un plan que puedes ejecutar desde el día uno."
+        },
+        "4": {
+          "title": "Ejecución con acompañamiento",
+          "description": "Trabajo junto a ti y tu equipo para implementar el plan. No entrego un documento y desaparezco -- estoy presente en las decisiones difíciles, los ajustes sobre la marcha y los momentos donde el equipo necesita dirección."
+        },
+        "5": {
+          "title": "Revisión y ajuste periódico",
+          "description": "Cada ciclo evaluamos los resultados contra las métricas definidas. Ajustamos prioridades, celebramos avances y recalibramos lo que sea necesario para mantener el impulso y asegurar que los resultados se sostengan."
+        }
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "1": {
+          "question": "¿Cuál es el alcance típico de un engagement?",
+          "answer": "Depende de tu situación, pero la mayoría de los engagements incluyen diagnóstico, plan de acción y acompañamiento en la ejecución. Algunos clientes necesitan una intervención puntual de pocas semanas; otros prefieren un acompañamiento continuo de varios meses. Definimos el alcance juntos después del diagnóstico inicial."
+        },
+        "2": {
+          "question": "¿Cuánto tiempo toma ver resultados?",
+          "answer": "Las primeras mejoras suelen ser visibles en 2-4 semanas, cuando se implementan los quick wins identificados en el diagnóstico. Los cambios estructurales más profundos toman entre 2 y 4 meses para consolidarse. Te doy un timeline realista desde el inicio para que puedas gestionar expectativas internas."
+        },
+        "3": {
+          "question": "¿Cómo funciona el modelo de precios?",
+          "answer": "Trabajo con un modelo basado en valor, no en horas. El precio se define según el alcance del engagement y el impacto esperado para tu negocio. Esto alinea mis incentivos con tus resultados: me conviene que te vaya bien. Los detalles los discutimos después del diagnóstico gratuito."
+        },
+        "4": {
+          "question": "¿Cómo es la comunicación durante el engagement?",
+          "answer": "Mantenemos sincronizaciones semanales por videollamada para revisar avances y resolver bloqueos. Entre sesiones, la comunicación es asincrónica -- actualizaciones por escrito, documentos compartidos y disponibilidad para consultas puntuales. Te mantengo informado sin saturar tu agenda."
+        },
+        "5": {
+          "question": "¿Qué pasa después de la llamada de diagnóstico?",
+          "answer": "Si ambos vemos que hay un fit, te envío una propuesta con el alcance, el timeline y la inversión detallada. Si decidimos que no es el momento, te quedas con insights valiosos de la conversación sin ningún compromiso. La llamada de diagnóstico es genuinamente gratuita y sin presión."
+        },
+        "6": {
+          "question": "¿Con qué tipo de empresas trabajas?",
+          "answer": "Trabajo principalmente con startups en etapa de crecimiento y PYMEs tecnológicas en Latinoamérica. Mis clientes suelen ser fundadores, gerentes de tecnología o líderes de producto que necesitan escalar sus equipos técnicos de forma ordenada. Si tu empresa tiene entre 10 y 200 personas y enfrenta desafíos técnico-estratégicos, probablemente puedo ayudarte."
+        }
+      }
+    },
+    "cta": {
+      "title": "Empieza con un diagnóstico gratuito de 45 minutos",
+      "subtitle": "Conversemos sobre los desafíos de tu equipo y exploremos juntos cómo puedo ayudarte a convertir tus objetivos en ejecución concreta."
+    }
+  },
   "bio": {
     "pageTitle": "Sobre M. Gripe",
     "hero": {

@@ -1,4 +1,101 @@
 {
+  "services": {
+    "pageTitle": "Services",
+    "hero": {
+      "title": "Services built around your results",
+      "subtitle": "Each service line addresses the real challenges facing growing tech teams. The goal is always the same: help your company execute better, faster, and with clear metrics."
+    },
+    "labels": {
+      "problem": "The challenge",
+      "approach": "Approach",
+      "outcome": "Expected outcome"
+    },
+    "offerings": {
+      "1": {
+        "title": "Strategic Technical Advisory",
+        "problem": "Your team makes architecture and technology decisions without a clear view of how they connect to business goals. Every technical choice feels like a gamble, and you are not confident your current stack can sustain your growth.",
+        "approach": "I conduct a thorough assessment of your architecture, stack, and technical processes. I identify risks and opportunities, then deliver a clear map of the decisions you need to make -- with priorities, tradeoffs, and a realistic execution plan.",
+        "outcome": "You get a technical roadmap aligned with your business objectives. Your team stops guessing and starts executing with clear direction. Technical decisions become predictable and defensible to your board."
+      },
+      "2": {
+        "title": "Delivery Acceleration",
+        "problem": "Projects consistently fall behind schedule. Your team puts in long hours but results do not arrive at the pace your business demands. Bottlenecks pile up and delivery dates have lost all credibility.",
+        "approach": "I analyze your entire workflow -- from backlog to production. I pinpoint the friction points slowing down delivery and design targeted interventions: better prioritization, elimination of unnecessary dependencies, and shorter delivery cycles.",
+        "outcome": "Your team starts delivering at a predictable cadence. Development cycles get shorter, delivery dates regain credibility, and your business can plan with confidence based on what the technical team will actually ship."
+      },
+      "3": {
+        "title": "Product & Business Alignment",
+        "problem": "Your technical team and business side operate as separate silos. Product priorities do not reflect market needs, and every sprint feels disconnected from commercial objectives.",
+        "approach": "I build the bridge between your business strategy and your product roadmap. I work with both teams to define shared priorities, impact metrics, and a decision-making process that connects every feature to a measurable business outcome.",
+        "outcome": "Every sprint delivers real business value. Your product and engineering teams speak the same language, priorities are clear to everyone, and effort is concentrated on what actually moves the needle commercially."
+      },
+      "4": {
+        "title": "Fractional Leadership Support",
+        "problem": "You need senior technical guidance but cannot justify a full-time hire. Architecture, team, and process decisions are being made without someone who has the experience to connect technology with business strategy.",
+        "approach": "I embed with your team as a part-time technical leader. I participate in key decisions, mentor your engineers, facilitate stakeholder communication, and bring the senior perspective your team needs -- without the fixed cost of a permanent position.",
+        "outcome": "Your team gains access to senior technical leadership when it matters most. The quality of technical decisions goes up, your engineers grow faster, and the team operates with the confidence of having a strategic reference available."
+      }
+    },
+    "process": {
+      "title": "How the process works",
+      "subtitle": "A method tested across 50+ companies to move from diagnosis to results with speed and clarity.",
+      "steps": {
+        "1": {
+          "title": "45-minute diagnostic",
+          "description": "We start with a free conversation where I learn about your current situation, your business goals, and the main obstacles your technical team faces. By the end of the call, we both know whether it makes sense to work together."
+        },
+        "2": {
+          "title": "Deep assessment",
+          "description": "I dive into your operation: reviewing your architecture, processes, workflows, and team dynamics. I talk to key people to build a complete picture of where the friction and opportunities lie."
+        },
+        "3": {
+          "title": "Action plan delivery",
+          "description": "You receive an executive document with key priorities, concrete actions, realistic timelines, and the metrics we will use to measure progress. It is a plan you can start executing from day one."
+        },
+        "4": {
+          "title": "Execution with support",
+          "description": "I work alongside you and your team to implement the plan. I do not hand over a document and disappear -- I am present for tough decisions, mid-course adjustments, and the moments where your team needs direction."
+        },
+        "5": {
+          "title": "Periodic review and adjustment",
+          "description": "Each cycle, we evaluate results against the defined metrics. We adjust priorities, acknowledge progress, and recalibrate whatever is needed to maintain momentum and ensure results stick."
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "1": {
+          "question": "What is the typical scope of an engagement?",
+          "answer": "It depends on your situation, but most engagements include diagnosis, an action plan, and hands-on execution support. Some clients need a focused intervention spanning a few weeks; others prefer ongoing support over several months. We define the scope together after the initial diagnostic."
+        },
+        "2": {
+          "question": "How long does it take to see results?",
+          "answer": "Initial improvements are usually visible within 2-4 weeks, once the quick wins identified during diagnosis are implemented. Deeper structural changes take 2-4 months to consolidate. I give you a realistic timeline upfront so you can manage internal expectations."
+        },
+        "3": {
+          "question": "How does pricing work?",
+          "answer": "I use a value-based pricing model, not hourly rates. The price is set based on the scope of the engagement and the expected impact on your business. This aligns my incentives with your results: it is in my interest that you succeed. We discuss specifics after the free diagnostic."
+        },
+        "4": {
+          "question": "What does communication look like during an engagement?",
+          "answer": "We hold weekly video syncs to review progress and clear blockers. Between sessions, communication is asynchronous -- written updates, shared documents, and availability for quick questions. I keep you informed without overloading your calendar."
+        },
+        "5": {
+          "question": "What happens after the diagnostic call?",
+          "answer": "If we both see a fit, I send you a proposal with the detailed scope, timeline, and investment. If we decide the timing is not right, you walk away with valuable insights from the conversation at no cost. The diagnostic call is genuinely free and pressure-free."
+        },
+        "6": {
+          "question": "What types of companies do you work with?",
+          "answer": "I primarily work with growth-stage startups and tech-oriented SMEs across Latin America. My clients tend to be founders, technology managers, or product leaders who need to scale their technical teams in an organized way. If your company has between 10 and 200 people and faces strategic-technical challenges, I can likely help."
+        }
+      }
+    },
+    "cta": {
+      "title": "Start with a free 45-minute diagnostic",
+      "subtitle": "Let us talk about your team's challenges and explore together how I can help you turn your goals into concrete execution."
+    }
+  },
   "bio": {
     "pageTitle": "About M. Gripe",
     "hero": {
