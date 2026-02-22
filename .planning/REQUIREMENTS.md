@@ -41,13 +41,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Contact & Conversion
 
-- [ ] **CONT-01**: Contact form with fields: name, email, message (required) + company, service interest (optional)
-- [ ] **CONT-02**: Client-side form validation with accessible error messages in current language
-- [ ] **CONT-03**: Server-side validation with Zod before sending email
-- [ ] **CONT-04**: Email delivery via Resend Server Action on form submission
-- [ ] **CONT-05**: Honeypot hidden field to catch spam bots (silent discard)
-- [ ] **CONT-06**: Clear success message after submission with response time expectation
-- [ ] **CONT-07**: Clear error message if submission fails with retry option
+- [x] **CONT-01**: Contact form with fields: name, email, message (required) + company, service interest (optional)
+- [x] **CONT-02**: Client-side form validation with accessible error messages in current language
+- [x] **CONT-03**: Server-side validation with Zod before sending email
+- [x] **CONT-04**: Email delivery via Resend Server Action on form submission
+- [x] **CONT-05**: Honeypot hidden field to catch spam bots (silent discard)
+- [x] **CONT-06**: Clear success message after submission with response time expectation
+- [x] **CONT-07**: Clear error message if submission fails with retry option
 - [ ] **CONT-08**: WhatsApp CTA button visible on all pages (sticky on mobile)
 - [ ] **CONT-09**: WhatsApp link with pre-filled Spanish message via wa.me URL
 
@@ -162,13 +162,13 @@ Deferred to future release. Tracked but not in current roadmap.
 | SERV-03 | Phase 4 | Complete |
 | SERV-04 | Phase 4 | Complete |
 | SERV-05 | Phase 4 | Complete |
-| CONT-01 | Phase 5 | Pending |
-| CONT-02 | Phase 5 | Pending |
-| CONT-03 | Phase 5 | Pending |
-| CONT-04 | Phase 5 | Pending |
-| CONT-05 | Phase 5 | Pending |
-| CONT-06 | Phase 5 | Pending |
-| CONT-07 | Phase 5 | Pending |
+| CONT-01 | Phase 5 | Complete |
+| CONT-02 | Phase 5 | Complete |
+| CONT-03 | Phase 5 | Complete |
+| CONT-04 | Phase 5 | Complete |
+| CONT-05 | Phase 5 | Complete |
+| CONT-06 | Phase 5 | Complete |
+| CONT-07 | Phase 5 | Complete |
 | CONT-08 | Phase 5 | Pending |
 | CONT-09 | Phase 5 | Pending |
 | I18N-01 | Phase 1 | Pending |

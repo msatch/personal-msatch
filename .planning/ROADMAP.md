@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation & i18n Scaffolding** - Next.js project with bilingual routing, design tokens, and responsive baseline
 - [x] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
 - [x] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
-- [ ] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
+- [x] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
 - [ ] **Phase 5: Contact Form & Conversion** - Form with validation, email delivery via Resend, anti-spam, and WhatsApp CTA
 - [ ] **Phase 6: Polish, Accessibility & SEO** - Micro-interactions, SEO metadata, a11y audit, privacy policy, and performance
 - [ ] **Phase 7: Deployment & Launch** - Production deployment to Vercel with launch verification
@@ -84,7 +84,7 @@ Plans:
 
 Plans:
 - [x] 04-01-PLAN.md -- Bio page: bilingual copy, photo placeholder, credentials, narrative, social proof, CTA
-- [ ] 04-02-PLAN.md -- Services page: 4 service cards, 5-step process, FAQ, CTA with entry offer
+- [x] 04-02-PLAN.md -- Services page: 4 service cards, 5-step process, FAQ, CTA with entry offer
 
 ### Phase 5: Contact Form & Conversion
 **Goal**: A visitor can contact M. Gripe through a validated form that delivers an email notification, or reach out via WhatsApp with one tap
@@ -99,7 +99,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md -- Install deps, Zod schema, Resend client, server action, and bilingual contact translations
+- [x] 05-01-PLAN.md -- Install deps, Zod schema, Resend client, server action, and bilingual contact translations
 - [ ] 05-02-PLAN.md -- Contact form UI with accessible validation, success/error states, and WhatsApp floating CTA button
 
 ### Phase 6: Polish, Accessibility & SEO
@@ -143,7 +143,7 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 | 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
 | 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
 | 3. Home Page | 2/2 | Complete    | 2026-02-19 |
-| 4. Bio & Services Pages | 1/2 | In progress | - |
-| 5. Contact Form & Conversion | 0/TBD | Not started | - |
+| 4. Bio & Services Pages | 2/2 | Complete    | 2026-02-21 |
+| 5. Contact Form & Conversion | 1/2 | In progress | - |
 | 6. Polish, Accessibility & SEO | 0/TBD | Not started | - |
 | 7. Deployment & Launch | 0/TBD | Not started | - |

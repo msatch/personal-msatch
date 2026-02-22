@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 4 complete - Bio and Services pages fully built
+**Current focus:** Phase 5 in progress - Contact form backend complete, UI next
 
 ## Current Position
 
 Phase: 5 of 7 (Contact Form)
-Plan: 1 of 2 in current phase
-Status: Phase 4 complete -- Bio page and Services page both built with full bilingual copy
-Last activity: 2026-02-21 -- Completed 04-02-PLAN.md (services page)
+Plan: 2 of 2 in current phase
+Status: Plan 05-01 complete -- Zod schema, Resend client, server action, and bilingual translations ready
+Last activity: 2026-02-22 -- Completed 05-01-PLAN.md (contact form backend)
 
-Progress: [########░░] 57%
+Progress: [########░░] 64%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 4 min
-- Total execution time: 0.43 hours
+- Total execution time: 0.50 hours
 
 **By Phase:**
 
@@ -31,9 +31,10 @@ Progress: [########░░] 57%
 | 2. Layout Shell & Nav | 2/2 | 5 min | 2.5 min |
 | 3. Home Page | 2/2 | 4 min | 2 min |
 | 4. Bio & Services | 2/2 | 6 min | 3 min |
+| 5. Contact Form | 1/2 | 4 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 2 min, 2 min, 3 min, 3 min
+- Last 5 plans: 2 min, 2 min, 3 min, 3 min, 4 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -73,6 +74,9 @@ Recent decisions affecting current work:
 - [04-02]: Process section expanded to 5 detailed steps (vs home page 3-step) covering full engagement lifecycle
 - [04-02]: Static FAQ with no accordion or JavaScript -- all 6 Q&A pairs visible, keeping Server Component purity
 - [04-02]: Value-based pricing model explicitly stated in FAQ rather than avoiding the pricing question
+- [05-01]: Used Zod 4 error parameter syntax (not message) since zod@4.3.6 installed
+- [05-01]: Used proper Spanish accents in contact translations to match existing es.json convention
+- [05-01]: Resend fallback to onboarding@resend.dev test domain for development without domain verification
 
 ### Pending Todos
 
@@ -86,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-21
-Stopped at: Completed 04-02-PLAN.md (services page) -- Phase 4 complete, ready for Phase 5
+Last session: 2026-02-22
+Stopped at: Completed 05-01-PLAN.md (contact form backend) -- Ready for 05-02 (contact form UI)
 Resume file: None
