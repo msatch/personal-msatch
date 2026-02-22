@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 5 in progress - Contact form backend complete, UI next
+**Current focus:** Phase 5 complete - Contact form and WhatsApp CTA done, Phase 6 next
 
 ## Current Position
 
-Phase: 5 of 7 (Contact Form)
-Plan: 2 of 2 in current phase
-Status: Plan 05-01 complete -- Zod schema, Resend client, server action, and bilingual translations ready
-Last activity: 2026-02-22 -- Completed 05-01-PLAN.md (contact form backend)
+Phase: 5 of 7 (Contact Form) -- COMPLETE
+Plan: 2 of 2 in current phase (done)
+Status: Phase 5 complete -- Contact form UI, WhatsApp CTA, all CONT requirements fulfilled
+Last activity: 2026-02-22 -- Completed 05-02-PLAN.md (contact form UI and WhatsApp button)
 
-Progress: [########░░] 64%
+Progress: [#########░] 71%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 4 min
-- Total execution time: 0.50 hours
+- Total plans completed: 10
+- Average duration: 3 min
+- Total execution time: 0.53 hours
 
 **By Phase:**
 
@@ -31,10 +31,10 @@ Progress: [########░░] 64%
 | 2. Layout Shell & Nav | 2/2 | 5 min | 2.5 min |
 | 3. Home Page | 2/2 | 4 min | 2 min |
 | 4. Bio & Services | 2/2 | 6 min | 3 min |
-| 5. Contact Form | 1/2 | 4 min | 4 min |
+| 5. Contact Form | 2/2 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 2 min, 3 min, 3 min, 4 min
+- Last 5 plans: 2 min, 3 min, 3 min, 4 min, 2 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -77,6 +77,9 @@ Recent decisions affecting current work:
 - [05-01]: Used Zod 4 error parameter syntax (not message) since zod@4.3.6 installed
 - [05-01]: Used proper Spanish accents in contact translations to match existing es.json convention
 - [05-01]: Resend fallback to onboarding@resend.dev test domain for development without domain verification
+- [05-02]: Used aria-live polite regions that always exist in DOM (conditional content, not conditional rendering) for screen reader compatibility
+- [05-02]: Hardcoded WhatsApp number as constant instead of NEXT_PUBLIC_ env var to avoid client-side env complexity
+- [05-02]: Used single emailInvalid error for all email validation failures (covers both empty and invalid format)
 
 ### Pending Todos
 
@@ -84,12 +87,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- WhatsApp business number needed before Phase 5 (CONT-08, CONT-09)
+- WhatsApp button has placeholder phone number (5215512345678) -- update when business number is known
 - Professional headshot needed for Bio page (BIO-02 uses placeholder initially)
 - Resend domain verification needs 24-48 hours DNS propagation -- start before Phase 7
 
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 05-01-PLAN.md (contact form backend) -- Ready for 05-02 (contact form UI)
+Stopped at: Completed 05-02-PLAN.md (contact form UI and WhatsApp CTA) -- Phase 5 complete, ready for Phase 6
 Resume file: None

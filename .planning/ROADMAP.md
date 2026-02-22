@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
 - [x] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
 - [x] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
-- [ ] **Phase 5: Contact Form & Conversion** - Form with validation, email delivery via Resend, anti-spam, and WhatsApp CTA
+- [x] **Phase 5: Contact Form & Conversion** - Form with validation, email delivery via Resend, anti-spam, and WhatsApp CTA
 - [ ] **Phase 6: Polish, Accessibility & SEO** - Micro-interactions, SEO metadata, a11y audit, privacy policy, and performance
 - [ ] **Phase 7: Deployment & Launch** - Production deployment to Vercel with launch verification
 
@@ -100,7 +100,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md -- Install deps, Zod schema, Resend client, server action, and bilingual contact translations
-- [ ] 05-02-PLAN.md -- Contact form UI with accessible validation, success/error states, and WhatsApp floating CTA button
+- [x] 05-02-PLAN.md -- Contact form UI with accessible validation, success/error states, and WhatsApp floating CTA button
 
 ### Phase 6: Polish, Accessibility & SEO
 **Goal**: The site meets professional quality standards for SEO discoverability, accessibility compliance, performance, and visual refinement
@@ -144,6 +144,6 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 | 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
 | 3. Home Page | 2/2 | Complete    | 2026-02-19 |
 | 4. Bio & Services Pages | 2/2 | Complete    | 2026-02-21 |
-| 5. Contact Form & Conversion | 1/2 | In progress | - |
+| 5. Contact Form & Conversion | 2/2 | Complete    | 2026-02-22 |
 | 6. Polish, Accessibility & SEO | 0/TBD | Not started | - |
 | 7. Deployment & Launch | 0/TBD | Not started | - |

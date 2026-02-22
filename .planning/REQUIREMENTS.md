@@ -48,8 +48,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CONT-05**: Honeypot hidden field to catch spam bots (silent discard)
 - [x] **CONT-06**: Clear success message after submission with response time expectation
 - [x] **CONT-07**: Clear error message if submission fails with retry option
-- [ ] **CONT-08**: WhatsApp CTA button visible on all pages (sticky on mobile)
-- [ ] **CONT-09**: WhatsApp link with pre-filled Spanish message via wa.me URL
+- [x] **CONT-08**: WhatsApp CTA button visible on all pages (sticky on mobile)
+- [x] **CONT-09**: WhatsApp link with pre-filled Spanish message via wa.me URL
 
 ### Internationalization
 
@@ -169,8 +169,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | CONT-05 | Phase 5 | Complete |
 | CONT-06 | Phase 5 | Complete |
 | CONT-07 | Phase 5 | Complete |
-| CONT-08 | Phase 5 | Pending |
-| CONT-09 | Phase 5 | Pending |
+| CONT-08 | Phase 5 | Complete |
+| CONT-09 | Phase 5 | Complete |
 | I18N-01 | Phase 1 | Pending |
 | I18N-02 | Phase 1 | Pending |
 | I18N-03 | Phase 1 | Pending |
