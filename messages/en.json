@@ -1,4 +1,54 @@
 {
+  "contact": {
+    "title": "Let's Talk",
+    "subtitle": "Fill out the form and we'll get back to you within 24-48 business hours.",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your full name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "you@email.com"
+      },
+      "company": {
+        "label": "Company",
+        "placeholder": "Your company (optional)"
+      },
+      "serviceInterest": {
+        "label": "Service of interest",
+        "placeholder": "Select a service (optional)",
+        "options": {
+          "advisory": "Strategic Technical Advisory",
+          "delivery": "Delivery Acceleration",
+          "alignment": "Product & Business Alignment",
+          "fractional": "Fractional Leadership",
+          "other": "Other"
+        }
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us about your project or challenge..."
+      },
+      "submit": {
+        "label": "Send message",
+        "sending": "Sending..."
+      }
+    },
+    "errors": {
+      "nameRequired": "Name is required.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "messageRequired": "Message is required.",
+      "messageTooShort": "Message must be at least 10 characters.",
+      "serverError": "There was an error sending your message. Please try again."
+    },
+    "success": {
+      "title": "Message sent!",
+      "message": "Thank you for reaching out. We'll get back to you within 24-48 business hours.",
+      "backHome": "Back to home"
+    }
+  },
   "services": {
     "pageTitle": "Services",
     "hero": {

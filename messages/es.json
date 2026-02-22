@@ -1,4 +1,54 @@
 {
+  "contact": {
+    "title": "Hablemos",
+    "subtitle": "Completa el formulario y te responderemos en 24-48 horas hábiles.",
+    "fields": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Tu nombre completo"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "tu@email.com"
+      },
+      "company": {
+        "label": "Empresa",
+        "placeholder": "Tu empresa (opcional)"
+      },
+      "serviceInterest": {
+        "label": "Servicio de interés",
+        "placeholder": "Selecciona un servicio (opcional)",
+        "options": {
+          "advisory": "Asesoría Técnica Estratégica",
+          "delivery": "Aceleración de Delivery",
+          "alignment": "Alineación de Producto y Negocio",
+          "fractional": "Liderazgo Fraccional",
+          "other": "Otro"
+        }
+      },
+      "message": {
+        "label": "Mensaje",
+        "placeholder": "Cuéntanos sobre tu proyecto o desafío..."
+      },
+      "submit": {
+        "label": "Enviar mensaje",
+        "sending": "Enviando..."
+      }
+    },
+    "errors": {
+      "nameRequired": "El nombre es obligatorio.",
+      "emailRequired": "El email es obligatorio.",
+      "emailInvalid": "Por favor ingresa un email válido.",
+      "messageRequired": "El mensaje es obligatorio.",
+      "messageTooShort": "El mensaje debe tener al menos 10 caracteres.",
+      "serverError": "Hubo un error al enviar tu mensaje. Por favor intenta nuevamente."
+    },
+    "success": {
+      "title": "¡Mensaje enviado!",
+      "message": "Gracias por contactarnos. Te responderemos dentro de 24-48 horas hábiles.",
+      "backHome": "Volver al inicio"
+    }
+  },
   "services": {
     "pageTitle": "Servicios",
     "hero": {
