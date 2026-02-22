@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { WhatsAppButton } from '@/components/layout/whatsapp-button';
 import '@/styles/globals.css';
 
 const geistSans = Geist({
@@ -52,6 +53,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             {children}
           </main>
           <Footer />
+          <WhatsAppButton />
         </NextIntlClientProvider>
       </body>
     </html>
