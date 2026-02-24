@@ -112,11 +112,11 @@ Plans:
   3. The site passes AA contrast checks, supports full keyboard navigation with visible focus indicators, and all form fields have proper labels
   4. A privacy policy page exists in both Spanish and English
   5. Mobile LCP is under 2.5 seconds with a minimal JS bundle
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md -- Per-page SEO metadata for all pages and bilingual privacy policy page
+- [ ] 06-02-PLAN.md -- Accessibility foundations, scroll reveal animations, and enhanced CTA hover states
 
 ### Phase 7: Deployment & Launch
 **Goal**: The site is live on Vercel, accessible via URL, and verified working in production
@@ -145,5 +145,5 @@ Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
 | 3. Home Page | 2/2 | Complete    | 2026-02-19 |
 | 4. Bio & Services Pages | 2/2 | Complete    | 2026-02-21 |
 | 5. Contact Form & Conversion | 2/2 | Complete    | 2026-02-22 |
-| 6. Polish, Accessibility & SEO | 0/TBD | Not started | - |
+| 6. Polish, Accessibility & SEO | 0/2 | Not started | - |
 | 7. Deployment & Launch | 0/TBD | Not started | - |
