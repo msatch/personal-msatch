@@ -191,6 +191,58 @@
       "subtitle": "Let's start with a 45-minute diagnostic call. No commitment, no cost -- just a direct conversation about your challenges."
     }
   },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026",
+    "intro": "At M. Gripe Consulting, we value your privacy. This policy explains how we collect, use, and protect your personal information when you use our website.",
+    "sections": {
+      "dataCollected": {
+        "title": "Information we collect",
+        "content": "When you use our contact form, we collect the following information:",
+        "items": {
+          "1": "Full name (required)",
+          "2": "Email address (required)",
+          "3": "Company name (optional)",
+          "4": "Service of interest (optional)",
+          "5": "Your message (required)"
+        }
+      },
+      "dataUsage": {
+        "title": "How we use your information",
+        "content": "We use the information you provide exclusively to:",
+        "items": {
+          "1": "Respond to your inquiry or request",
+          "2": "Send you relevant information about the services you asked about",
+          "3": "Improve our services and communication"
+        }
+      },
+      "dataProcessing": {
+        "title": "Data processing",
+        "content": "Your contact information is transmitted securely through our web form and processed via Resend, an email delivery service. We do not store your information in proprietary databases beyond the email received."
+      },
+      "dataRetention": {
+        "title": "Data retention",
+        "content": "We retain emails received through the contact form for as long as necessary to address your inquiry. We do not maintain marketing databases or mailing lists."
+      },
+      "userRights": {
+        "title": "Your rights",
+        "content": "You have the right to:",
+        "items": {
+          "1": "Request access to the personal information we hold about you",
+          "2": "Request correction or deletion of your information",
+          "3": "Withdraw your consent at any time"
+        }
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "This site uses only a technical cookie (NEXT_LOCALE) to remember your language preference. We do not use tracking, analytics, or advertising cookies."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "If you have questions about this privacy policy or wish to exercise your rights, reach out to us through our contact form or by email."
+      }
+    }
+  },
   "metadata": {
     "title": "M. Gripe | Technical & Business Consulting",
     "description": "I help companies in LatAm convert business goals into technical execution with clarity, speed, and measurable outcomes.",

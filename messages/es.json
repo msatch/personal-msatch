@@ -191,6 +191,58 @@
       "subtitle": "Empecemos con una llamada de diagnóstico de 45 minutos. Sin compromiso, sin costo -- solo una conversación directa sobre tus desafíos."
     }
   },
+  "privacy": {
+    "title": "Politica de Privacidad",
+    "lastUpdated": "Ultima actualizacion: febrero 2026",
+    "intro": "En M. Gripe Consultoria valoramos tu privacidad. Esta politica explica como recopilamos, usamos y protegemos tu informacion personal cuando utilizas nuestro sitio web.",
+    "sections": {
+      "dataCollected": {
+        "title": "Informacion que recopilamos",
+        "content": "Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente informacion:",
+        "items": {
+          "1": "Nombre completo (obligatorio)",
+          "2": "Direccion de correo electronico (obligatorio)",
+          "3": "Nombre de la empresa (opcional)",
+          "4": "Servicio de interes (opcional)",
+          "5": "Tu mensaje (obligatorio)"
+        }
+      },
+      "dataUsage": {
+        "title": "Como usamos tu informacion",
+        "content": "Utilizamos la informacion que nos proporcionas exclusivamente para:",
+        "items": {
+          "1": "Responder a tu consulta o solicitud",
+          "2": "Enviarte informacion relevante sobre los servicios solicitados",
+          "3": "Mejorar nuestros servicios y comunicacion"
+        }
+      },
+      "dataProcessing": {
+        "title": "Procesamiento de datos",
+        "content": "Tu informacion de contacto se transmite de forma segura a traves de nuestro formulario web y se procesa mediante Resend, un servicio de entrega de correo electronico. No almacenamos tu informacion en bases de datos propias mas alla del correo electronico recibido."
+      },
+      "dataRetention": {
+        "title": "Retencion de datos",
+        "content": "Conservamos los correos electronicos recibidos a traves del formulario de contacto mientras sea necesario para atender tu consulta. No mantenemos bases de datos de marketing ni listas de correo."
+      },
+      "userRights": {
+        "title": "Tus derechos",
+        "content": "Tienes derecho a:",
+        "items": {
+          "1": "Solicitar acceso a la informacion personal que tengamos sobre ti",
+          "2": "Solicitar la correccion o eliminacion de tu informacion",
+          "3": "Retirar tu consentimiento en cualquier momento"
+        }
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Este sitio utiliza unicamente una cookie tecnica (NEXT_LOCALE) para recordar tu preferencia de idioma. No utilizamos cookies de seguimiento, analiticas ni de publicidad."
+      },
+      "contact": {
+        "title": "Contacto",
+        "content": "Si tienes preguntas sobre esta politica de privacidad o deseas ejercer tus derechos, contactanos a traves de nuestro formulario de contacto o por correo electronico."
+      }
+    }
+  },
   "metadata": {
     "title": "M. Gripe | Consultoría Técnica y de Negocios",
     "description": "Ayudo a empresas en LatAm a convertir objetivos de negocio en ejecución técnica con claridad, velocidad y resultados medibles.",
