@@ -82,9 +82,9 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **TECH-02**: Tailwind CSS 4 for styling
 - [ ] **TECH-03**: Static generation for all pages via generateStaticParams
 - [ ] **TECH-04**: Deployed to Vercel
-- [ ] **TECH-05**: Basic SEO: semantic HTML, title tags, meta descriptions per page per locale
+- [x] **TECH-05**: Basic SEO: semantic HTML, title tags, meta descriptions per page per locale
 - [ ] **TECH-06**: Accessibility baseline: AA contrast, keyboard navigation, focus indicators, semantic structure
-- [ ] **TECH-07**: Privacy policy page in both languages
+- [x] **TECH-07**: Privacy policy page in both languages
 - [ ] **TECH-08**: 404 page in both languages
 - [ ] **TECH-09**: Fast performance: LCP < 2.5s on mobile, minimal JS bundle
 
@@ -191,9 +191,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | TECH-02 | Phase 1 | Pending |
 | TECH-03 | Phase 1 | Pending |
 | TECH-04 | Phase 7 | Pending |
-| TECH-05 | Phase 6 | Pending |
+| TECH-05 | Phase 6 | Complete |
 | TECH-06 | Phase 6 | Pending |
-| TECH-07 | Phase 6 | Pending |
+| TECH-07 | Phase 6 | Complete |
 | TECH-08 | Phase 2 | Pending |
 | TECH-09 | Phase 6 | Pending |
 

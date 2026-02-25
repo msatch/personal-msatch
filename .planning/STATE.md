@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 5 complete - Contact form and WhatsApp CTA done, Phase 6 next
+**Current focus:** Phase 6 in progress - SEO metadata and privacy policy done, accessibility/polish next
 
 ## Current Position
 
-Phase: 5 of 7 (Contact Form) -- COMPLETE
-Plan: 2 of 2 in current phase (done)
-Status: Phase 5 complete -- Contact form UI, WhatsApp CTA, all CONT requirements fulfilled
-Last activity: 2026-02-22 -- Completed 05-02-PLAN.md (contact form UI and WhatsApp button)
+Phase: 6 of 7 (Polish, Accessibility & SEO)
+Plan: 1 of 2 in current phase (06-01 complete)
+Status: Plan 06-01 complete -- Per-page SEO metadata and bilingual privacy policy
+Last activity: 2026-02-24 -- Completed 06-01-PLAN.md (SEO metadata and privacy policy)
 
-Progress: [#########░] 71%
+Progress: [##########░] 79%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: 3 min
-- Total execution time: 0.53 hours
+- Total execution time: 0.57 hours
 
 **By Phase:**
 
@@ -32,9 +32,10 @@ Progress: [#########░] 71%
 | 3. Home Page | 2/2 | 4 min | 2 min |
 | 4. Bio & Services | 2/2 | 6 min | 3 min |
 | 5. Contact Form | 2/2 | 6 min | 3 min |
+| 6. Polish, A11y & SEO | 1/2 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 3 min, 3 min, 4 min, 2 min
+- Last 5 plans: 3 min, 3 min, 4 min, 2 min, 2 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - [05-02]: Used aria-live polite regions that always exist in DOM (conditional content, not conditional rendering) for screen reader compatibility
 - [05-02]: Hardcoded WhatsApp number as constant instead of NEXT_PUBLIC_ env var to avoid client-side env complexity
 - [05-02]: Used single emailInvalid error for all email validation failures (covers both empty and invalid format)
+- [06-01]: Used nested metadata namespaces (metadata.bio, metadata.services, etc.) for clean separation from layout-level metadata
+- [06-01]: Privacy page uses data-driven section rendering (sectionKeys + sectionItemCounts) instead of hardcoded JSX
+- [06-01]: Privacy policy content independently written per locale (not literal translation) following project convention
 
 ### Pending Todos
 
@@ -93,6 +97,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-22
-Stopped at: Completed 05-02-PLAN.md (contact form UI and WhatsApp CTA) -- Phase 5 complete, ready for Phase 6
+Last session: 2026-02-24
+Stopped at: Completed 06-01-PLAN.md (SEO metadata and privacy policy) -- Plan 06-02 next
 Resume file: None
