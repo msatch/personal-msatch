@@ -5,6 +5,7 @@ import { OfferingsSection } from '@/components/services/offerings-section';
 import { ProcessSection } from '@/components/services/process-section';
 import { FaqSection } from '@/components/services/faq-section';
 import { ServicesCta } from '@/components/services/services-cta';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -30,9 +31,15 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   return (
     <>
       <OfferingsSection />
-      <ProcessSection />
-      <FaqSection />
-      <ServicesCta />
+      <ScrollReveal>
+        <ProcessSection />
+      </ScrollReveal>
+      <ScrollReveal delay={100}>
+        <FaqSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ServicesCta />
+      </ScrollReveal>
     </>
   );
 }

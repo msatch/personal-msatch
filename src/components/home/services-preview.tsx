@@ -19,7 +19,7 @@ export async function ServicesPreview() {
             <Link
               key={id}
               href="/services"
-              className="block p-6 rounded-lg border border-border bg-background hover:border-accent hover:shadow-md transition-all"
+              className="block p-6 rounded-lg border border-border bg-background hover:border-accent hover:shadow-md hover:-translate-y-1 transition-all duration-200"
             >
               <h3 className="text-lg font-bold">
                 {t(`items.${id}.title`)}

@@ -16,7 +16,7 @@ export async function HeroSection() {
         </p>
         <Link
           href="/contact"
-          className="mt-8 inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark transition-colors text-base md:text-lg"
+          className="mt-8 inline-block px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-base md:text-lg"
         >
           {tCommon('cta')}
         </Link>

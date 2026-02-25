@@ -5,6 +5,7 @@ import { ProblemSection } from '@/components/home/problem-section';
 import { ServicesPreview } from '@/components/home/services-preview';
 import { ProcessSection } from '@/components/home/process-section';
 import { CtaBand } from '@/components/home/cta-band';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -17,10 +18,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <HeroSection />
-      <ProblemSection />
-      <ServicesPreview />
-      <ProcessSection />
-      <CtaBand />
+      <ScrollReveal>
+        <ProblemSection />
+      </ScrollReveal>
+      <ScrollReveal delay={100}>
+        <ServicesPreview />
+      </ScrollReveal>
+      <ScrollReveal delay={100}>
+        <ProcessSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CtaBand />
+      </ScrollReveal>
     </>
   );
 }
