@@ -44,12 +44,20 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
   setRequestLocale(locale);
 
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
+
   return (
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-md focus:text-sm focus:font-medium"
+        >
+          {tCommon('skipToContent')}
+        </a>
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1">
             {children}
           </main>
           <Footer />
