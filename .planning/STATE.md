@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-16)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 6 in progress - SEO metadata and privacy policy done, accessibility/polish next
+**Current focus:** Phase 6 complete - Ready for Phase 7 (Deployment & Launch)
 
 ## Current Position
 
-Phase: 6 of 7 (Polish, Accessibility & SEO)
-Plan: 1 of 2 in current phase (06-01 complete)
-Status: Plan 06-01 complete -- Per-page SEO metadata and bilingual privacy policy
-Last activity: 2026-02-24 -- Completed 06-01-PLAN.md (SEO metadata and privacy policy)
+Phase: 6 of 7 (Polish, Accessibility & SEO) -- COMPLETE
+Plan: 2 of 2 in current phase (06-02 complete)
+Status: Phase 6 complete -- All polish, accessibility, and SEO work done
+Last activity: 2026-02-24 -- Completed 06-02-PLAN.md (Accessibility & micro-interactions)
 
-Progress: [##########░] 79%
+Progress: [###########░] 86%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
+- Total plans completed: 12
 - Average duration: 3 min
-- Total execution time: 0.57 hours
+- Total execution time: 0.62 hours
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [##########░] 79%
 | 3. Home Page | 2/2 | 4 min | 2 min |
 | 4. Bio & Services | 2/2 | 6 min | 3 min |
 | 5. Contact Form | 2/2 | 6 min | 3 min |
-| 6. Polish, A11y & SEO | 1/2 | 2 min | 2 min |
+| 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 3 min, 3 min, 4 min, 2 min, 2 min
+- Last 5 plans: 3 min, 4 min, 2 min, 2 min, 3 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -84,6 +84,9 @@ Recent decisions affecting current work:
 - [06-01]: Used nested metadata namespaces (metadata.bio, metadata.services, etc.) for clean separation from layout-level metadata
 - [06-01]: Privacy page uses data-driven section rendering (sectionKeys + sectionItemCounts) instead of hardcoded JSX
 - [06-01]: Privacy policy content independently written per locale (not literal translation) following project convention
+- [06-02]: ScrollReveal wraps server-rendered sections at the page level (not inside components) to preserve Server Component purity
+- [06-02]: useInView hook checks prefers-reduced-motion and immediately sets isInView=true, skipping IntersectionObserver entirely
+- [06-02]: Skip-to-content link placed outside NextIntlClientProvider using server-side getTranslations
 
 ### Pending Todos
 
@@ -98,5 +101,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-24
-Stopped at: Completed 06-01-PLAN.md (SEO metadata and privacy policy) -- Plan 06-02 next
+Stopped at: Completed 06-02-PLAN.md (Accessibility & micro-interactions) -- Phase 6 complete, Phase 7 next
 Resume file: None

@@ -73,7 +73,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DES-02**: Bold typography with strong visual hierarchy
 - [ ] **DES-03**: Mobile-first responsive layout (default styles = mobile, md/lg for larger)
 - [ ] **DES-04**: Touch-friendly tap targets (min 44x44px on mobile)
-- [ ] **DES-05**: Subtle micro-interactions (hover states on CTAs, smooth page transitions)
+- [x] **DES-05**: Subtle micro-interactions (hover states on CTAs, smooth page transitions)
 - [ ] **DES-06**: Design tokens in Tailwind config (colors, fonts, spacing)
 
 ### Technical Baseline
@@ -83,10 +83,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **TECH-03**: Static generation for all pages via generateStaticParams
 - [ ] **TECH-04**: Deployed to Vercel
 - [x] **TECH-05**: Basic SEO: semantic HTML, title tags, meta descriptions per page per locale
-- [ ] **TECH-06**: Accessibility baseline: AA contrast, keyboard navigation, focus indicators, semantic structure
+- [x] **TECH-06**: Accessibility baseline: AA contrast, keyboard navigation, focus indicators, semantic structure
 - [x] **TECH-07**: Privacy policy page in both languages
 - [ ] **TECH-08**: 404 page in both languages
-- [ ] **TECH-09**: Fast performance: LCP < 2.5s on mobile, minimal JS bundle
+- [x] **TECH-09**: Fast performance: LCP < 2.5s on mobile, minimal JS bundle
 
 ## v2 Requirements
 
@@ -185,17 +185,17 @@ Deferred to future release. Tracked but not in current roadmap.
 | DES-02 | Phase 1 | Pending |
 | DES-03 | Phase 1 | Pending |
 | DES-04 | Phase 1 | Pending |
-| DES-05 | Phase 6 | Pending |
+| DES-05 | Phase 6 | Complete |
 | DES-06 | Phase 1 | Pending |
 | TECH-01 | Phase 1 | Pending |
 | TECH-02 | Phase 1 | Pending |
 | TECH-03 | Phase 1 | Pending |
 | TECH-04 | Phase 7 | Pending |
 | TECH-05 | Phase 6 | Complete |
-| TECH-06 | Phase 6 | Pending |
+| TECH-06 | Phase 6 | Complete |
 | TECH-07 | Phase 6 | Complete |
 | TECH-08 | Phase 2 | Pending |
-| TECH-09 | Phase 6 | Pending |
+| TECH-09 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 54 total
