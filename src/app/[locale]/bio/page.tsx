@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { PhotoCredentials } from '@/components/bio/photo-credentials';
@@ -7,6 +8,19 @@ import { SocialProofSection } from '@/components/bio/social-proof-section';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata.bio' });
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
 }
 
 export default async function BioPage({ params }: { params: Promise<{ locale: string }> }) {

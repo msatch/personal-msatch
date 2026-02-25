@@ -193,7 +193,23 @@
   },
   "metadata": {
     "title": "M. Gripe | Consultoría Técnica y de Negocios",
-    "description": "Ayudo a empresas en LatAm a convertir objetivos de negocio en ejecución técnica con claridad, velocidad y resultados medibles."
+    "description": "Ayudo a empresas en LatAm a convertir objetivos de negocio en ejecución técnica con claridad, velocidad y resultados medibles.",
+    "bio": {
+      "title": "Bio | M. Gripe",
+      "description": "Consultor técnico senior con experiencia en LatAm. Ayudo a equipos a entregar resultados medibles con claridad y velocidad."
+    },
+    "services": {
+      "title": "Servicios | M. Gripe",
+      "description": "Asesoría técnica estratégica, aceleración de delivery, alineación producto-negocio y liderazgo fraccional para empresas en LatAm."
+    },
+    "contact": {
+      "title": "Contacto | M. Gripe",
+      "description": "Agenda tu diagnóstico de 45 minutos. Conversemos sobre los desafíos técnicos y de negocio de tu equipo."
+    },
+    "privacy": {
+      "title": "Política de Privacidad | M. Gripe",
+      "description": "Cómo recopilamos, usamos y protegemos tu información personal."
+    }
   },
   "common": {
     "cta": "Agenda tu diagnóstico de 45 min",

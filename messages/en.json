@@ -193,7 +193,23 @@
   },
   "metadata": {
     "title": "M. Gripe | Technical & Business Consulting",
-    "description": "I help companies in LatAm convert business goals into technical execution with clarity, speed, and measurable outcomes."
+    "description": "I help companies in LatAm convert business goals into technical execution with clarity, speed, and measurable outcomes.",
+    "bio": {
+      "title": "Bio | M. Gripe",
+      "description": "Senior technical consultant with LatAm experience. Helping teams deliver measurable results with clarity and speed."
+    },
+    "services": {
+      "title": "Services | M. Gripe",
+      "description": "Strategic technical advisory, delivery acceleration, product-business alignment, and fractional leadership for LatAm companies."
+    },
+    "contact": {
+      "title": "Contact | M. Gripe",
+      "description": "Book your 45-minute diagnostic call. Let's discuss your team's technical and business challenges."
+    },
+    "privacy": {
+      "title": "Privacy Policy | M. Gripe",
+      "description": "How we collect, use, and protect your personal information."
+    }
   },
   "common": {
     "cta": "Book your 45-min diagnostic",
