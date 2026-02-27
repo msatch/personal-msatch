@@ -8,38 +8,56 @@ A multi-page personal brand website for Matias Gripe ("M. Gripe") targeting LatA
 
 A visitor can understand what M. Gripe does, trust his expertise, and contact him — all within 60 seconds of landing on the site.
 
+## Current Milestone: v1.1 Proof & Trust
+
+**Goal:** Transform the site from a well-built brochure into a credible conversion tool — add verifiable proof of delivered value, sharpen differentiation, and enable funnel tracking.
+
+**Target features:**
+- 3 anonymized case study narratives (alignment, BI/data, team building)
+- LatAm differentiation as value proposition (not just geographic label)
+- Concrete diagnostic CTA deliverable ("you receive X" not "free call")
+- Competitive positioning content (solo consultant vs platforms)
+- GA4 + GTM analytics with cookie consent and custom events
+- Deploy to Vercel (carried from v1.0 Phase 7)
+
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+<!-- Shipped in v1.0 (Phases 1-6). -->
+
+- ✓ Multi-page site: Home, Bio, Services, Contact — Phase 1-2
+- ✓ Modern, minimal visual design — Phase 1
+- ✓ Bold typography with strong hierarchy — Phase 1
+- ✓ Mobile-first responsive design — Phase 1
+- ✓ Top navigation with tabs + logo/home link — Phase 2
+- ✓ Hero section with value proposition and CTA — Phase 3
+- ✓ Problem/solution messaging for LatAm pain points — Phase 3
+- ✓ Services page with 4 outcome-based service cards — Phase 4
+- ✓ Work method section (3-5 steps) — Phases 3, 4
+- ✓ Bio/trust section with credentials — Phase 4
+- ✓ FAQ section (scope, timeline, pricing) — Phase 4
+- ✓ Contact form with validation and accessible errors — Phase 5
+- ✓ Form delivery via Resend — Phase 5
+- ✓ Anti-spam honeypot — Phase 5
+- ✓ Success/failure feedback on submission — Phase 5
+- ✓ Spanish + English with language toggle — Phase 1-2
+- ✓ Generated bilingual copy (neutral Spanish + English) — Phases 3-4
+- ✓ SEO metadata and title tags per page — Phase 6
+- ✓ Accessibility baseline (AA contrast, keyboard nav, focus indicators) — Phase 6
+- ✓ Micro-interactions (hover states, scroll reveals) — Phase 6
+- ✓ Privacy policy (bilingual) — Phase 6
 
 ### Active
 
-- [ ] Multi-page site: Home (landing), Bio, Services, Contact
-- [ ] Modern, minimal visual design — white/light background, black typography, subtle accent color
-- [ ] Bold typography with strong hierarchy, easy to scan
-- [ ] Mobile-first responsive design
-- [ ] Simple top navigation with 3 tabs (Bio / Services / Contact) + logo/home link
-- [ ] Hero section with clear value proposition and primary CTA
-- [ ] Problem/solution messaging that mirrors LatAm pain points
-- [ ] Services page with outcome-based service cards (4 service lines)
-- [ ] Work method section ("How we work" in 3-5 steps)
-- [ ] Bio/trust section with credentials and social proof
-- [ ] FAQ section addressing scope, timeline, pricing model
-- [ ] Contact form: name, email, company, objective, budget range (optional), message
-- [ ] Form validation with accessible error states
-- [ ] Form delivery via Resend (email notification on submit)
-- [ ] Anti-spam: honeypot field + rate limiting
-- [ ] Clear success/failure feedback after form submission
-- [ ] Spanish + English with language toggle
-- [ ] Generated copy in neutral Spanish (and English equivalent)
-- [ ] GA4 + GTM analytics: CTA clicks, form start, form submit, form success
-- [ ] SEO metadata, Open Graph tags, schema markup (ProfessionalService)
-- [ ] Accessibility baseline: AA contrast, keyboard nav, semantic HTML, form labels
-- [ ] Performance: fast LCP on mobile, minimal JS, optimized fonts/images
-- [ ] Subtle micro-interactions (hover effects, smooth scrolls, section reveals)
-- [ ] Deployed to Vercel (custom domain later)
+- [ ] 3 anonymized case study narratives with problem/intervention/result
+- [ ] LatAm differentiation messaging (why LatAm expertise is a value proposition)
+- [ ] Concrete diagnostic deliverable framing (tangible takeaway from 45-min call)
+- [ ] Competitive positioning (solo consultant vs platforms like Toptal/Clutch)
+- [ ] GA4 + GTM analytics integration
+- [ ] Cookie consent banner (GDPR/privacy compliance for analytics)
+- [ ] Custom event tracking: CTA clicks, form start, form submit, form success
+- [ ] Deployed to Vercel (carried from Phase 7)
 
 ### Out of Scope
 
@@ -51,6 +69,9 @@ A visitor can understand what M. Gripe does, trust his expertise, and contact hi
 - Real-time chat — unnecessary complexity
 - Video content hosting — storage/bandwidth cost
 - Advanced animations / heavy motion design — restraint over spectacle
+- Schema.org markup / Open Graph tags — deferred to v1.2
+- Client logo wall / real testimonials — need real client consent first
+- Lighthouse optimization pass — post-launch
 
 ## Context
 
@@ -85,4 +106,4 @@ A visitor can understand what M. Gripe does, trust his expertise, and contact hi
 | Vercel deployment | Free tier, serverless functions included, good DX with Next.js | — Pending |
 
 ---
-*Last updated: 2026-02-16 after initialization*
+*Last updated: 2026-02-27 after v1.1 milestone start*
