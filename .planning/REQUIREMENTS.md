@@ -93,27 +93,27 @@ Requirements for milestone v1.1: Proof & Trust. Adds social proof, messaging ref
 
 ### Social Proof
 
-- [ ] **PROOF-01**: Home page displays 3 anonymized case study narratives with problem/intervention/result structure
-- [ ] **PROOF-02**: Each case narrative includes industry context and specific measurable outcomes (timelines, team sizes, efficiency gains)
-- [ ] **PROOF-03**: Case study content is bilingual (ES/EN) via existing i18n message files
+- [ ] **PROOF-01**: Home page displays 3 anonymized case study narratives with problem/intervention/result structure — Phase 9
+- [ ] **PROOF-02**: Each case narrative includes industry context and specific measurable outcomes (timelines, team sizes, efficiency gains) — Phase 9
+- [ ] **PROOF-03**: Case study content is bilingual (ES/EN) via existing i18n message files — Phase 9
 
 ### Messaging
 
-- [ ] **MSG-01**: LatAm expertise is framed as a value proposition explaining why local market knowledge matters — not just a geographic label
-- [ ] **MSG-02**: Diagnostic CTA describes a concrete deliverable the visitor receives (e.g., "prioritized action brief") not just "free 45-min call"
-- [ ] **MSG-03**: Site addresses why hiring a solo consultant vs platforms (Toptal, Clutch, etc.) with explicit positioning content
+- [ ] **MSG-01**: LatAm expertise is framed as a value proposition explaining why local market knowledge matters — not just a geographic label — Phase 10
+- [ ] **MSG-02**: Diagnostic CTA describes a concrete deliverable the visitor receives (e.g., "prioritized action brief") not just "free 45-min call" — Phase 10
+- [ ] **MSG-03**: Site addresses why hiring a solo consultant vs platforms (Toptal, Clutch, etc.) with explicit positioning content — Phase 10
 
 ### Analytics
 
-- [ ] **ANLYT-01**: Google Tag Manager container loads on all pages via manual next/script in root layout
-- [ ] **ANLYT-02**: GA4 configured as a tag inside GTM (not a separate script)
-- [ ] **ANLYT-03**: Privacy policy updated in both languages to disclose analytics/tracking cookies
+- [ ] **ANLYT-01**: Google Tag Manager container loads on all pages via manual next/script in root layout — Phase 8
+- [ ] **ANLYT-02**: GA4 configured as a tag inside GTM (not a separate script) — Phase 8
+- [ ] **ANLYT-03**: Privacy policy updated in both languages to disclose analytics/tracking cookies — Phase 8
 
 ### Deployment
 
-- [ ] **DEPLOY-01**: Site deployed to Vercel and accessible via public URL (carried from v1.0 TECH-04)
-- [ ] **DEPLOY-02**: All pages render correctly in production (both /es/ and /en/ routes)
-- [ ] **DEPLOY-03**: Contact form submits successfully in production and delivers email via Resend
+- [ ] **DEPLOY-01**: Site deployed to Vercel and accessible via public URL (carried from v1.0 TECH-04) — Phase 7
+- [ ] **DEPLOY-02**: All pages render correctly in production (both /es/ and /en/ routes) — Phase 7
+- [ ] **DEPLOY-03**: Contact form submits successfully in production and delivers email via Resend — Phase 7
 
 ## v2 Requirements
 
@@ -181,29 +181,29 @@ Deferred to future release. Tracked but not in current roadmap.
 | TECH-01 through TECH-03 | Phase 1 | Complete |
 | TECH-05 through TECH-09 | Phases 2, 6 | Complete |
 
-### v1.1 (Phases TBD)
+### v1.1 (Phases 7-10)
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PROOF-01 | TBD | Pending |
-| PROOF-02 | TBD | Pending |
-| PROOF-03 | TBD | Pending |
-| MSG-01 | TBD | Pending |
-| MSG-02 | TBD | Pending |
-| MSG-03 | TBD | Pending |
-| ANLYT-01 | TBD | Pending |
-| ANLYT-02 | TBD | Pending |
-| ANLYT-03 | TBD | Pending |
-| DEPLOY-01 | TBD | Pending |
-| DEPLOY-02 | TBD | Pending |
-| DEPLOY-03 | TBD | Pending |
+| ANLYT-01 | Phase 8 | Pending |
+| ANLYT-02 | Phase 8 | Pending |
+| ANLYT-03 | Phase 8 | Pending |
+| PROOF-01 | Phase 9 | Pending |
+| PROOF-02 | Phase 9 | Pending |
+| PROOF-03 | Phase 9 | Pending |
+| MSG-01 | Phase 10 | Pending |
+| MSG-02 | Phase 10 | Pending |
+| MSG-03 | Phase 10 | Pending |
+| DEPLOY-01 | Phase 7 | Pending |
+| DEPLOY-02 | Phase 7 | Pending |
+| DEPLOY-03 | Phase 7 | Pending |
 
 **Coverage:**
 - v1.0 requirements: 53 total, 53 complete
 - v1.1 requirements: 12 total
-- Mapped to phases: 0 (awaiting roadmap)
-- Unmapped: 12
+- Mapped to phases: 12/12
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-17*
-*Last updated: 2026-02-28 after v1.1 milestone requirements*
+*Last updated: 2026-02-28 after v1.1 roadmap creation*

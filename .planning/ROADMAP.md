@@ -1,8 +1,9 @@
 # Roadmap: M. Gripe -- Personal Brand & Consulting Site
 
-## Overview
+## Milestones
 
-This roadmap delivers a bilingual personal brand website for M. Gripe, targeting LatAm founders and managers who need technical/business consulting. The build starts with i18n infrastructure (the costliest thing to retrofit), layers on the layout shell and navigation, then delivers pages in conversion-priority order (Home first, then Bio/Services, then Contact form). A polish pass for SEO, accessibility, and performance precedes final deployment to Vercel.
+- Phases 1-6 shipped 2026-02-24 (v1.0 MVP)
+- Phases 7-10 in progress (v1.1 Proof & Trust)
 
 ## Phases
 
@@ -12,15 +13,29 @@ This roadmap delivers a bilingual personal brand website for M. Gripe, targeting
 
 Decimal phases appear between their surrounding integers in numeric order.
 
+<details>
+<summary>v1.0 MVP (Phases 1-6) -- SHIPPED 2026-02-24</summary>
+
 - [x] **Phase 1: Foundation & i18n Scaffolding** - Next.js project with bilingual routing, design tokens, and responsive baseline
 - [x] **Phase 2: Layout Shell & Navigation** - Shared layout, responsive nav, footer, language toggle, and 404 page
 - [x] **Phase 3: Home Page** - Hero, problem/solution, services preview, process summary, and bilingual copy
 - [x] **Phase 4: Bio & Services Pages** - Bio narrative, credentials, service cards, FAQ, and entry offer copy
 - [x] **Phase 5: Contact Form & Conversion** - Form with validation, email delivery via Resend, anti-spam, and WhatsApp CTA
 - [x] **Phase 6: Polish, Accessibility & SEO** - Micro-interactions, SEO metadata, a11y audit, privacy policy, and performance
-- [ ] **Phase 7: Deployment & Launch** - Production deployment to Vercel with launch verification
+
+</details>
+
+### v1.1 Proof & Trust
+
+- [ ] **Phase 8: Privacy & Analytics Foundation** - Privacy policy update, GTM with Consent Mode v2, and GA4 integration
+- [ ] **Phase 9: Case Study Narratives** - 3 anonymized case studies with measurable outcomes in both languages
+- [ ] **Phase 10: Messaging & Positioning** - LatAm differentiation, concrete diagnostic CTA, and competitive positioning
+- [ ] **Phase 7: Deployment & Launch** - Production deployment to Vercel with full launch verification
 
 ## Phase Details
+
+<details>
+<summary>v1.0 MVP (Phases 1-6) -- SHIPPED 2026-02-24</summary>
 
 ### Phase 1: Foundation & i18n Scaffolding
 **Goal**: A developer can run the project locally and navigate between /es/ and /en/ routes with locale detection, persistence, and translation infrastructure ready for content
@@ -59,7 +74,7 @@ Plans:
 **Depends on**: Phase 2
 **Requirements**: HOME-01, HOME-02, HOME-03, HOME-04, HOME-05, HOME-06, COPY-01, COPY-02, COPY-03
 **Success Criteria** (what must be TRUE):
-  1. Hero section displays a clear value proposition headline, subheadline, and a primary CTA button ("Book your 45-min diagnostic" / "Agenda tu diagnostico de 45 min") in the current locale
+  1. Hero section displays a clear value proposition headline, subheadline, and a primary CTA button in the current locale
   2. Problem/solution section presents LatAm pain points and M. Gripe's approach, with copy that reads naturally in both Spanish and English
   3. Services preview cards link to the Services page, and a "How it works" section summarizes the engagement process in 3-5 steps
   4. A CTA band repeats the primary call-to-action lower on the page
@@ -118,15 +133,65 @@ Plans:
 - [x] 06-01-PLAN.md -- Per-page SEO metadata for all pages and bilingual privacy policy page
 - [x] 06-02-PLAN.md -- Accessibility foundations, scroll reveal animations, and enhanced CTA hover states
 
-### Phase 7: Deployment & Launch
-**Goal**: The site is live on Vercel, accessible via URL, and verified working in production
+</details>
+
+### v1.1 Proof & Trust
+
+**Milestone Goal:** Transform the site from a well-built brochure into a credible conversion tool -- add verifiable proof of delivered value, sharpen differentiation, and enable funnel tracking.
+
+### Phase 8: Privacy & Analytics Foundation
+**Goal**: The site accurately discloses its use of analytics cookies and loads Google Tag Manager with Consent Mode v2, so visitor behavior can be measured while respecting privacy
 **Depends on**: Phase 6
-**Requirements**: TECH-04
+**Requirements**: ANLYT-01, ANLYT-02, ANLYT-03
+**Success Criteria** (what must be TRUE):
+  1. The privacy policy page in both languages accurately describes the use of GA4 analytics cookies, what data is collected, and how visitors can control it
+  2. Google Tag Manager loads on every page via manual next/script with consent defaults set to "denied" before GTM initializes
+  3. GA4 is configured as a tag inside GTM (no separate gtag.js script in the codebase) and receives page view data when consent is granted
+  4. Visitor can verify in browser Network tab: only gtm.js loads, no separate gtag/js request
+**Plans**: TBD
+
+Plans:
+- [ ] 08-01: TBD
+- [ ] 08-02: TBD
+
+### Phase 9: Case Study Narratives
+**Goal**: A visitor sees concrete evidence of M. Gripe's delivered value through 3 anonymized case studies that demonstrate real business outcomes
+**Depends on**: Phase 6 (uses existing home page layout and i18n patterns)
+**Requirements**: PROOF-01, PROOF-02, PROOF-03
+**Success Criteria** (what must be TRUE):
+  1. Home page displays 3 case study narratives between the process section and the CTA band, each with a clear problem/intervention/result structure
+  2. Each case study includes industry context (e.g., "Series A fintech," "mid-size logistics company") and specific measurable outcomes (timelines, team sizes, efficiency gains)
+  3. Case study content is fully bilingual -- reading the page in Spanish or English shows complete, naturally-written narratives (not machine-translated)
+  4. Case studies render as Server Components with zero client-side JavaScript overhead
+**Plans**: TBD
+
+Plans:
+- [ ] 09-01: TBD
+
+### Phase 10: Messaging & Positioning
+**Goal**: The site's copy differentiates M. Gripe through LatAm expertise framing, a concrete diagnostic deliverable, and explicit positioning against platform alternatives
+**Depends on**: Phase 9 (messaging should be written with case study context in place)
+**Requirements**: MSG-01, MSG-02, MSG-03
+**Success Criteria** (what must be TRUE):
+  1. LatAm expertise is framed as a value proposition -- the copy explains WHY local market knowledge matters (regulatory, cultural, timezone), not just that the consultant is based in LatAm
+  2. Every diagnostic CTA on the site describes a concrete deliverable the visitor receives (e.g., "prioritized action brief") rather than just "free 45-min call"
+  3. The services page includes positioning content that addresses why a solo senior consultant delivers better outcomes than staffing platforms (Toptal, Clutch, etc.)
+  4. All messaging updates render correctly at 375px width in Spanish (the longer language) without layout breaks
+**Plans**: TBD
+
+Plans:
+- [ ] 10-01: TBD
+
+### Phase 7: Deployment & Launch
+**Goal**: The site is live on Vercel, accessible via public URL, and verified working in production with all v1.1 features
+**Depends on**: Phases 8, 9, 10 (all features must be built before deployment)
+**Requirements**: DEPLOY-01, DEPLOY-02, DEPLOY-03
 **Success Criteria** (what must be TRUE):
   1. The site is deployed to Vercel and accessible via a public URL
-  2. All pages render correctly in production (both /es/ and /en/ routes)
+  2. All pages render correctly in production -- both /es/ and /en/ routes including case studies, updated messaging, and privacy policy
   3. Contact form submits successfully in production and delivers email via Resend
-  4. WhatsApp CTA works on mobile devices in production
+  4. GTM loads in production with the real NEXT_PUBLIC_GTM_ID, and GA4 receives page view events when consent is granted
+  5. WhatsApp CTA works on mobile devices in production
 **Plans**: TBD
 
 Plans:
@@ -135,15 +200,18 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
-Note: Phases 3, 4, and 5 depend only on Phase 2 and could execute in parallel.
+v1.1 phases execute: 8 -> 9 -> 10 -> 7
+Note: Phases 8 and 9 depend only on Phase 6 (complete) and could execute in parallel. Phase 10 follows Phase 9 for messaging context. Phase 7 is last after all features are built.
 
-| Phase | Plans Complete | Status | Completed |
-|-------|---------------|--------|-----------|
-| 1. Foundation & i18n Scaffolding | 2/2 | Complete    | 2026-02-19 |
-| 2. Layout Shell & Navigation | 2/2 | Complete    | 2026-02-18 |
-| 3. Home Page | 2/2 | Complete    | 2026-02-19 |
-| 4. Bio & Services Pages | 2/2 | Complete    | 2026-02-21 |
-| 5. Contact Form & Conversion | 2/2 | Complete    | 2026-02-22 |
-| 6. Polish, Accessibility & SEO | 2/2 | Complete    | 2026-02-24 |
-| 7. Deployment & Launch | 0/TBD | Not started | - |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1. Foundation & i18n Scaffolding | v1.0 | 2/2 | Complete | 2026-02-19 |
+| 2. Layout Shell & Navigation | v1.0 | 2/2 | Complete | 2026-02-18 |
+| 3. Home Page | v1.0 | 2/2 | Complete | 2026-02-19 |
+| 4. Bio & Services Pages | v1.0 | 2/2 | Complete | 2026-02-21 |
+| 5. Contact Form & Conversion | v1.0 | 2/2 | Complete | 2026-02-22 |
+| 6. Polish, Accessibility & SEO | v1.0 | 2/2 | Complete | 2026-02-24 |
+| 8. Privacy & Analytics Foundation | v1.1 | 0/TBD | Not started | - |
+| 9. Case Study Narratives | v1.1 | 0/TBD | Not started | - |
+| 10. Messaging & Positioning | v1.1 | 0/TBD | Not started | - |
+| 7. Deployment & Launch | v1.1 | 0/TBD | Not started | - |
