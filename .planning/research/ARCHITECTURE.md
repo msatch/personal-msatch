@@ -1,436 +1,649 @@
-# Architecture Research
+# Architecture Research: v1.1 Integration
 
-**Domain:** Multi-page personal brand consulting website (bilingual, static-first)
-**Researched:** 2026-02-16
+**Domain:** GA4/GTM analytics, cookie consent, and case study content integration into existing bilingual Next.js 16 consulting site
+**Researched:** 2026-02-27
 **Confidence:** HIGH
 
-## Standard Architecture
+## Existing Architecture (v1.0 Baseline)
 
-### System Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     Presentation Layer                          │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
-│  │  Home    │  │   Bio    │  │ Services │  │ Contact  │       │
-│  │  Page    │  │   Page   │  │   Page   │  │   Page   │       │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘       │
-│       │              │             │              │             │
-│  ┌────┴──────────────┴─────────────┴──────────────┴──────┐     │
-│  │              Shared Layout (Nav + Footer)              │     │
-│  └───────────────────────┬───────────────────────────────┘     │
-├──────────────────────────┼──────────────────────────────────────┤
-│                  Internationalization Layer                     │
-│  ┌───────────┐  ┌────────┴────────┐  ┌───────────────┐        │
-│  │ Middleware │→ │  [locale] Route  │→ │  messages/    │        │
-│  │ (detect)  │  │  (en | es)       │  │  en.json      │        │
-│  └───────────┘  └─────────────────┘  │  es.json      │        │
-│                                       └───────────────┘        │
-├─────────────────────────────────────────────────────────────────┤
-│                     Integration Layer                           │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │ Server Action │  │    GTM       │  │  SEO / OG    │         │
-│  │ (Resend API) │  │ (Analytics)  │  │  (Metadata)  │         │
-│  └──────────────┘  └──────────────┘  └──────────────┘         │
-├─────────────────────────────────────────────────────────────────┤
-│                     Infrastructure                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │   Vercel     │  │  Resend API  │  │  GA4 (via    │         │
-│  │  (Hosting)   │  │  (Email)     │  │   GTM)       │         │
-│  └──────────────┘  └──────────────┘  └──────────────┘         │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Component Responsibilities
-
-| Component | Responsibility | Typical Implementation |
-|-----------|----------------|------------------------|
-| Root Layout | HTML shell, `<html lang>`, font loading, GTM script, `NextIntlClientProvider` | `app/[locale]/layout.tsx` — Server Component |
-| Page Components | Route-specific UI: Hero, cards, form, bio sections | `app/[locale]/page.tsx`, `app/[locale]/bio/page.tsx`, etc. — Server Components |
-| Shared UI | Navigation bar, footer, language toggle, CTA button | `components/` — mix of Server and Client Components |
-| Contact Form | Client-side form with validation, calls Server Action | `components/contact-form.tsx` — Client Component (`'use client'`) |
-| Server Action | Validates input, sends email via Resend SDK | `app/actions/send-email.ts` — Server-only (`'use server'`) |
-| i18n Routing | Locale detection, redirect, URL prefix management | `src/i18n/routing.ts` + `middleware.ts` |
-| i18n Navigation | Locale-aware `<Link>`, `redirect`, `useRouter` | `src/i18n/navigation.ts` (wraps next-intl helpers) |
-| i18n Request Config | Loads correct message file per locale | `src/i18n/request.ts` |
-| Analytics | GTM container loads GA4; event tracking via `sendGTMEvent` | `@next/third-parties/google` `GoogleTagManager` in root layout |
-| SEO | Per-page metadata, Open Graph, JSON-LD schema | `generateMetadata()` in each `page.tsx` + shared `metadata.ts` helpers |
-
-## Recommended Project Structure
+The site currently uses this stack and structure:
 
 ```
-personal-msatch/
-├── public/
-│   ├── images/               # Static images (headshot, logos, OG image)
-│   ├── fonts/                # Self-hosted font files (if not using next/font)
-│   └── favicon.ico
-├── messages/
-│   ├── en.json               # English translations (flat namespace per page)
-│   └── es.json               # Spanish translations
-├── src/
-│   ├── app/
-│   │   ├── [locale]/
-│   │   │   ├── layout.tsx    # Root layout: html, body, nav, footer, providers
-│   │   │   ├── page.tsx      # Home page
-│   │   │   ├── bio/
-│   │   │   │   └── page.tsx  # Bio / About page
-│   │   │   ├── services/
-│   │   │   │   └── page.tsx  # Services page
-│   │   │   └── contact/
-│   │   │       └── page.tsx  # Contact page
-│   │   └── not-found.tsx     # Global 404
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── navbar.tsx    # Navigation bar + language toggle
-│   │   │   └── footer.tsx    # Site footer
-│   │   ├── ui/
-│   │   │   ├── button.tsx    # Shared button component
-│   │   │   ├── card.tsx      # Service card
-│   │   │   └── section.tsx   # Reusable section wrapper
-│   │   ├── home/
-│   │   │   ├── hero.tsx      # Hero section
-│   │   │   ├── problems.tsx  # Pain points section
-│   │   │   └── cta-band.tsx  # CTA banner
-│   │   ├── services/
-│   │   │   ├── service-card.tsx
-│   │   │   └── method-steps.tsx
-│   │   ├── bio/
-│   │   │   ├── credentials.tsx
-│   │   │   └── social-proof.tsx
-│   │   └── contact/
-│   │       ├── contact-form.tsx   # Client Component: form + validation
-│   │       └── form-success.tsx   # Success state after submission
-│   ├── actions/
-│   │   └── send-email.ts         # Server Action: validate + Resend
-│   ├── i18n/
-│   │   ├── routing.ts            # defineRouting({ locales, defaultLocale })
-│   │   ├── navigation.ts         # createNavigation(routing) exports
-│   │   └── request.ts            # getRequestConfig (loads messages)
-│   ├── lib/
-│   │   ├── metadata.ts           # Shared metadata/OG helpers
-│   │   ├── schema.ts             # JSON-LD schema generators
-│   │   └── analytics.ts          # GTM event helpers (thin wrappers)
-│   └── styles/
-│       └── globals.css           # Tailwind directives + custom CSS vars
-├── middleware.ts                  # next-intl locale detection middleware
-├── tailwind.config.ts
-├── next.config.ts                # createNextIntlPlugin() wrapper
-├── tsconfig.json
-├── package.json
-└── .env.local                    # RESEND_API_KEY, GTM_ID
+Next.js 16.1.6 (App Router) + React 19
+next-intl 4.8.3 (proxy.ts + [locale] route segment)
+Tailwind CSS 4 (@theme tokens)
+Zod 4 (validation) + Resend (email)
+Server Components by default, Client Components where needed
 ```
 
-### Structure Rationale
+**Existing routes:** `/[locale]/` (home), `/[locale]/bio`, `/[locale]/services`, `/[locale]/contact`, `/[locale]/privacy`
 
-- **`messages/` at root:** next-intl convention. Keeps translations separate from code. One JSON per locale with nested keys by page/section (`home.hero.title`, `services.card1.title`).
-- **`src/app/[locale]/`:** All routes nested under dynamic locale segment. next-intl middleware detects language from headers or cookie and redirects to `/es/` or `/en/`. Every page gets locale via params.
-- **`src/components/` by domain:** Components grouped by the page they serve (`home/`, `bio/`, `services/`, `contact/`), plus shared `layout/` and `ui/` folders. This avoids a flat pile of files and makes it clear which component belongs where.
-- **`src/actions/`:** Server Actions isolated from components. Only `send-email.ts` for now. Easy to add more later without touching component tree.
-- **`src/i18n/`:** Three-file convention from next-intl docs: `routing.ts` (config), `navigation.ts` (locale-aware Link/router), `request.ts` (server message loading).
-- **`src/lib/`:** Pure utility functions with no React dependencies. Metadata helpers, JSON-LD generators, analytics event wrappers.
+**Existing Client Components:** Header, Footer, ContactForm, ScrollReveal, ThemeToggle, ThemeSync, WhatsAppButton
 
-## Architectural Patterns
+**Key integration constraint:** The `<html>` tag lives in `src/app/[locale]/layout.tsx`, not in the root layout (which is a pass-through). All new scripts and providers must be added to the locale layout.
 
-### Pattern 1: Locale-Prefixed Static Generation
+---
 
-**What:** Every page is statically generated at build time for each locale (`/en/`, `/es/`, `/en/bio/`, `/es/bio/`, etc.) using `generateStaticParams` + `setRequestLocale`.
-**When to use:** All pages on this site — content is known at build time, no dynamic data.
-**Trade-offs:** Fastest possible page loads and zero server cost. Requires rebuild to change content (acceptable for a personal site with infrequent updates).
+## System Overview: v1.1 Additions
 
-**Example:**
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                     NEW: Cookie Consent Layer                         │
+│  ┌───────────────────┐  ┌────────────────┐  ┌──────────────────┐    │
+│  │ CookieConsent     │  │ consent-store  │  │ consent cookie   │    │
+│  │ Banner (Client)   │→ │ (localStorage) │→ │ (cookie_consent) │    │
+│  └────────┬──────────┘  └────────────────┘  └──────────────────┘    │
+│           │ gtag('consent','update',...)                              │
+│           ↓                                                           │
+├──────────────────────────────────────────────────────────────────────┤
+│                     NEW: Analytics Layer                               │
+│  ┌─────────────────┐  ┌──────────────────┐  ┌──────────────────┐    │
+│  │ GTM Script       │  │ Consent Mode v2  │  │ Event Tracking   │    │
+│  │ (next/script)    │  │ (default:denied) │  │ (sendGTMEvent)   │    │
+│  └─────────────────┘  └──────────────────┘  └──────────────────┘    │
+├──────────────────────────────────────────────────────────────────────┤
+│                     NEW: Case Studies Content                         │
+│  ┌───────────────┐  ┌─────────────────┐  ┌──────────────────────┐  │
+│  │ /case-studies  │  │ case study data │  │ messages/*.json      │  │
+│  │ page (Server)  │  │ (in messages)   │  │ + caseStudies ns     │  │
+│  └───────────────┘  └─────────────────┘  └──────────────────────┘  │
+├──────────────────────────────────────────────────────────────────────┤
+│                     EXISTING: Presentation Layer                      │
+│  ┌────────┐  ┌────────┐  ┌──────────┐  ┌─────────┐  ┌──────────┐  │
+│  │ Home   │  │  Bio   │  │ Services │  │ Contact │  │ Privacy  │  │
+│  └────────┘  └────────┘  └──────────┘  └─────────┘  └──────────┘  │
+├──────────────────────────────────────────────────────────────────────┤
+│                     EXISTING: i18n + Infrastructure                   │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+## Component Map: New vs Modified
+
+### NEW Components
+
+| Component | Type | Location | Responsibility |
+|-----------|------|----------|----------------|
+| `CookieConsentBanner` | Client Component | `src/components/analytics/cookie-consent.tsx` | Renders consent UI, reads/writes consent state, calls `gtag('consent','update',...)` |
+| `AnalyticsProvider` | Client Component | `src/components/analytics/analytics-provider.tsx` | Loads GTM script with consent defaults, exposes `trackEvent()` helper |
+| `CaseStudyCard` | Server Component | `src/components/case-studies/case-study-card.tsx` | Renders one case study (problem/intervention/result) |
+| `CaseStudiesSection` | Server Component | `src/components/case-studies/case-studies-section.tsx` | Renders all 3 case studies with heading and layout |
+
+### MODIFIED Files
+
+| File | Change | Why |
+|------|--------|-----|
+| `src/app/[locale]/layout.tsx` | Add `<AnalyticsProvider>` and `<CookieConsentBanner>` | GTM script must load early; consent banner must render on every page |
+| `src/components/contact/contact-form.tsx` | Add event tracking calls | Track `form_start`, `form_submit`, `form_success` events |
+| `src/components/home/hero-section.tsx` | Wrap CTA link in tracked component or add `onClick` | Track `cta_click` with location context |
+| `src/components/home/cta-band.tsx` | Same as hero -- add CTA click tracking | Track `cta_click` events |
+| `src/components/services/services-cta.tsx` | Same as above | Track `cta_click` events |
+| `src/app/[locale]/page.tsx` | Add `<CaseStudiesSection>` import and placement | Case studies appear on homepage |
+| `src/app/[locale]/privacy/page.tsx` | Update cookies section in translations | Must describe analytics cookies and consent mechanism |
+| `messages/es.json` | Add `caseStudies`, `consent`, `analytics` namespaces | All new UI text |
+| `messages/en.json` | Same as above | English translations |
+
+### NEW Routes
+
+| Route | File | Type |
+|-------|------|------|
+| None needed | -- | Case studies render as a section on existing pages, not a separate route |
+
+---
+
+## Architecture Pattern 1: Manual GTM with Consent Mode v2
+
+### Why NOT use `@next/third-parties/google`
+
+Research confirmed a critical limitation: `@next/third-parties/google` `GoogleTagManager` component has **no built-in consent mode support**. The `dataLayer` prop accepts initial data but does not reliably set consent defaults before GTM loads. Multiple GitHub discussions (vercel/next.js #64497, #66718, #67440) confirm this gap remains unresolved as of early 2026.
+
+**Decision:** Use `next/script` with inline consent initialization instead. This is the approach recommended by the community and aligns with Google's official Consent Mode v2 documentation.
+
+### Implementation
+
 ```typescript
-// app/[locale]/layout.tsx
-import { setRequestLocale } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
-
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-
-  return (
-    <html lang={locale}>
-      <body>{children}</body>
-    </html>
-  );
-}
-```
-
-### Pattern 2: Server Action for Contact Form
-
-**What:** The contact form is a Client Component (`'use client'`) that calls a Server Action marked with `'use server'`. The Server Action validates input, calls Resend API, and returns a result. No API route needed.
-**When to use:** The contact form — the only server-side interaction on the site.
-**Trade-offs:** Simpler than a separate API route (fewer files, no fetch boilerplate). Resend API key stays on the server. The form page itself cannot be fully static (the action is server-side), but the form UI renders from static HTML and hydrates on client.
-
-**Example:**
-```typescript
-// src/actions/send-email.ts
-'use server';
-
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function sendContactEmail(formData: FormData) {
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const message = formData.get('message') as string;
-
-  // Honeypot check
-  if (formData.get('website')) {
-    return { success: true }; // Silent discard
-  }
-
-  const { error } = await resend.emails.send({
-    from: 'M. Gripe Site <noreply@yourdomain.com>',
-    to: 'matias@yourdomain.com',
-    subject: `Contact from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-  });
-
-  if (error) {
-    return { success: false, error: 'Failed to send message.' };
-  }
-  return { success: true };
-}
-```
-
-### Pattern 3: GTM as Single Analytics Hub
-
-**What:** Load Google Tag Manager via `@next/third-parties/google` in the root layout. Configure GA4 inside the GTM container (not as a separate script). Track custom events via `sendGTMEvent`.
-**When to use:** All analytics needs — pageviews, CTA clicks, form interactions.
-**Trade-offs:** One script tag instead of two. All tracking configuration lives in GTM (can be updated without code deploys). Slightly more GTM setup but avoids the duplicate-event problem that happens when loading both GA4 and GTM scripts.
-
-**Example:**
-```typescript
-// In app/[locale]/layout.tsx
-import { GoogleTagManager } from '@next/third-parties/google';
-
-export default function Layout({ children }) {
-  return (
-    <html>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
-      <body>{children}</body>
-    </html>
-  );
-}
-
-// In a Client Component for event tracking
+// src/components/analytics/analytics-provider.tsx
 'use client';
-import { sendGTMEvent } from '@next/third-parties/google';
 
-function CTAButton() {
+import Script from 'next/script';
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+
+export function AnalyticsProvider() {
+  if (!GTM_ID) return null;
+
   return (
-    <button onClick={() => sendGTMEvent({ event: 'cta_click', value: 'hero' })}>
-      Book a call
-    </button>
+    <>
+      {/* 1. Initialize dataLayer + set consent defaults BEFORE GTM loads */}
+      <Script
+        id="gtm-consent-init"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied',
+              'wait_for_update': 500
+            });
+          `,
+        }}
+      />
+      {/* 2. Load GTM container (respects consent defaults above) */}
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
+          `,
+        }}
+      />
+    </>
   );
 }
 ```
 
-## Data Flow
+**Script loading order is critical:**
+1. `beforeInteractive`: Consent defaults set (analytics denied)
+2. `afterInteractive`: GTM loads, sees denied consent, holds all tags
+3. User interacts with banner: `gtag('consent', 'update', ...)` fires
+4. GTM releases held tags if consent granted
 
-### Page Request Flow (Static)
+### Why this order matters
 
-```
-Browser requests /es/services
-    |
-    v
-Vercel CDN serves pre-built static HTML + JS
-    |
-    v
-Browser hydrates React components
-    |
-    v
-next-intl reads locale from URL segment → loads es.json messages
-    |
-    v
-Components render with Spanish translations
-```
+Google's official docs state: "The order of the code is vital -- if your consent code is called out of order, consent defaults will not work." The `beforeInteractive` strategy in Next.js ensures the consent default script runs before any other scripts, including GTM.
 
-### Contact Form Submission Flow
+---
+
+## Architecture Pattern 2: Cookie Consent State Machine
+
+### Consent States
 
 ```
-User fills form (Client Component)
-    |
-    v
-Form calls Server Action (sendContactEmail)
-    |
-    v
-Server Action validates fields + checks honeypot
-    |
-    v
-Resend SDK sends email (server-side, API key hidden)
-    |
-    v
-Server Action returns { success: true/false }
-    |
-    v
-Client Component shows success message or error
-    |
-    v
-sendGTMEvent({ event: 'form_submit', status: 'success' })
+                 ┌──────────────┐
+                 │  no_decision  │ ← Initial state (no cookie)
+                 └──────┬───────┘
+                        │ User sees banner
+                 ┌──────┴───────┐
+         ┌───────┤   banner_    ├───────┐
+         │       │   visible    │       │
+         ▼       └──────────────┘       ▼
+  ┌──────────┐                   ┌──────────┐
+  │ accepted │                   │ rejected │
+  └──────────┘                   └──────────┘
+         │                              │
+         ▼                              ▼
+  gtag('consent',                gtag('consent',
+   'update', {                   'update', {
+   analytics_storage:            analytics_storage:
+   'granted'})                   'denied'})
 ```
 
-### Language Toggle Flow
+### State persistence
+
+- **Cookie:** `cookie_consent=accepted|rejected` with 1-year expiry. Readable server-side for future SSR decisions.
+- **localStorage:** `cookie_consent_v1` stores the same value for faster client-side reads (avoids cookie parsing overhead in JS).
+- **On page load:** Check cookie/localStorage. If value exists, apply stored consent and do not show banner. If no value, show banner.
+
+### Component structure
+
+```typescript
+// src/components/analytics/cookie-consent.tsx
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
+
+const CONSENT_KEY = 'cookie_consent_v1';
+const CONSENT_COOKIE = 'cookie_consent';
+
+type ConsentState = 'undecided' | 'accepted' | 'rejected';
+
+export function CookieConsentBanner() {
+  const t = useTranslations('consent');
+  const [state, setState] = useState<ConsentState>('undecided');
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(CONSENT_KEY) as ConsentState | null;
+    if (stored === 'accepted' || stored === 'rejected') {
+      setState(stored);
+      updateGtagConsent(stored);
+      // Don't show banner
+    } else {
+      setVisible(true);
+    }
+  }, []);
+
+  const handleChoice = useCallback((choice: 'accepted' | 'rejected') => {
+    setState(choice);
+    setVisible(false);
+    localStorage.setItem(CONSENT_KEY, choice);
+    // Set cookie for server-side access (1 year)
+    document.cookie = `${CONSENT_COOKIE}=${choice};max-age=${365*24*60*60};path=/;SameSite=Lax`;
+    updateGtagConsent(choice);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div role="dialog" aria-label={t('ariaLabel')} /* ... styles ... */>
+      <p>{t('message')}</p>
+      <div>
+        <button onClick={() => handleChoice('rejected')}>{t('reject')}</button>
+        <button onClick={() => handleChoice('accepted')}>{t('accept')}</button>
+      </div>
+    </div>
+  );
+}
+
+function updateGtagConsent(choice: ConsentState) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      analytics_storage: choice === 'accepted' ? 'granted' : 'denied',
+    });
+  }
+}
+```
+
+**Key design decisions:**
+- Only `analytics_storage` needs consent granting (no ads on this site)
+- `ad_storage`, `ad_user_data`, `ad_personalization` stay permanently denied
+- Banner is a Client Component because it needs `useEffect`, `useState`, `localStorage`
+- All text comes from `useTranslations('consent')` for bilingual support
+- `role="dialog"` and `aria-label` for accessibility
+
+---
+
+## Architecture Pattern 3: Event Tracking Wrapper
+
+### Problem
+
+CTA links are currently Server Components (`HeroSection`, `CtaBand`). You cannot call `sendGTMEvent` from a Server Component. But converting entire sections to Client Components just for tracking wastes the SSR benefit.
+
+### Solution: Tracked CTA Link (Client Component wrapper)
+
+```typescript
+// src/components/analytics/tracked-cta.tsx
+'use client';
+
+import { Link } from '@/i18n/navigation';
+import { useCallback } from 'react';
+
+type Props = {
+  href: string;
+  children: React.ReactNode;
+  eventName?: string;
+  eventLocation?: string;
+  className?: string;
+};
+
+export function TrackedCTA({
+  href,
+  children,
+  eventName = 'cta_click',
+  eventLocation = 'unknown',
+  className,
+}: Props) {
+  const handleClick = useCallback(() => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: eventName,
+        cta_location: eventLocation,
+        cta_url: href,
+      });
+    }
+  }, [eventName, eventLocation, href]);
+
+  return (
+    <Link href={href} onClick={handleClick} className={className}>
+      {children}
+    </Link>
+  );
+}
+```
+
+**Usage in Server Components:** Replace the `<Link>` CTA in HeroSection, CtaBand, and ServicesCta with `<TrackedCTA>`:
+
+```typescript
+// In hero-section.tsx (remains a Server Component)
+import { TrackedCTA } from '@/components/analytics/tracked-cta';
+
+export async function HeroSection() {
+  const t = await getTranslations('home.hero');
+  const tCommon = await getTranslations('common');
+
+  return (
+    <section>
+      <h1>{t('title')}</h1>
+      <TrackedCTA
+        href="/contact"
+        eventLocation="hero"
+        className="mt-8 inline-block px-6 py-3 bg-accent ..."
+      >
+        {tCommon('cta')}
+      </TrackedCTA>
+    </section>
+  );
+}
+```
+
+**Why this works:** The Server Component can render `<TrackedCTA>` because it is a leaf Client Component. The parent section remains server-rendered for SEO and performance. Only the link itself hydrates on the client.
+
+### Contact Form Event Tracking
+
+The ContactForm is already a Client Component, so tracking is straightforward -- add `dataLayer.push()` calls at key interaction points:
+
+| Event | Trigger | Data |
+|-------|---------|------|
+| `form_start` | First field receives focus | `{ event: 'form_start', form_name: 'contact' }` |
+| `form_submit` | Form submission initiated | `{ event: 'form_submit', form_name: 'contact' }` |
+| `form_success` | Server Action returns success | `{ event: 'form_success', form_name: 'contact' }` |
+| `form_error` | Server Action returns error | `{ event: 'form_error', form_name: 'contact', error_type: 'validation|server' }` |
+
+Implementation: add a `useRef` to track whether `form_start` has fired (fire only once per session), then push events at the appropriate moments in the existing form logic.
+
+---
+
+## Architecture Pattern 4: Case Study Content in Translation Files
+
+### Why JSON translations (not MDX, not separate data files)
+
+The case studies are 3 short narratives with structured fields (title, problem, intervention, result, industry, metric). This is identical in structure to how the existing service offerings are stored in `messages/*.json`. Using the same pattern:
+
+1. **Consistency:** Same access pattern (`getTranslations` / `useTranslations`) as all other content
+2. **Bilingual by default:** Both languages handled by existing next-intl infrastructure
+3. **No new dependencies:** No MDX parser, no file-reading utilities, no content layer
+4. **Same deployment model:** Content changes = edit JSON + commit, same as current workflow
+
+### Translation namespace structure
+
+```json
+{
+  "caseStudies": {
+    "sectionTitle": "Resultados que hablan por si mismos",
+    "sectionSubtitle": "Casos reales de empresas en LatAm...",
+    "items": {
+      "1": {
+        "title": "Alineacion de equipos en empresa SaaS",
+        "industry": "SaaS B2B",
+        "teamSize": "40 personas",
+        "problem": "El equipo tecnico y el area comercial...",
+        "intervention": "Diagnostico de 3 semanas...",
+        "result": "Reduccion de 35% en ciclo de delivery...",
+        "metric": "35%",
+        "metricLabel": "reduccion en ciclo de delivery"
+      },
+      "2": { /* ... */ },
+      "3": { /* ... */ }
+    }
+  }
+}
+```
+
+This follows the exact same nested object pattern used by `services.offerings`, `services.faq.items`, and `home.services.items` in the existing translation files.
+
+### Case Study Component Architecture
 
 ```
-User clicks language toggle (Client Component)
-    |
-    v
-next-intl navigation.ts redirect() or <Link> to /en/* or /es/*
-    |
-    v
-Next.js navigates client-side (no full reload)
-    |
-    v
-New locale loads from URL segment → different messages/*.json
-    |
-    v
-All translated components re-render with new locale strings
+CaseStudiesSection (Server Component)
+├── getTranslations('caseStudies')
+├── Renders section heading + subtitle
+├── Maps over items ["1", "2", "3"]
+│   └── CaseStudyCard (Server Component)
+│       ├── Industry + team size badge
+│       ├── Problem paragraph
+│       ├── Intervention paragraph
+│       ├── Result paragraph with highlighted metric
+│       └── Optional decorative element
+└── ScrollReveal wrapper (existing Client Component)
 ```
 
-### Analytics Event Flow
+**All Server Components.** Case studies are static content with no interactivity. They render server-side, benefit from streaming, and ship zero JavaScript.
+
+---
+
+## Data Flow: v1.1 Additions
+
+### Cookie Consent Flow
 
 ```
-User interaction (click, form start, scroll)
-    |
-    v
-Client Component calls sendGTMEvent({ event, data })
-    |
-    v
-GTM dataLayer receives event
-    |
-    v
-GTM container routes to GA4 (configured inside GTM)
-    |
-    v
-GA4 records event
+Page loads
+    │
+    ├─ AnalyticsProvider renders:
+    │   1. Inline script: gtag('consent','default',{analytics_storage:'denied'})
+    │   2. GTM script loads (holds all tags due to denied consent)
+    │
+    ├─ CookieConsentBanner mounts:
+    │   ├─ Check localStorage for prior decision
+    │   │   ├─ Found 'accepted' → gtag('consent','update',{analytics_storage:'granted'})
+    │   │   │                     → GTM releases held tags → GA4 starts tracking
+    │   │   ├─ Found 'rejected' → no update (stays denied)
+    │   │   └─ Not found → show banner
+    │   │
+    │   └─ User clicks Accept/Reject:
+    │       ├─ Save to localStorage + cookie
+    │       ├─ gtag('consent','update',{...})
+    │       └─ Hide banner
+    │
+    └─ Subsequent pages: banner hidden, consent restored from storage
 ```
 
-### Key Data Flows Summary
+### Event Tracking Flow
 
-1. **Content flow:** `messages/*.json` --> `next-intl request.ts` --> Server Components via `getTranslations()` or Client Components via `useTranslations()`. All text content lives in translation files, not hardcoded in components.
-2. **Form data flow:** Client Component (FormData) --> Server Action --> Resend API --> Email inbox. Unidirectional; no database, no state persistence.
-3. **Analytics flow:** User interaction --> `sendGTMEvent` --> GTM dataLayer --> GA4. GTM owns all routing decisions.
-4. **Navigation flow:** `next-intl` `<Link>` and `useRouter` handle locale-prefixed URLs. Middleware handles initial locale detection from Accept-Language header or cookie.
+```
+User clicks CTA (TrackedCTA client component)
+    │
+    ├─ onClick: window.dataLayer.push({ event:'cta_click', cta_location:'hero' })
+    │
+    ├─ GTM receives dataLayer event
+    │   ├─ If consent granted: routes to GA4 tag → recorded
+    │   └─ If consent denied: event held/discarded by consent mode
+    │
+    └─ Next.js navigation proceeds normally (Link component)
+```
 
-## Scaling Considerations
+### Case Study Content Flow
 
-| Scale | Architecture Adjustments |
-|-------|--------------------------|
-| 0-1k visitors/month | Current architecture is perfect. Static pages served from CDN. Zero server cost on Vercel free tier. Resend free tier (100 emails/day) is more than sufficient. |
-| 1k-10k visitors/month | No changes needed. Static CDN scales linearly. Consider adding rate limiting to the contact Server Action if spam becomes an issue. |
-| 10k+ visitors/month | Still fine architecturally. Consider: (1) Adding a blog with MDX for content marketing (ISR or static), (2) Upgrading Resend plan if form volume increases, (3) Adding Cloudflare or Vercel WAF rules for protection. |
+```
+messages/es.json (or en.json)
+    │
+    └─ src/i18n/request.ts loads messages for locale
+        │
+        └─ CaseStudiesSection (Server Component)
+            │
+            ├─ const t = await getTranslations('caseStudies')
+            │
+            ├─ t('sectionTitle') → section heading
+            │
+            └─ ['1','2','3'].map(key => t(`items.${key}.title`), etc.)
+                │
+                └─ CaseStudyCard renders static HTML (zero JS)
+```
 
-### Scaling Priorities
+---
 
-1. **First concern (spam):** Honeypot field handles basic bots. If volume increases, add server-side rate limiting (Vercel Edge Middleware with IP-based throttling) or a lightweight CAPTCHA (hCaptcha is lighter than reCAPTCHA).
-2. **Second concern (content growth):** If blog is added later, use MDX files in the repo with `generateStaticParams` — same static generation pattern, no database needed.
+## Integration Points in Locale Layout
+
+The `src/app/[locale]/layout.tsx` is the central integration point. Here is how new components fit:
+
+```tsx
+// src/app/[locale]/layout.tsx — MODIFIED
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
+  // ... existing validation and locale setup ...
+
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        {/* EXISTING: theme detection script */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){...})()` }} />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col`}>
+        {/* EXISTING: skip-to-content link */}
+        <a href="#main-content" className="sr-only focus:not-sr-only ...">
+          {tCommon('skipToContent')}
+        </a>
+        {/* EXISTING: theme sync */}
+        <ThemeSync />
+
+        {/* NEW: Analytics scripts (consent defaults + GTM) */}
+        <AnalyticsProvider />
+
+        <NextIntlClientProvider>
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppButton />
+
+          {/* NEW: Cookie consent banner (inside provider for translations) */}
+          <CookieConsentBanner />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+**Placement rationale:**
+- `AnalyticsProvider` goes OUTSIDE `NextIntlClientProvider` because it does not need translations and must load scripts as early as possible
+- `CookieConsentBanner` goes INSIDE `NextIntlClientProvider` because it uses `useTranslations()` for bilingual banner text
+- Banner renders at the bottom of the body (visually fixed to viewport bottom via CSS)
+
+---
+
+## New Project Structure (additions only)
+
+```
+src/
+├── components/
+│   ├── analytics/                    # NEW folder
+│   │   ├── analytics-provider.tsx    # GTM script + consent defaults
+│   │   ├── cookie-consent.tsx        # Consent banner (Client Component)
+│   │   └── tracked-cta.tsx           # CTA link with event tracking (Client Component)
+│   └── case-studies/                 # NEW folder
+│       ├── case-studies-section.tsx   # Section wrapper (Server Component)
+│       └── case-study-card.tsx        # Individual case study (Server Component)
+```
+
+**No new routes.** Case studies render as a section within existing pages (homepage between ProcessSection and CtaBand, or on a dedicated section of the bio page).
+
+**No new dependencies.** Everything uses `next/script` (built into Next.js) and the `window.dataLayer` / `window.gtag` global APIs. No `@next/third-parties` needed.
+
+---
+
+## Environment Variables
+
+| Variable | Where | Purpose |
+|----------|-------|---------|
+| `NEXT_PUBLIC_GTM_ID` | `.env.local` | GTM container ID (e.g., `GTM-XXXXXXX`). `NEXT_PUBLIC_` prefix required because it is used in client-side script. |
+
+No other new env vars needed. GA4 Measurement ID is configured inside GTM, not in the codebase.
+
+---
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: Loading Both GA4 and GTM Scripts
+### Anti-Pattern 1: Using `@next/third-parties` GoogleTagManager with Consent Mode
 
-**What people do:** Include both `<GoogleAnalytics gaId="G-XXX" />` and `<GoogleTagManager gtmId="GTM-XXX" />` in the layout.
-**Why it's wrong:** Sends duplicate events — once directly to GA4 and once through GTM. Inflates metrics and makes debugging impossible.
-**Do this instead:** Use GTM only. Configure the GA4 Measurement ID inside the GTM container. One script, one data flow.
+**What people do:** Import `GoogleTagManager` from `@next/third-parties/google` and try to pass consent defaults via the `dataLayer` prop.
+**Why it's wrong:** The component does not reliably set consent defaults before GTM initializes. Multiple GitHub issues confirm this gap. The `dataLayer` prop pushes data after the GTM script loads, which is too late for consent defaults.
+**Do this instead:** Use `next/script` with `strategy="beforeInteractive"` for consent defaults and `strategy="afterInteractive"` for the GTM container script. Full control over loading order.
 
-### Anti-Pattern 2: Hardcoding Text in Components
+### Anti-Pattern 2: Conditionally Rendering GTM Based on Consent
 
-**What people do:** Write Spanish text directly in JSX (`<h1>Servicios</h1>`) and plan to "add i18n later."
-**Why it's wrong:** Extracting hardcoded strings after building multiple pages is tedious and error-prone. You miss strings, break layouts, introduce key mismatches.
-**Do this instead:** Use translation keys from day one. Every user-visible string goes through `t('key')` from the start. The overhead is minimal and saves hours of refactoring.
+**What people do:** Only render the GTM script tag after the user accepts cookies.
+**Why it's wrong:** This means GTM has no data for users who haven't decided yet. Google's Consent Mode v2 is designed to let GTM load immediately but hold all tags until consent is granted. With Consent Mode, Google can still model conversions using cookieless pings (consent-mode modeling), which is lost if GTM never loads.
+**Do this instead:** Always load GTM. Set consent defaults to `denied`. GTM loads but does nothing until consent is granted. This is the officially recommended Google approach.
 
-### Anti-Pattern 3: API Route Instead of Server Action for Form
+### Anti-Pattern 3: Case Studies as MDX/Markdown for 3 Items
 
-**What people do:** Create `app/api/send/route.ts` and have the Client Component POST to it via `fetch()`.
-**Why it's wrong:** For a single form, an API route adds unnecessary indirection — you need to define the route, serialize/deserialize the request, and handle CORS. Server Actions do this automatically.
-**Do this instead:** Use a Server Action (`'use server'` function) called directly from the form's `action` prop or via `useActionState`. Fewer files, type-safe, no fetch boilerplate.
+**What people do:** Set up a full MDX pipeline with `@next/mdx`, frontmatter parsing, and file-system content loading for a handful of case studies.
+**Why it's wrong:** Massive over-engineering for 3 items of structured content. MDX adds a build dependency, requires a content loading layer, and breaks the existing translation pattern.
+**Do this instead:** Put case study content in `messages/*.json` using the same nested namespace pattern as services and FAQ. No new dependencies, same bilingual workflow.
 
-### Anti-Pattern 4: Using `next export` (Static Export) When You Need Server Actions
+### Anti-Pattern 4: Converting Server Components to Client for Tracking
 
-**What people do:** Set `output: 'export'` in `next.config.ts` to get a fully static site.
-**Why it's wrong:** `output: 'export'` disables Server Actions, API routes, middleware, and dynamic routes. The contact form Server Action and next-intl middleware both require a server. Vercel's default deployment mode gives you static pages where possible and serverless functions only where needed.
-**Do this instead:** Use standard Vercel deployment (no `output: 'export'`). Pages without server logic are automatically statically optimized. The Server Action runs as a serverless function only when the form is submitted.
+**What people do:** Add `'use client'` to `HeroSection` or `CtaBand` just to call `sendGTMEvent` on a button click.
+**Why it's wrong:** These are content-heavy sections that benefit from server rendering (zero JS, instant paint, SEO). Converting them to Client Components ships their entire JS bundle to the browser.
+**Do this instead:** Create a small `TrackedCTA` Client Component that wraps only the interactive link. The parent section stays as a Server Component. Only the click handler hydrates.
 
-## Integration Points
+---
 
-### External Services
+## Build Order for v1.1 Features
 
-| Service | Integration Pattern | Notes |
-|---------|---------------------|-------|
-| Resend | Server Action calls `resend.emails.send()` | API key in `.env.local`. Free tier: 100 emails/day, 3,000/month. Sufficient for consulting leads. |
-| Google Tag Manager | `@next/third-parties/google` `GoogleTagManager` component in root layout | GTM container ID in env var. GA4 configured inside GTM, not as separate script. |
-| Vercel | `git push` triggers build + deploy. Static pages to CDN, Server Action to serverless function. | Free tier: 100 GB bandwidth, serverless functions included. Custom domain added later. |
-
-### Internal Boundaries
-
-| Boundary | Communication | Notes |
-|----------|---------------|-------|
-| Page Components <-> Translation System | `getTranslations()`/`useTranslations()` with namespace keys | Server Components use async `getTranslations`, Client Components use `useTranslations` hook. Both read from same `messages/*.json`. |
-| Contact Form (Client) <-> Server Action | Direct function call via React `action` prop or `useActionState` | Type-safe. FormData passed automatically. No manual serialization. |
-| Components <-> Analytics | `sendGTMEvent()` from `@next/third-parties/google` | Only in Client Components (needs `'use client'`). Fire-and-forget; no response handling. |
-| Middleware <-> Routing | next-intl middleware intercepts all requests, detects locale, rewrites URL | Runs on Edge. Matcher excludes `/_next/`, `/api/`, and static files. |
-
-## Build Order (Dependency Chain)
-
-Components have clear dependencies that dictate build order:
+Dependencies dictate this order:
 
 ```
-Phase 1: Foundation (no dependencies)
-├── next.config.ts + tailwind.config.ts + tsconfig.json
-├── src/i18n/ (routing.ts, navigation.ts, request.ts)
-├── middleware.ts
-├── messages/en.json + messages/es.json (initial keys)
-└── src/styles/globals.css (Tailwind + CSS vars + fonts)
+Phase 1: Analytics Foundation (no UI dependencies)
+├── src/components/analytics/analytics-provider.tsx
+├── NEXT_PUBLIC_GTM_ID env var setup
+├── GTM container creation + GA4 tag configuration in GTM
+└── Verify: GTM loads, consent defaults to denied, no data collected
 
-Phase 2: Shell (depends on Phase 1)
-├── app/[locale]/layout.tsx (requires i18n, GTM, fonts)
-├── components/layout/navbar.tsx (requires i18n navigation)
-└── components/layout/footer.tsx (requires i18n)
+Phase 2: Cookie Consent (depends on Phase 1)
+├── messages/*.json: add 'consent' namespace (both locales)
+├── src/components/analytics/cookie-consent.tsx
+├── Modify src/app/[locale]/layout.tsx: add both new components
+├── Update privacy page translations: describe analytics cookies
+└── Verify: banner shows, accept/reject works, GA4 collects on accept only
 
-Phase 3: Pages — can be built in parallel (depends on Phase 2)
-├── Home page + components (hero, problems, cta-band)
-├── Bio page + components (credentials, social-proof)
-├── Services page + components (service-card, method-steps)
-└── Contact page (static shell — form added in Phase 4)
+Phase 3: Event Tracking (depends on Phase 2)
+├── src/components/analytics/tracked-cta.tsx
+├── Modify hero-section.tsx, cta-band.tsx, services-cta.tsx: use TrackedCTA
+├── Modify contact-form.tsx: add form_start, form_submit, form_success events
+├── Configure GA4 custom dimensions in GTM (cta_location, form_name, etc.)
+└── Verify: events appear in GA4 DebugView
 
-Phase 4: Contact Form (depends on Phase 3 contact page)
-├── src/actions/send-email.ts (Server Action + Resend)
-├── components/contact/contact-form.tsx (Client Component)
-└── components/contact/form-success.tsx
-
-Phase 5: Polish (depends on Phases 3-4)
-├── src/lib/metadata.ts + generateMetadata in each page
-├── src/lib/schema.ts (JSON-LD)
-├── src/lib/analytics.ts (GTM event wrappers)
-├── Micro-interactions (scroll reveals, hover states)
-└── Accessibility audit (contrast, keyboard nav, labels)
+Phase 4: Case Studies (independent of Phases 1-3)
+├── messages/*.json: add 'caseStudies' namespace (both locales)
+├── src/components/case-studies/case-study-card.tsx
+├── src/components/case-studies/case-studies-section.tsx
+├── Modify src/app/[locale]/page.tsx: add CaseStudiesSection
+└── Verify: case studies render in both languages
 ```
 
-**Rationale:** i18n must be wired first because every component depends on translation keys. Layout shell must exist before pages (pages render inside it). Pages are independent of each other and can be built in parallel. The contact form is the only interactive component and has a Server Action dependency, so it comes after the static pages. SEO/analytics/polish layer is last because it touches everything but blocks nothing.
+**Phase 4 (case studies) has zero dependency on Phases 1-3 (analytics).** They can be built in parallel if desired. The only shared dependency is the locale layout file, but the modifications are additive and non-conflicting.
+
+**Phase ordering rationale:**
+- Analytics foundation first because consent banner depends on GTM being loadable
+- Consent before event tracking because events are pointless without consent infrastructure
+- Case studies are pure content with no analytics dependency -- fully parallel
+
+---
+
+## Scaling Considerations
+
+| Concern | Current (v1.1) | If Traffic Grows |
+|---------|----------------|------------------|
+| GTM/GA4 | Single container, 4-5 custom events | No change needed until A/B testing (v2+) |
+| Cookie consent | localStorage + cookie, no backend | Could add geo-detection for EU-only banner via Vercel Edge middleware, but overkill for LatAm-focused site |
+| Case studies | 3 items in JSON | If growing to 10+, consider MDX files or a CMS. Under 10, JSON is fine. |
+| Event volume | Minimal (~100-1K events/day) | GA4 free tier handles 500K events/day. No concern. |
+
+---
 
 ## Sources
 
-- [Next.js App Router: Layouts and Pages](https://nextjs.org/docs/app/getting-started/layouts-and-pages) (official docs, v16.1.6, updated 2026-02-11) — HIGH confidence
-- [Next.js Third-Party Libraries Guide](https://nextjs.org/docs/app/guides/third-party-libraries) (official docs, v16.1.6, updated 2026-02-11) — HIGH confidence
-- [next-intl App Router Setup](https://next-intl.dev/docs/getting-started/app-router) (official docs) — HIGH confidence
-- [next-intl Routing Setup](https://next-intl.dev/docs/routing/setup) (official docs) — HIGH confidence
-- [Resend: Send emails with Next.js](https://resend.com/nextjs) (official docs) — HIGH confidence
-- [Next.js Internationalization Guide](https://nextjs.org/docs/app/guides/internationalization) (official docs) — HIGH confidence
-- [Next.js Server Actions and Mutations](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations) (official docs) — HIGH confidence
-- [GA4 Implementation with GTM in Next.js](https://blog.devgenius.io/integrating-google-analytics-4-google-tag-manager-in-react-and-next-js-1db0b9c43949) — MEDIUM confidence
+- [Google Consent Mode v2 Official Docs](https://developers.google.com/tag-platform/security/guides/consent) -- HIGH confidence. Authoritative source for consent default/update API.
+- [Next.js Third-Party Libraries Guide](https://nextjs.org/docs/app/guides/third-party-libraries) -- HIGH confidence. Official docs for `@next/third-parties/google`, confirmed `GoogleTagManager` props and limitations.
+- [vercel/next.js Discussion #64497: Consent + GoogleTagManager](https://github.com/vercel/next.js/discussions/64497) -- HIGH confidence. Confirms lack of built-in consent mode support in `@next/third-parties`.
+- [vercel/next.js Discussion #67440: GA compliance](https://github.com/vercel/next.js/discussions/67440) -- HIGH confidence. Confirms `@next/third-parties` does not support consent mode as of early 2026.
+- [GTM Consent Mode v2 in React (Cloud66 Blog)](https://blog.cloud66.com/google-tag-manager-consent-mode-v2-in-react) -- MEDIUM confidence. Practical implementation guide with dataLayer patterns.
+- [GA4 Consent Mode in Next.js (Gaudion.dev)](https://gaudion.dev/blog/setup-google-analytics-with-gdpr-compliant-cookie-consent-in-nextjs13) -- MEDIUM confidence. Working implementation with consent update pattern.
+- [Cookie Consent in Next.js 15 (BuildWithMatija)](https://www.buildwithmatija.com/blog/build-cookie-consent-banner-nextjs-15-server-client) -- MEDIUM confidence. No-library approach confirmed viable.
+- [Simo Ahava: Consent Mode v2 for Google Tags](https://www.simoahava.com/analytics/consent-mode-v2-google-tags/) -- HIGH confidence. Authoritative analytics expert on GTM consent implementation.
+- [Top 7 Consent Mode Mistakes (Bounteous)](https://www.bounteous.com/insights/2025/07/30/top-7-google-consent-mode-mistakes-and-how-fix-them-2025/) -- MEDIUM confidence. Common pitfalls with consent mode in 2025.
 
 ---
-*Architecture research for: M. Gripe personal brand consulting website*
-*Researched: 2026-02-16*
+*Architecture research for: M. Gripe v1.1 -- GA4/GTM, cookie consent, case studies integration*
+*Researched: 2026-02-27*

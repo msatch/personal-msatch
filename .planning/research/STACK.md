@@ -1,195 +1,323 @@
-# Stack Research
+# Stack Research: v1.1 Additions
 
-**Domain:** Personal brand consulting website (multi-page, bilingual, serverless contact form)
-**Researched:** 2026-02-16
+**Domain:** Additions to bilingual consulting site -- analytics, cookie consent, case studies, messaging updates
+**Researched:** 2026-02-27
 **Confidence:** HIGH
+**Scope:** Only NEW technologies/patterns needed for v1.1. Existing stack validated in v1.0 research and not re-evaluated.
 
-## Recommended Stack
+## Existing Stack (Reference Only -- Do Not Re-Research)
 
-### Core Technologies
+Already installed and validated: Next.js 16.1.6, React 19.2.3, TypeScript 5.x, Tailwind CSS 4, next-intl 4.8.3, Resend 6.9.2, Zod 4.3.6, clsx 2.1.1, tailwind-merge 3.4.1.
+
+---
+
+## New Dependencies for v1.1
+
+### The Answer: Zero New npm Packages
+
+After thorough research, v1.1 requires **no new npm dependencies**. The existing stack plus built-in Next.js capabilities cover everything.
+
+The initial instinct was to add `@next/third-parties@16.1.6` for the `GoogleTagManager` component. However, research revealed a critical limitation: **the `@next/third-parties` GoogleTagManager component does not support Google Consent Mode v2**. The `dataLayer` prop pushes data after GTM initializes, which is too late for consent defaults. Multiple GitHub discussions (vercel/next.js #64497, #66718) confirm this gap remains unresolved as of early 2026. Since consent mode is a hard requirement (the site has a privacy policy and targets markets with privacy regulations), the `@next/third-parties` approach is disqualified.
+
+The correct approach uses `next/script` (already built into Next.js 16) with manual GTM initialization, giving full control over the consent-before-GTM loading order.
+
+---
+
+## Technology Decisions
+
+### Analytics: Manual GTM via next/script (Built-in)
 
 | Technology | Version | Purpose | Why Recommended | Confidence |
 |------------|---------|---------|-----------------|------------|
-| Next.js | 16.1.x (latest 16.1.6) | React meta-framework, SSG, routing, API routes | Industry standard for React websites on Vercel. App Router is stable in v16. Turbopack default for dev/build. Static export support for near-zero cost hosting. Built-in image optimization. | HIGH |
-| React | 19.2.x (bundled with Next.js 16) | UI library | Ships with Next.js 16. Server Components reduce client JS bundle. No separate install needed. | HIGH |
-| TypeScript | ~5.9.x (stable: 5.9.3) | Type safety | Next.js 16 requires TS >= 5.1. Use latest stable 5.9.x. Do NOT use 6.0 beta in production. | HIGH |
-| Tailwind CSS | 4.1.x (latest 4.1.18) | Utility-first CSS | v4 is 5x faster full builds, 100x faster incremental. Zero-config with automatic content detection. CSS-first configuration (no tailwind.config.js). Perfect for minimal/light design with accent colors via CSS custom properties. | HIGH |
-| next-intl | 4.8.x (latest 4.8.3) | Bilingual ES/EN internationalization | De facto i18n standard for Next.js App Router. Strictly-typed locales and ICU arguments in v4. Works with Server Components and static rendering. Handles locale routing via `proxy.ts` (renamed from middleware.ts in Next.js 16). | HIGH |
+| next/script | Built into Next.js 16.1.6 | Load GTM container with precise timing control | Provides `beforeInteractive` and `afterInteractive` strategies. Consent defaults script MUST execute before GTM boots -- only `beforeInteractive` guarantees this. `@next/third-parties` GoogleTagManager defers loading post-hydration and has no mechanism for consent defaults. | HIGH |
+| Google Tag Manager | N/A (cloud service) | Tag management hub | Manages GA4 + any future tags without code changes. Single GTM container ID in code. GA4 configured as a tag inside GTM, not as a separate script. | HIGH |
+| Google Analytics 4 | N/A (cloud service) | Website analytics | Free, industry standard. Configured inside GTM container. Automatic pageview tracking works with Next.js client-side navigations via Enhanced Measurement. | HIGH |
 
-### Email & Contact Form
+**Why NOT @next/third-parties:**
+
+The official Next.js package (`@next/third-parties/google`) provides `GoogleTagManager` and `sendGTMEvent`. While convenient, it has a fundamental limitation for this project:
+
+1. **No consent mode support.** The component loads GTM after hydration with no hook to set consent defaults before GTM evaluates. Setting `gtag('consent', 'default', { analytics_storage: 'denied' })` MUST happen before GTM's first evaluation, or the first pageview fires without consent. This is a GDPR violation.
+
+2. **GitHub issues confirm the gap.** vercel/next.js Discussion #64497 and #66718 show this has been a known issue since 2024 with no resolution. Community workaround is to use `next/script` directly.
+
+3. **sendGTMEvent is trivially replaceable.** It is just a thin wrapper around `window.dataLayer.push()`. One line of code. Not worth an npm dependency.
+
+**Implementation pattern:**
+
+```typescript
+// src/components/analytics/analytics-provider.tsx
+'use client';
+import Script from 'next/script';
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+
+export function AnalyticsProvider() {
+  if (!GTM_ID) return null;
+
+  return (
+    <>
+      {/* Step 1: Set consent defaults BEFORE GTM loads */}
+      <Script
+        id="gtm-consent-init"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied',
+              'wait_for_update': 500
+            });
+          `,
+        }}
+      />
+      {/* Step 2: Load GTM (respects consent defaults set above) */}
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
+          `,
+        }}
+      />
+    </>
+  );
+}
+```
+
+**Event tracking (replaces sendGTMEvent):**
+
+```typescript
+// Direct dataLayer push -- no library needed
+function trackEvent(event: string, data?: Record<string, unknown>) {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({ event, ...data });
+  }
+}
+
+// Usage:
+trackEvent('cta_click', { cta_location: 'hero' });
+trackEvent('form_submit', { form_name: 'contact' });
+```
+
+### Cookie Consent: Custom Build (No Library)
 
 | Technology | Version | Purpose | Why Recommended | Confidence |
 |------------|---------|---------|-----------------|------------|
-| Resend | 6.9.x (latest 6.9.2) | Serverless email delivery API | Developer-first email API. Generous free tier (100 emails/day, 3,000/month). Works natively with Next.js API routes / Server Actions. Simple SDK. No SMTP config. | HIGH |
-| @react-email/components | 0.0.x (latest) | Email template components | Build email templates as React components. Works with Resend's `react` parameter. Supports Tailwind 4. Optional but recommended for styled confirmation emails. | MEDIUM |
-| react-hook-form | 7.71.x (latest 7.71.1) | Form state management | Minimal re-renders, uncontrolled inputs by default. 8,500+ dependents on npm. Best DX for single contact form. | HIGH |
-| @hookform/resolvers | 5.2.x (latest 5.2.2) | Schema validation bridge | Connects Zod schemas to react-hook-form. v5 added type inference from schema. | HIGH |
-| Zod | 4.3.x (latest 4.3.6) | Schema validation | TypeScript-first validation. Shared schema between client form and server API route. v4 has major perf improvements over v3. Use with @hookform/resolvers >= 5.2.1 (which requires zod >= 3.25.0 for zod/v4/core). | HIGH |
+| Custom React component | N/A | GDPR-compliant cookie consent banner | Zero additional dependencies. A consent banner is ~100-150 lines of React + localStorage + cookie. The project already has the full UI toolkit (Tailwind, clsx, tailwind-merge, next-intl) to build a banner that matches the site's design system perfectly. | HIGH |
 
-### Analytics
+**Why NOT use a cookie consent library:**
+
+| Library | Size | Problem |
+|---------|------|---------|
+| react-cookie-consent | ~15KB gzip | Ships own CSS (conflicts with Tailwind), no Consent Mode v2 support, limited customization |
+| CookieYes / OneTrust / CookieBot | External SaaS | 300-500KB external JS, monthly cost ($10-50/mo), styling FOUT, ironic third-party tracking for consent, violates "free/low-cost" constraint |
+| js-cookie | ~2KB gzip | Just for reading/writing cookies -- `document.cookie` is fine for this, no library needed |
+
+**Implementation uses:**
+- `localStorage` for fast client-side consent state reads
+- `document.cookie` for persistence across sessions (set with `path=/`, `SameSite=Lax`, 1-year expiry)
+- `window.gtag('consent', 'update', ...)` to communicate with GTM
+- `useTranslations('consent')` from next-intl for bilingual banner text
+
+**Google Consent Mode v2 parameters:**
+
+| Parameter | Purpose | Default | User Can Grant |
+|-----------|---------|---------|----------------|
+| `analytics_storage` | GA4 cookies | `denied` | Yes (via banner) |
+| `ad_storage` | Advertising cookies | `denied` | No (permanently denied -- no ads) |
+| `ad_user_data` | User data for ads | `denied` | No (permanently denied) |
+| `ad_personalization` | Ad personalization | `denied` | No (permanently denied) |
+
+For this consulting site, only `analytics_storage` is toggleable. The ad-related parameters stay permanently denied since there are no advertising features.
+
+### Case Studies: No New Dependencies
 
 | Technology | Version | Purpose | Why Recommended | Confidence |
 |------------|---------|---------|-----------------|------------|
-| @next/third-parties | 16.1.x (latest 16.1.6) | GTM + GA4 integration | Official Next.js package. Optimized loading (no layout shift). GoogleTagManager and GoogleAnalytics components. sendGTMEvent for custom events. | HIGH |
-| Google Tag Manager | N/A (cloud service) | Tag management | Manages GA4 + any future tags (Meta Pixel, LinkedIn, etc.) without code changes. Single GTM container ID in code. | HIGH |
-| Google Analytics 4 | N/A (cloud service) | Website analytics | Free, industry standard. Configure via GTM for zero-code event additions. | HIGH |
+| next-intl (existing) | 4.8.3 | Bilingual case study content | Case study content goes into existing `messages/es.json` and `messages/en.json` under a new `caseStudies` namespace. Same pattern as services, FAQ, and every other content section. | HIGH |
+| Next.js App Router (existing) | 16.1.6 | Case study sections | New Server Components (`CaseStudiesSection`, `CaseStudyCard`) using `getTranslations()`. Zero JavaScript shipped to client. Placed on home page between ProcessSection and CtaBand. | HIGH |
 
-### Supporting Libraries
+**Why NOT MDX, CMS, or separate data files:**
 
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| clsx | 2.1.1 | Conditional className construction | Every component with dynamic classes. 239B gzipped. |
-| tailwind-merge | 3.4.x (latest 3.4.1) | Resolve Tailwind class conflicts | Create a `cn()` utility combining clsx + twMerge. Essential for component variants. v3.4 supports Tailwind v4. |
-| lucide-react | 0.564.x (latest 0.564.0) | SVG icon library | Icons for nav, services cards, contact info, language toggle. Tree-shakeable. 1,500+ icons. |
-| motion | 12.34.x (latest 12.34.0) | Page/element animations | Scroll animations, page transitions, hero entrance effects. Successor to framer-motion (same package maintainer, new name). Use `motion` not `framer-motion` for new projects. |
+| Alternative | Why Not |
+|-------------|---------|
+| @next/mdx + @mdx-js/loader + @mdx-js/react | 3 new dependencies for 3 static case studies. MDX is for long-form rich content; case studies are structured data (title, problem, intervention, result, metric). |
+| Sanity / Contentful / Strapi | Adds API latency, dashboard, potential cost, and a dependency for content that changes quarterly. The owner is a developer. |
+| `data/case-studies.json` (separate file) | Would require manual locale handling. Putting content in the i18n message files means bilingual switching is automatic. |
+| MDX with frontmatter | Reasonable for 10+ case studies with rich formatting. For 3 short narratives, it is unnecessary complexity. |
 
-### Development Tools
+### Messaging Updates: No New Dependencies
 
-| Tool | Purpose | Notes |
+Content-only changes to existing `messages/es.json` and `messages/en.json`:
+
+- Hero section: LatAm differentiation value proposition
+- CTA copy: concrete diagnostic deliverable framing ("you receive X")
+- New section: competitive positioning (solo consultant vs platforms)
+
+All handled by editing translation JSON files and adding new React Server Components using existing patterns.
+
+### Vercel Deployment: No New Project Dependencies
+
+| Item | Purpose | Notes |
 |------|---------|-------|
-| ESLint | Linting | Ships with `npx create-next-app`. Next.js 16 includes eslint-config-next. |
-| Prettier | Code formatting | Add prettier-plugin-tailwindcss for automatic class sorting. |
-| next dev --inspect | Debugging | New in Next.js 16.1 for easier server-side debugging. |
+| Vercel GitHub Integration | Automatic deploys on git push | Zero config for Next.js projects. Push to main = production. Push to branches = preview deploys. |
+| Vercel Pro ($20/mo) | Production hosting | Required for commercial use per Vercel terms. Hobby plan is personal/non-commercial only. |
+| `npx vercel` (optional) | Local preview deployment testing | Not a project dependency. Runs via npx on demand. |
 
-### Infrastructure
-
-| Technology | Purpose | Why Recommended | Confidence |
-|------------|---------|-----------------|------------|
-| Vercel | Hosting + Serverless | Native Next.js platform. Free SSL, CDN, preview deployments. Serverless functions for contact form API route. **WARNING: Hobby (free) plan is personal/non-commercial use ONLY. A consulting website that generates revenue likely requires Pro plan ($20/mo). See "Pitfalls" section.** | HIGH |
-| Vercel Pro | Production hosting | $20/month. Required for commercial use. 1M function invocations, 1TB bandwidth, 24,000 build minutes. Recommended for a consulting website. | HIGH |
-| Node.js | Runtime | >= 20.x required by Next.js 16. proxy.ts (formerly middleware.ts) runs on Node.js runtime only (Edge runtime NOT supported in Next.js 16 proxy). | HIGH |
+---
 
 ## Installation
 
 ```bash
-# Scaffold project
-npx create-next-app@latest mgripe --typescript --tailwind --eslint --app --src-dir
-
-# Core dependencies (most ship with create-next-app)
-npm install next-intl resend react-hook-form @hookform/resolvers zod
-
-# Analytics
-npm install @next/third-parties
-
-# Supporting
-npm install clsx tailwind-merge lucide-react motion
-
-# Dev dependencies
-npm install -D prettier prettier-plugin-tailwindcss @react-email/components
+# v1.1 requires ZERO new npm packages.
+# All features are built using existing dependencies + built-in Next.js capabilities.
 ```
+
+**Explanation:** The only candidate for a new dependency was `@next/third-parties`, which was disqualified by its lack of consent mode support. Everything else (cookie consent, case studies, messaging, event tracking) uses the existing stack.
+
+## Environment Variables (New for v1.1)
+
+| Variable | Where | Purpose | Example |
+|----------|-------|---------|---------|
+| `NEXT_PUBLIC_GTM_ID` | Vercel dashboard + `.env.local` | Google Tag Manager container ID | `GTM-XXXXXXX` |
+
+**Why `NEXT_PUBLIC_` prefix:** GTM ID must be available on the client side (the script tag renders in the browser). The `NEXT_PUBLIC_` prefix exposes it to the client bundle. This is safe -- GTM IDs are public by design (they appear in the page source of every site using GTM).
+
+**Do NOT create environment variables for:**
+- GA4 Measurement ID -- configured inside GTM console, not in code
+- Cookie consent settings -- stored in user's localStorage/cookie, not server-side
 
 ## Alternatives Considered
 
 | Recommended | Alternative | When to Use Alternative |
 |-------------|-------------|-------------------------|
-| next-intl | next-i18next | Never for App Router. next-i18next is Pages Router only. next-intl is the clear winner for App Router. |
-| next-intl | Built-in Next.js i18n | Next.js dropped built-in i18n routing in App Router. next-intl fills this gap. |
-| Resend | SendGrid | If you need >3,000 emails/month on free tier (SendGrid offers 100/day). Resend has better DX and React Email integration. |
-| Resend | EmailJS | If you want zero-backend client-side email (no API route). But exposes API keys in client, less secure, limited templates. |
-| Zod | Yup | Never for new TypeScript projects. Zod has native TS inference, Yup bolted it on. Zod v4 is significantly faster. |
-| react-hook-form | Formik | Never. Formik is effectively unmaintained. react-hook-form has better perf (uncontrolled inputs) and active development. |
-| motion | framer-motion | Same library, rebranded. `motion` is the new package name. `framer-motion` still works but `motion` is the forward path. |
-| motion | CSS animations only | For a minimal site, CSS @keyframes + Tailwind animate utilities may suffice. Use motion only if you want scroll-triggered or orchestrated animations. |
-| Tailwind CSS | CSS Modules | Never for this project. Tailwind's utility approach is faster for rapid single-dev builds. CSS Modules add naming overhead with no team coordination benefit for a solo project. |
-| lucide-react | react-icons | react-icons bundles entire icon sets, larger bundle. lucide-react is tree-shakeable with consistent design language. |
-| Vercel | Netlify | If Vercel commercial terms are a blocker. Netlify has similar free tier without the strict non-commercial clause. But Next.js runs best on Vercel (native platform). |
-| Vercel | Cloudflare Pages | If you want truly free hosting with no commercial restrictions. But Next.js support on Cloudflare is via @cloudflare/next-on-pages adapter and has limitations (no ISR, limited API route compat). |
+| Manual GTM via `next/script` | `@next/third-parties/google` GoogleTagManager | Only if you do NOT need consent mode (e.g., internal tool with no external users, no privacy requirements). For any public-facing site with cookie consent, manual `next/script` gives necessary loading order control. |
+| Manual GTM via `next/script` | `@next/third-parties/google` GoogleAnalytics (standalone) | Only if you refuse to use GTM and want direct GA4 only. But this locks you out of adding future tags (Hotjar, Meta Pixel, etc.) without code changes. GTM is the better long-term hub. |
+| Custom cookie consent component | react-cookie-consent npm | If you need complex multi-category consent (functional, analytics, marketing, performance as separate toggles). For a site with analytics-only cookies, custom is simpler and lighter. |
+| Custom cookie consent component | CookieYes / OneTrust SaaS | If legal compliance mandates a certified Consent Management Platform. A LatAm consulting site does not need this. |
+| JSON locale files for case studies | MDX files | If case studies grow beyond 10+ or need rich formatting (code blocks, embedded media, interactive demos). |
+| JSON locale files for case studies | Headless CMS | If a non-developer needs to edit case studies frequently. Matias controls all content. |
+| Home page section for case studies | Separate `/case-studies` route | If studies grow beyond 5+ or become long-form (1000+ words each). For 3 concise narratives, a home page section is more effective for conversion. |
 
-## What NOT to Use
+## What NOT to Add
 
 | Avoid | Why | Use Instead |
 |-------|-----|-------------|
-| `framer-motion` (package name) | Rebranded to `motion`. `framer-motion` still works but is legacy. New projects should use the new name. | `motion` |
-| Formik | Effectively unmaintained since 2023. Last meaningful release was years ago. Performance issues with controlled inputs. | `react-hook-form` |
-| next-i18next | Only works with Pages Router. Does not support App Router or Server Components. | `next-intl` |
-| i18next + react-i18next (raw) | Requires manual setup for App Router, no built-in routing support, no proxy.ts integration. next-intl wraps all of this. | `next-intl` |
-| styled-components / Emotion | CSS-in-JS has runtime cost. Server Components don't support them well. Tailwind is zero-runtime. | Tailwind CSS |
-| Nodemailer | Requires SMTP server configuration. More setup, more moving parts. Resend is a managed service with simpler API. | `resend` |
-| Pages Router | Legacy routing system. App Router is stable and default in Next.js 16. All new projects should use App Router. | App Router |
-| middleware.ts | Renamed to proxy.ts in Next.js 16. Using middleware.ts will trigger deprecation warnings. | `proxy.ts` |
-| Edge Runtime (for proxy) | Next.js 16 proxy.ts runs on Node.js runtime only. Edge runtime is NOT supported for proxy. Don't configure it. | Node.js runtime (default) |
-| Zod v3 | v4 released July 2025 with major perf improvements. @hookform/resolvers v5.2.1+ requires zod >= 3.25.0 anyway for v4/core. | Zod v4 (^4.3.0) |
-| CMS (Contentful, Sanity, etc.) | Overkill for 4 static pages with known content. Adds complexity, API calls, and potential cost. Content lives in code/JSON. | Hardcoded content in locale JSON files |
-| Database (Supabase, PlanetScale, etc.) | No dynamic data. Contact form sends email, no storage needed. If you later want form submission history, add a DB then. | None (stateless contact form) |
+| `@next/third-parties` | Lack of consent mode v2 support is a blocking limitation for this project. Verified via GitHub discussions #64497, #66718. | `next/script` (built-in) with manual GTM snippet |
+| `react-ga4` | Outdated approach. GA4 should be managed through GTM, not a direct React wrapper. Last meaningful update was 2023. | GTM with GA4 configured as a tag |
+| `@analytics/google-analytics` | Over-abstracted analytics library. Adds unnecessary indirection. | Direct `window.dataLayer.push()` calls |
+| `js-cookie` | `document.cookie` API is sufficient for one cookie. No need for a library to manage a single consent cookie. | Direct `document.cookie` manipulation |
+| `react-cookie-consent` | 15KB for something achievable in ~100 lines. Ships CSS that conflicts with Tailwind. | Custom consent banner component |
+| `@next/mdx` / `mdx-bundler` | No MDX content in this project. Case studies are structured data, not freeform documents. | JSON locale files |
+| Any CMS SDK | No dynamic content, no non-developer editors, no frequently changing content. | JSON locale files |
+| `posthog-js` / PostHog | Adds a second analytics service. GA4 is free and sufficient for consulting lead-gen. | GA4 via GTM |
+| Google Consent Mode libraries | `gtag('consent', 'default', ...)` and `gtag('consent', 'update', ...)` are two function calls. No library needed. | Direct gtag calls |
 
-## Stack Patterns by Variant
+## Custom Event Tracking Strategy
 
-**If motion animations feel heavy for a minimal site:**
-- Use Tailwind CSS `animate-*` utilities + `@keyframes` in globals.css
-- Because: Zero additional JS. Tailwind 4 has built-in animation utilities.
+Events fired via `window.dataLayer.push()` from client components, routed by GTM to GA4.
 
-**If Vercel commercial terms are a dealbreaker:**
-- Use Vercel Pro ($20/mo) for production
-- Because: Native Next.js support, best DX, preview deployments. The $20/mo is trivial for a consulting business.
+| Event Name | Trigger | Data | Component |
+|------------|---------|------|-----------|
+| `cta_click` | Any CTA button/link click | `{ cta_location: 'hero' \| 'cta_band' \| 'services_cta' \| 'case_study' }` | TrackedCTA (new Client Component wrapper) |
+| `form_start` | First field focus in contact form | `{ form_name: 'contact' }` | ContactForm (existing, modified) |
+| `form_submit` | Form submission initiated | `{ form_name: 'contact' }` | ContactForm (existing, modified) |
+| `form_success` | Server Action returns success | `{ form_name: 'contact' }` | ContactForm (existing, modified) |
+| `whatsapp_click` | WhatsApp button click | `{}` | WhatsAppButton (existing, modified) |
+| `case_study_view` | Case study section enters viewport | `{ case_study_id: string }` | CaseStudyCard (new, optional) |
 
-**If you want to start free and upgrade later:**
-- Deploy on Vercel Hobby during development/pre-launch
-- Upgrade to Pro before publicly promoting the consulting services
-- Because: Same infrastructure, just a plan change. No migration needed.
+**Note:** Events are pushed to dataLayer regardless of consent state. GTM handles the gating -- tags configured with consent requirements only fire when consent is granted. Do NOT add `if (hasConsent)` checks in component code; this creates a parallel consent system that conflicts with GTM's built-in handling.
 
-**If email volume grows beyond Resend free tier:**
-- Resend Pro starts at $20/mo for 50,000 emails/month
-- Because: Same API, no code changes. Just a billing upgrade.
+## TypeScript Considerations
 
-## Version Compatibility
+Add GTM global types for `window.dataLayer` and `window.gtag`:
 
-| Package A | Compatible With | Notes |
-|-----------|-----------------|-------|
-| next@16.1.x | react@19.2.x, react-dom@19.2.x | React ships with Next.js. Do not install separately. |
-| next@16.1.x | typescript@>=5.1 | Use 5.9.x stable. Do NOT use 6.0 beta. |
-| next@16.1.x | node@>=20 | Node 20 LTS or 22 LTS. |
-| next-intl@4.8.x | next@>=14 | Fully compatible with Next.js 16 App Router. Uses proxy.ts. |
-| tailwind-merge@3.4.x | tailwindcss@4.0-4.1 | v3.4 explicitly supports Tailwind v4. Do NOT use tailwind-merge v2 with Tailwind v4. |
-| @hookform/resolvers@5.2.x | zod@>=3.25.0 or zod@^4.0.0 | v5.2.1 depends on zod/v4/core. Works with Zod 4.3.x. |
-| @hookform/resolvers@5.2.x | react-hook-form@^7.0.0 | Stable pairing. |
-| @next/third-parties@16.1.x | next@16.1.x | Version should match your Next.js version. |
-| @react-email/components | react@^19.0.0 | React Email 5.0 supports React 19.2. |
-| motion@12.x | react@>=18 | Supports React 19. |
+```typescript
+// src/types/gtm.d.ts
+interface Window {
+  dataLayer: Record<string, unknown>[];
+  gtag: (...args: unknown[]) => void;
+}
+```
 
-## Key Architecture Note: Next.js 16 proxy.ts
+This prevents TypeScript errors when calling `window.dataLayer.push()` and `window.gtag()` in client components.
 
-Next.js 16 renamed `middleware.ts` to `proxy.ts`. This is NOT just cosmetic:
-- The exported function must be named `proxy` (not `middleware`)
-- Config flags renamed: `skipMiddlewareUrlNormalize` -> `skipProxyUrlNormalize`
-- Runs on Node.js runtime ONLY (Edge runtime dropped for proxy)
-- next-intl documentation references this change; use their proxy.ts setup guide
+## Version Compatibility (No New Packages)
 
-A codemod is available: `npx @next/codemod@latest upgrade` handles the rename automatically.
+Since v1.1 adds no new npm packages, there are no new version compatibility concerns. The existing stack versions remain valid as documented in v1.0 STACK.md research.
 
-## Vercel Hosting: Commercial Use Warning
+The only external version consideration is the GTM container configuration, which is managed in the GTM web console and has no npm version.
 
-**Critical for this project:** Vercel's Hobby (free) plan is restricted to personal, non-commercial use. A consulting website that promotes paid services and generates business leads is commercial use. Options:
+## Integration Points
 
-1. **Vercel Pro ($20/mo)** -- Recommended. Same platform, compliant with terms.
-2. **Develop on Hobby, launch on Pro** -- Use free tier during build phase, upgrade before go-live.
-3. **Netlify free tier** -- No explicit commercial restriction but inferior Next.js support.
+### Where the AnalyticsProvider fits in existing layout
 
-The $20/month is a negligible business expense for a consulting practice.
+The `AnalyticsProvider` renders `<Script>` components inside the `<body>`. It goes OUTSIDE `NextIntlClientProvider` (it needs no translations) but inside `<body>`:
+
+```typescript
+// src/app/[locale]/layout.tsx -- conceptual placement
+<html lang={locale} suppressHydrationWarning>
+  <head>
+    {/* existing theme script */}
+  </head>
+  <body>
+    <ThemeSync />
+    <AnalyticsProvider />        {/* NEW: consent defaults + GTM script */}
+    <NextIntlClientProvider>
+      <Header />
+      <main id="main-content">{children}</main>
+      <Footer />
+      <WhatsAppButton />
+      <CookieConsentBanner />    {/* NEW: inside provider for translations */}
+    </NextIntlClientProvider>
+  </body>
+</html>
+```
+
+### Where case studies fit
+
+A `<CaseStudiesSection />` Server Component on the home page, between `<ProcessSection />` and `<CtaBand />`:
+
+```typescript
+// src/app/[locale]/page.tsx -- conceptual placement
+<HeroSection />
+<ScrollReveal><ProblemSection /></ScrollReveal>
+<ScrollReveal delay={100}><ServicesPreview /></ScrollReveal>
+<ScrollReveal delay={100}><ProcessSection /></ScrollReveal>
+<ScrollReveal><CaseStudiesSection /></ScrollReveal>  {/* NEW */}
+<ScrollReveal><CtaBand /></ScrollReveal>
+```
+
+### Where messaging updates fit
+
+Direct edits to existing keys in `messages/es.json` and `messages/en.json`. New keys for:
+- `home.hero` -- LatAm differentiation angle in subtitle
+- `common.cta` -- concrete deliverable framing
+- `home.positioning` -- new competitive positioning section (if added as standalone section)
 
 ## Sources
 
-- [Next.js 16.1 blog post](https://nextjs.org/blog/next-16-1) -- Turbopack stable, React Compiler stable
-- [Next.js 16 upgrade guide](https://nextjs.org/docs/app/guides/upgrading/version-16) -- proxy.ts rename, TS/Node requirements
-- [next-intl 4.0 release](https://next-intl.dev/blog/next-intl-4-0) -- Strictly-typed locales, revamped types
-- [next-intl App Router docs](https://next-intl.dev/docs/getting-started/app-router) -- Setup with proxy.ts
-- [Tailwind CSS v4.0 release](https://tailwindcss.com/blog/tailwindcss-v4) -- CSS-first config, perf improvements
-- [Resend Next.js docs](https://resend.com/docs/send-with-nextjs) -- API route integration
-- [React Email 5.0](https://resend.com/blog/react-email-5) -- React 19.2, Tailwind 4 support
-- [@next/third-parties docs](https://nextjs.org/docs/app/guides/third-party-libraries) -- GTM/GA4 components
-- [Vercel Hobby plan docs](https://vercel.com/docs/plans/hobby) -- Non-commercial restriction
-- [Vercel Fair Use Guidelines](https://vercel.com/docs/limits/fair-use-guidelines) -- Commercial usage definition
-- [Next.js proxy.ts rename](https://nextjs.org/docs/messages/middleware-to-proxy) -- Migration details
-- [Zod v4 release notes](https://zod.dev/v4) -- Performance improvements, new API
-- [npm: resend@6.9.2](https://www.npmjs.com/package/resend) -- Latest version verified
-- [npm: next-intl@4.8.3](https://www.npmjs.com/package/next-intl) -- Latest version verified
-- [npm: motion@12.34.0](https://www.npmjs.com/package/motion) -- Latest version verified
-- [npm: tailwindcss@4.1.18](https://www.npmjs.com/package/tailwindcss) -- Latest version verified
-- [npm: react-hook-form@7.71.1](https://www.npmjs.com/package/react-hook-form) -- Latest version verified
-- [npm: zod@4.3.6](https://www.npmjs.com/package/zod) -- Latest version verified
-- [npm: @hookform/resolvers@5.2.2](https://www.npmjs.com/package/@hookform/resolvers) -- Latest version verified
-- [npm: lucide-react@0.564.0](https://www.npmjs.com/package/lucide-react) -- Latest version verified
-- [npm: tailwind-merge@3.4.1](https://www.npmjs.com/package/tailwind-merge) -- Latest version verified
+- [Next.js Official Docs: Third Party Libraries](https://nextjs.org/docs/app/guides/third-party-libraries) -- Confirmed GoogleTagManager API, official recommendation to use GTM over separate GA4 component. Also confirmed `sendGTMEvent` is just a dataLayer push wrapper. (HIGH confidence, verified 2026-02-27)
+- [Next.js GitHub Discussion #64497](https://github.com/vercel/next.js/discussions/64497) -- Consent mode not built into @next/third-parties, custom wrapper via next/script required. Multiple community confirmations. (HIGH confidence)
+- [Next.js GitHub Discussion #66718](https://github.com/vercel/next.js/discussions/66718) -- Confirms no consent mode support in GoogleAnalytics component from @next/third-parties. Discussion remains unresolved. (HIGH confidence)
+- [Google Consent Mode v2 Official Docs](https://developers.google.com/tag-platform/security/guides/consent) -- Required parameters: analytics_storage, ad_storage, ad_user_data, ad_personalization. Default denied, update on accept. (HIGH confidence)
+- [npm: @next/third-parties@16.1.6](https://www.npmjs.com/package/@next/third-parties) -- Version verified via `npm view`. Peer deps: next@^13-16, react@^18-19. Would be compatible, but consent mode gap is the blocker. (HIGH confidence)
+- [Build with Matija: Next.js Cookie Consent Banner](https://www.buildwithmatija.com/blog/build-cookie-consent-banner-nextjs-15-server-client) -- No-library approach pattern confirmed viable for Next.js 15+. (MEDIUM confidence)
+- [GTM Consent Mode v2 in React/Next.js (Cloud66)](https://blog.cloud66.com/google-tag-manager-consent-mode-v2-in-react) -- Implementation pattern with `beforeInteractive` + `afterInteractive` script strategies. (MEDIUM confidence)
+- [Aclarify: GTM with Consent Mode in Next.js](https://www.aclarify.com/blog/how-to-set-up-google-tag-manager-with-consent-mode-in-nextjs) -- Confirmed consent defaults must come before GTM, working Next.js implementation. (MEDIUM confidence)
+- [Vercel Environment Variables](https://vercel.com/docs/environment-variables) -- `NEXT_PUBLIC_` prefix requirement for client-side access confirmed. (HIGH confidence)
+- [Simo Ahava: Consent Mode v2 for Google Tags](https://www.simoahava.com/analytics/consent-mode-v2-google-tags/) -- Authoritative analytics expert on GTM consent implementation patterns. (HIGH confidence)
 
 ---
-*Stack research for: M. Gripe personal brand consulting website*
-*Researched: 2026-02-16*
+*Stack research for: M. Gripe v1.1 -- analytics, cookie consent, case studies, messaging*
+*Researched: 2026-02-27*

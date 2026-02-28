@@ -1,195 +1,204 @@
 # Project Research Summary
 
-**Project:** M. Gripe — Personal Brand & Consulting Site
-**Domain:** Personal brand consulting website (bilingual, static-first, LatAm market)
-**Researched:** 2026-02-16
+**Project:** M. Gripe Consulting Site v1.1 -- Proof & Trust
+**Domain:** Additions to bilingual consulting site -- analytics, cookie consent, case studies, messaging refinements
+**Researched:** 2026-02-27
 **Confidence:** HIGH
 
 ## Executive Summary
 
-This is a multi-page personal brand website for a technical/business consultant targeting LatAm founders and managers. The standard 2025-2026 approach is a statically-generated Next.js site with bilingual routing (next-intl), Tailwind CSS for styling, and a single serverless function for email delivery via Resend. The architecture is deliberately simple: 4 pages, no database, no CMS, no backend beyond the contact form.
+v1.1 adds social proof (anonymized case studies), sharpened LatAm-focused messaging, analytics with GDPR-compliant cookie consent, and Vercel deployment to the existing bilingual consulting site. The technical scope is deliberately minimal: **zero new npm packages**, a custom cookie consent component, content additions to existing locale JSON files, and deployment configuration. The existing stack (Next.js 16.1.6, next-intl 4.8.3, Tailwind CSS 4, Resend) plus built-in Next.js capabilities cover everything v1.1 requires.
 
-The recommended approach prioritizes i18n infrastructure from day one (the costliest pitfall is bolting on bilingual support after building monolingual). Next.js 16 with the App Router, `[locale]` route segments, and next-intl provides mature bilingual routing with static generation. The contact form uses a Server Action + Resend (no separate API route needed). Analytics via GTM as a single hub avoids the common duplicate-event problem.
+**CRITICAL CONFLICT RESOLVED:** The initial draft of this summary recommended `@next/third-parties/google` for GTM integration. This recommendation is **overturned.** Three of four researchers independently confirmed that `@next/third-parties/google`'s `GoogleTagManager` component has no built-in Google Consent Mode v2 support. The `dataLayer` prop pushes data after GTM initializes, which is too late for consent defaults -- a direct GDPR violation. This is a known, unresolved gap documented in vercel/next.js GitHub discussions #64497, #66718, and #67440. The correct approach is **manual GTM via `next/script`** (built into Next.js), using `strategy="beforeInteractive"` for consent defaults and `strategy="afterInteractive"` for the GTM container. This gives full, explicit control over the consent-before-GTM loading order that Consent Mode v2 requires.
 
-Key risks are: (1) flat/robotic Spanish copy that fails to connect with LatAm audiences — mitigated by writing Spanish first, not translating from English, and getting native speaker review; (2) missing WhatsApp as a contact channel — critical for LatAm where WhatsApp is the preferred business communication tool; (3) Resend domain verification left to launch day — should be set up early during infrastructure phase. Vercel Hobby plan prohibits commercial use; Pro ($20/mo) is needed before go-live.
+Cookie consent and analytics are architecturally intertwined and must be built as a single phase. The privacy policy update is a non-optional prerequisite: the current cookies section explicitly states "we do not use tracking cookies," which becomes false the moment GA4 goes live. Case studies and messaging updates are entirely independent tracks -- pure content changes to existing i18n JSON files and new Server Components following established patterns.
 
 ## Key Findings
 
 ### Recommended Stack
 
-Next.js 16.1.x on Vercel with Tailwind CSS 4.x and next-intl 4.8.x for bilingual routing. Contact form uses react-hook-form + Zod 4.x for validation, Server Action for submission, and Resend 6.9.x for email delivery. Analytics via @next/third-parties GTM integration.
+v1.1 requires **zero new npm packages.** The only external services are Google Tag Manager and Google Analytics 4, which are cloud services with no package installation required. The `NEXT_PUBLIC_GTM_ID` environment variable is the only new configuration item in the codebase.
 
 **Core technologies:**
-- **Next.js 16.1.x + React 19.2.x**: Static generation, App Router, Server Actions — native Vercel platform
-- **next-intl 4.8.x**: Bilingual ES/EN routing with `[locale]` segments and proxy.ts — de facto i18n standard for App Router
-- **Tailwind CSS 4.1.x**: Utility-first CSS, zero-config content detection, CSS-first configuration — 5x faster builds in v4
-- **Resend 6.9.x**: Email delivery API, 100 emails/day free tier — simplest form delivery option
-- **react-hook-form 7.x + Zod 4.x**: Form validation with type-safe schemas shared between client and server
-- **@next/third-parties**: Official GTM/GA4 integration with optimized loading
+- `next/script` (built-in): GTM loading with precise strategy control -- `beforeInteractive` for consent defaults, `afterInteractive` for the GTM container. Only approach that guarantees consent fires before GTM evaluates.
+- `Google Tag Manager` (cloud service): Single hub for all tags. GA4 is configured as a tag inside GTM, not as a standalone script alongside it. Prevents the dual-snippet duplicate-event problem.
+- `Google Analytics 4` (cloud service): Configured inside GTM, not in code. `NEXT_PUBLIC_GTM_ID` is the only ID that belongs in the Next.js environment.
+- `next-intl` (existing, 4.8.3): Case study content, consent banner text, and all messaging updates live in `messages/es.json` and `messages/en.json`. Bilingual support is automatic.
+- Custom consent component (no library): ~100-150 lines of React + `localStorage` + `document.cookie`. The project's existing UI toolkit (Tailwind, clsx, tailwind-merge, next-intl) is sufficient. No external consent library justified for analytics-only, accept/decline consent.
 
-See: `.planning/research/STACK.md` for full version matrix and compatibility notes.
+**What NOT to add:**
+- `@next/third-parties` -- disqualified by lack of Consent Mode v2 support (GitHub #64497, #66718, #67440)
+- `react-cookie-consent` -- 15KB for ~100 lines of custom code; ships CSS that conflicts with Tailwind
+- `@next/mdx` / any CMS -- 3 structured case studies in translation JSON files is the correct pattern
+- `js-cookie` -- `document.cookie` API is sufficient for one consent cookie
 
 ### Expected Features
 
-**Must have (table stakes):**
-- Hero with clear value proposition and primary CTA
-- 4-page structure (Home, Bio, Services, Contact)
-- Mobile-responsive layout (60%+ LatAm traffic is mobile)
-- Contact form with email delivery
-- Spanish as primary language
-- Basic SEO (meta tags, semantic HTML)
-- SSL/HTTPS
-- Privacy policy (legal requirement in LatAm)
-- Entry offer prominently positioned ("45-min diagnostic call")
-- "How it works" process section
+**Must have (table stakes for v1.1):**
+- Cookie consent banner -- binary accept/decline for analytics. Bilingual via next-intl. Stores state in `localStorage` AND a cookie with `path=/` (to survive locale switches). Calls `gtag('consent', 'update', ...)` on choice.
+- GA4 via GTM integration -- GTM as the single hub. Manual `next/script` implementation with Consent Mode v2. Respects consent state. Automatic page view tracking.
+- Custom event tracking -- 5 events: `cta_click` (with location), `form_start`, `form_submit`, `form_success`, `whatsapp_click`. Pushed to `window.dataLayer` unconditionally; GTM/Consent Mode handles the gating.
+- 3 anonymized case studies -- Challenge/Intervention/Result format. Mapped to distinct service lines. Stored in i18n JSON, rendered as Server Components on home page. No new routes.
+- Concrete diagnostic CTA copy -- update CTA text to specify a deliverable ("you receive a prioritized action brief"). Pure i18n message changes.
+- Privacy policy update -- **prerequisite, not optional.** Must update cookies section to accurately describe GA4 analytics cookies before the consent banner goes live.
+- Vercel deployment -- production hosting with environment variables.
 
-**Should have (competitive):**
-- Bilingual toggle (ES/EN) — few LatAm consultants offer this
-- WhatsApp CTA — critical for LatAm conversion
-- Structured data / Schema.org markup
-- GA4 with custom events
-- Open Graph meta for LinkedIn/WhatsApp sharing
-- Subtle micro-interactions (scroll reveals, hover states)
+**Should have (competitive, can defer to v1.1.x):**
+- LatAm differentiation messaging -- sharpen after seeing GA4 geo data from initial traffic.
+- Competitive positioning content -- add after validating case study engagement via scroll-depth data.
+- Distributed social proof placement -- move case study highlights to contact page once initial placement is validated.
 
-**Defer (v2+):**
-- Blog / content section (requires ongoing content commitment)
-- Calendly / booking widget (some friction is appropriate for consulting)
-- Case studies (need completed engagements first)
-- Newsletter / email capture (needs ESP and content strategy)
-
-See: `.planning/research/FEATURES.md` for full feature matrix and anti-features list.
+**Defer to v1.2+:**
+- Named testimonials -- requires real client consent not yet secured.
+- Heatmaps / session recording -- warranted only when traffic exceeds 500 sessions/week.
+- A/B testing -- statistical power requires 100+ conversions/week per variant.
+- Case study detail pages -- warranted when there are 6+ case studies.
 
 ### Architecture Approach
 
-Static-first multi-page site with locale-prefixed routing (`/es/`, `/en/`). All pages are statically generated at build time via `generateStaticParams`. The only server-side interaction is the contact form Server Action calling Resend. GTM loads in root layout; GA4 is configured inside GTM (not as a separate script). Translation strings live in `messages/es.json` and `messages/en.json`, never hardcoded in components.
+The architecture follows existing patterns throughout. GTM scripts and the consent provider integrate at the `[locale]/layout.tsx` level. `AnalyticsProvider` (consent defaults + GTM script) sits outside `NextIntlClientProvider` because it needs no translations and must load as early as possible. `CookieConsentBanner` sits inside `NextIntlClientProvider` because it uses `useTranslations('consent')`. Case studies are pure Server Components reading from `messages/*.json` via `getTranslations('caseStudies')`. CTA tracking uses a `TrackedCTA` leaf Client Component wrapper so parent Server Components (HeroSection, CtaBand, ServicesCta) remain server-rendered.
 
 **Major components:**
-1. **Presentation Layer** — 4 page components under `app/[locale]/`, shared layout with nav + footer
-2. **Internationalization Layer** — next-intl middleware (proxy.ts in Next.js 16), locale routing, message files
-3. **Integration Layer** — Server Action for Resend email, GTM for analytics, generateMetadata for SEO
-4. **Infrastructure** — Vercel hosting (CDN for static, serverless for form action)
 
-**Build order:** i18n scaffolding → layout shell → pages (parallel) → contact form → polish (SEO, analytics, a11y)
+1. `AnalyticsProvider` (Client Component, `src/components/analytics/analytics-provider.tsx`) -- renders two `<Script>` tags: consent defaults with `beforeInteractive`, GTM container with `afterInteractive`.
+2. `CookieConsentBanner` (Client Component, `src/components/analytics/cookie-consent.tsx`) -- consent UI, reads/writes `localStorage` + `cookie`, calls `gtag('consent', 'update', ...)`, uses `useTranslations('consent')`.
+3. `TrackedCTA` (Client Component, `src/components/analytics/tracked-cta.tsx`) -- wraps `<Link>` with `dataLayer.push()` on click. Keeps parent sections as Server Components.
+4. `CaseStudiesSection` + `CaseStudyCard` (Server Components, `src/components/case-studies/`) -- static content from i18n JSON, zero JS shipped to client.
+5. Modified files: `layout.tsx` (add providers), `contact-form.tsx` (form events), `hero-section.tsx` / `cta-band.tsx` / `services-cta.tsx` (use TrackedCTA), `messages/*.json` (caseStudies, consent, privacy namespaces).
 
-See: `.planning/research/ARCHITECTURE.md` for full system diagram, data flows, and project structure.
+**No new routes.** Case studies are a section on the home page, between `<ProcessSection>` and `<CtaBand>`.
 
 ### Critical Pitfalls
 
-1. **Robotic neutral Spanish** — AI-generated "espanol neutro" reads like a manual. Write Spanish first (not translate from English), use Mexican Spanish as base, do a "warmth pass," get native speaker review.
-2. **i18n bolted on late** — Retrofitting bilingual support touches every component. Set up `[locale]` route segments, middleware, and translation keys from the first commit.
-3. **Contact form spam** — Bots find the endpoint fast. Layer: honeypot field + Zod validation + rate limiting. Resend free tier has hard limits (100/day).
-4. **Missing WhatsApp CTA** — LatAm founders prefer WhatsApp over email. Add `wa.me` link as primary/secondary CTA. Trivial to implement, outsized conversion impact.
-5. **Resend domain not verified at launch** — DNS propagation takes 24-48 hours. Verify domain early, not at launch. Test deliverability to Gmail/Outlook/Yahoo.
-6. **SEO metadata not localized** — Each locale needs its own title, description, OG tags, and hreflang tags. Configure `generateMetadata` to be locale-aware from the start.
+1. **`@next/third-parties` with Consent Mode v2** -- Do NOT use. The `GoogleTagManager` component does not set consent defaults before GTM boots. Use `next/script` with `beforeInteractive` for the consent init script and `afterInteractive` for GTM. This is non-negotiable for GDPR compliance. (Source: GitHub #64497, #66718, #67440, confirmed by 3/4 researchers independently.)
 
-See: `.planning/research/PITFALLS.md` for full pitfall analysis with warning signs and recovery strategies.
+2. **Consent banner that does not actually block scripts** -- A cosmetic banner that shows UI without wiring to `gtag('consent', 'default/update', ...)` is a compliance failure. Consent defaults must be set BEFORE GTM loads. `gtag('consent', 'update', ...)` must fire when the user makes a choice. GTM should always load (for Consent Mode modeling), but in denied state.
+
+3. **Consent cookie scoped to locale path** -- Storing the consent cookie with `path=/es/` or `path=/en/` means consent is lost when the user switches locale. Cookie must use `path=/` and a locale-agnostic name (`cookie_consent`). Test explicitly: accept on `/es/`, verify banner does not reappear on `/en/`.
+
+4. **Dual GTM + GA4 snippet (duplicate events)** -- Only one analytics entry in `layout.tsx`: the GTM container. GA4 Measurement ID lives inside the GTM console, never in the Next.js code. Verify in Network tab: `gtm.js` request visible, no separate `gtag/js` request.
+
+5. **Privacy policy not updated before analytics launch** -- The current privacy policy explicitly states no tracking cookies are used. This is a legal prerequisite, not a nice-to-have. Update both `messages/es.json` and `messages/en.json` privacy/cookies sections before the consent banner ships to production.
 
 ## Implications for Roadmap
 
-Based on research, suggested phase structure:
+Based on research, the key structural insight is that **cookie consent and analytics must be a single phase**, not sequential. The consent mechanism is architecturally intertwined with GTM initialization -- one cannot be tested or validated without the other. Case studies and messaging updates are fully independent and can be built in parallel with the analytics phase.
 
-### Phase 1: Project Foundation & i18n Scaffolding
-**Rationale:** i18n is the costliest thing to retrofit. Must be foundational, not an afterthought.
-**Delivers:** Next.js 16 project, Tailwind 4 config, next-intl routing with `[locale]` segments, proxy.ts, message files skeleton, design tokens, global styles, font loading.
-**Addresses:** Table stakes (project setup), pitfall #2 (i18n bolted on late)
-**Avoids:** The most expensive pitfall — rebuilding routing after pages exist.
+### Phase 1: Privacy Policy Update (Prerequisite)
 
-### Phase 2: Layout Shell & Navigation
-**Rationale:** All pages render inside the layout. Nav and footer are shared across every page.
-**Delivers:** Root layout with GTM, responsive navbar with language toggle, footer, shared UI primitives (button, section wrapper, card).
-**Addresses:** Table stakes (navigation, language toggle), pitfall #6 (metadata architecture)
+**Rationale:** Non-negotiable prerequisite before analytics goes live. The existing privacy policy states "we do not use tracking cookies" -- this must be corrected before consent or analytics touches production. Content-only change with zero code impact.
+**Delivers:** Legally accurate disclosure of GA4 analytics cookies in both languages.
+**Addresses:** Privacy policy cookies section update (both locales).
+**Avoids:** Legal exposure from shipping analytics before correcting the privacy policy.
+**Research flag:** No research needed. Pure content edit to existing translation JSON files.
 
-### Phase 3: Page Content — Home
-**Rationale:** Home page is the primary landing page and conversion entry point.
-**Delivers:** Hero section with CTA, problem/solution section, services preview, "how it works" summary, CTA band. Spanish + English copy.
-**Addresses:** Table stakes (hero, value proposition, entry offer CTA)
+### Phase 2: Analytics Foundation + Cookie Consent (Combined)
 
-### Phase 4: Page Content — Bio & Services
-**Rationale:** Can be built in parallel. Both are content pages with no server interaction.
-**Delivers:** Bio page (credentials, story, social proof placeholder), Services page (4 service cards, method steps, FAQ section). Spanish + English copy.
-**Addresses:** Table stakes (services, bio, FAQ), differentiator (outcome-based service descriptions)
+**Rationale:** These two features are architecturally inseparable. Analytics infrastructure (AnalyticsProvider with consent defaults + GTM) must exist before the consent banner can be wired and tested. The consent banner cannot be validated without GTM loaded. Building them sequentially would require re-testing the analytics setup after adding consent. Build together, test together.
+**Delivers:** GTM loading with Consent Mode v2 defaults (denied), functional consent banner in ES+EN, verified end-to-end flow: denied by default, granted on accept, persists across locale switches, persists across sessions.
+**Addresses:** GA4/GTM integration, cookie consent banner, Consent Mode v2, consent persistence.
+**Avoids:** Cosmetic-only consent banner, consent lost on locale switch, duplicate tracking snippets, analytics firing before consent.
+**Uses:** `next/script` built-in, `NEXT_PUBLIC_GTM_ID` env var, `messages/*.json` consent namespace.
+**Research flag:** No additional research needed. Implementation pattern is fully documented in ARCHITECTURE.md. Key verification: GTM Preview mode + Network tab before and after consent interaction.
 
-### Phase 5: Contact Form & Email Delivery
-**Rationale:** Depends on page structure existing. The only server-side interaction.
-**Delivers:** Contact form (react-hook-form + Zod), Server Action with Resend, honeypot anti-spam, success/error states, WhatsApp CTA.
-**Addresses:** Table stakes (contact form, email delivery), pitfall #3 (spam), pitfall #4 (WhatsApp CTA)
+### Phase 3: Custom Event Tracking
 
-### Phase 6: Analytics & Event Tracking
-**Rationale:** Pages must exist before analytics can track them. Layout-level integration.
-**Delivers:** GTM container config, GA4 via GTM, custom events (CTA clicks, form start/submit/success, language toggle), cookie consent banner.
-**Addresses:** Differentiator (GA4 custom events), pitfall (GA4 not tracking language)
+**Rationale:** Depends on Phase 2 (consent + GTM must be operational). Events are built on top of a working dataLayer. All content (CTAs, form) should be finalized before wiring events so event names and locations are stable.
+**Delivers:** 5 events tracked through the conversion funnel: `cta_click` (hero/cta-band/services), `form_start`, `form_submit`, `form_success`, `whatsapp_click`. Verified in GA4 DebugView with consent granted.
+**Addresses:** CTA click attribution, form funnel visibility, WhatsApp engagement tracking.
+**Avoids:** Events firing before GTM is ready (dataLayer initialized inline, queue processes on GTM boot), client-side consent checks that duplicate GTM's built-in consent gating.
+**Implements:** `TrackedCTA` wrapper pattern preserving Server Component parents.
+**Research flag:** No additional research needed. Pattern is fully specified in ARCHITECTURE.md.
 
-### Phase 7: SEO, Accessibility & Performance
-**Rationale:** Final polish pass. Touches every page but blocks nothing.
-**Delivers:** Localized generateMetadata per page, hreflang tags, Schema.org (Person + ProfessionalService), OG images, sitemap, robots.txt, a11y audit (contrast, keyboard nav, focus indicators), Lighthouse optimization, privacy policy page.
-**Addresses:** Table stakes (SEO, a11y, privacy policy), pitfall #5 (SEO not localized), pitfall #6 (Resend domain)
+### Phase 4: Case Studies
 
-### Phase 8: QA, Deployment & Launch Prep
-**Rationale:** Final verification before go-live.
-**Delivers:** Cross-browser testing, mobile device testing, form end-to-end test in production, Resend domain verification, Vercel Pro upgrade, custom domain config, "looks done but isn't" checklist completion.
-**Addresses:** All verification items from pitfalls research
+**Rationale:** Fully independent of Phases 1-3. Zero shared dependencies with the analytics track (different components, different JSON namespaces, different sections of layout.tsx). Can be built in parallel with Phase 2-3 if resources allow, or sequentially after.
+**Delivers:** 3 anonymized case studies in ES+EN rendered on home page between ProcessSection and CtaBand. Challenge/Intervention/Result format with concrete metrics. Replaces the empty `SocialProofSection` placeholder on bio page.
+**Addresses:** Social proof gap, empty promise section on bio, conversion evidence for prospects.
+**Avoids:** MDX overhead (JSON is correct for 3 structured items), vague anonymization (specific descriptors + concrete numbers required), separate route (inline section is more effective for conversion at this scale).
+**Research flag:** No additional research needed. Pattern identical to existing services/FAQ content in translation files.
+
+### Phase 5: Messaging Refinements
+
+**Rationale:** Pure content changes with zero code dependencies. Can be parallelized with any other phase. Suggested after case studies so CTA copy refinements and positioning language can be validated against the social proof context that surrounds them.
+**Delivers:** Updated hero subtitle with LatAm differentiation, concrete diagnostic CTA copy specifying a deliverable, competitive positioning content on services page. All changes via `messages/*.json` edits.
+**Addresses:** LatAm value proposition, diagnostic CTA deliverable framing, solo consultant vs platforms positioning.
+**Avoids:** Copy that breaks mobile layout (test at 375px in ES, the longer language, before committing).
+**Research flag:** No additional research needed. Mobile layout testing is the main verification requirement.
+
+### Phase 6: Vercel Deployment
+
+**Rationale:** Final phase after all features are built and tested locally. Infrastructure configuration, not code -- but depends on all code being production-ready.
+**Delivers:** Production deployment at custom domain. `NEXT_PUBLIC_GTM_ID` configured in Vercel environment variables. Vercel Pro plan for commercial hosting.
+**Addresses:** Production hosting, environment variable configuration, GTM ID live in production.
+**Research flag:** Standard Vercel deployment, no research needed. DNS configuration may require brief reference if deploying to a custom domain.
 
 ### Phase Ordering Rationale
 
-- **i18n first** because retrofitting is the most expensive pitfall (HIGH recovery cost)
-- **Layout before pages** because pages render inside it
-- **Pages before form** because the form needs a page to live on
-- **Pages can be parallel** (Home, Bio, Services are independent of each other)
-- **Analytics after pages** because events need targets to track
-- **SEO/a11y last** because it touches everything and benefits from stable content
-- **QA last** because it validates the whole system
+- Privacy policy update comes first because it is a legal prerequisite that unblocks analytics going to production.
+- Analytics + consent are combined into one phase because they are architecturally inseparable -- consent defaults must be tested against a live GTM setup.
+- Event tracking follows analytics because it depends on a working dataLayer + GTM, and should be built after content elements (CTAs, form) are finalized.
+- Case studies are fully independent and could run in parallel with analytics, but are placed sequentially for developer focus.
+- Messaging refinements are pure content and could run in any order; placed late so they can be written with case study context in mind.
+- Deployment is last by definition.
 
 ### Research Flags
 
-Phases likely needing deeper research during planning:
-- **Phase 1:** next-intl 4.x + Next.js 16 proxy.ts integration — the rename from middleware.ts is new and patterns are evolving
-- **Phase 5:** Resend Server Action pattern, rate limiting on Vercel serverless (stateless, can't use in-memory counters)
+Phases needing deeper research during planning:
+- None identified. All implementation patterns are fully documented across STACK.md, FEATURES.md, ARCHITECTURE.md, and PITFALLS.md with code examples.
 
-Phases with standard patterns (skip research-phase):
-- **Phase 2:** Standard responsive nav + footer patterns
-- **Phase 3-4:** Content pages with standard section components
-- **Phase 6:** @next/third-parties GTM integration is well-documented
+Phases with standard, well-documented patterns (skip `/gsd:research-phase`):
+- **Phase 1 (Privacy Policy):** Pure content edit, no research needed.
+- **Phase 2 (Analytics + Consent):** Fully specified. Key implementation reference: ARCHITECTURE.md Pattern 1 and Pattern 2.
+- **Phase 3 (Event Tracking):** Fully specified. Key implementation reference: ARCHITECTURE.md Pattern 3.
+- **Phase 4 (Case Studies):** Fully specified. Key implementation reference: ARCHITECTURE.md Pattern 4.
+- **Phase 5 (Messaging):** Content edits with mobile verification step.
+- **Phase 6 (Deployment):** Standard Vercel workflow.
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | HIGH | All versions verified via npm and official docs. Compatibility matrix validated. |
-| Features | HIGH | Research from multiple consulting website guides, competitor analysis, LatAm market sources. |
-| Architecture | HIGH | Standard Next.js App Router patterns verified against official docs. next-intl setup confirmed. |
-| Pitfalls | MEDIUM-HIGH | Technical pitfalls well-documented. LatAm-specific items (WhatsApp, Spanish tone) based on ecosystem patterns, not quantitative data. |
+| Stack | HIGH | Zero new npm packages conclusion reached independently by all researchers. `@next/third-parties` disqualification verified via 3 GitHub issues and official docs. `next/script` pattern confirmed by multiple authoritative sources including Simo Ahava and Google official docs. |
+| Features | HIGH | Feature list clearly scoped. Conflict between FEATURES.md (recommended `@next/third-parties`) and STACK.md/ARCHITECTURE.md/PITFALLS.md (all rejected it) is resolved: manual `next/script` is the consensus approach. The `sendGTMEvent` wrapper is trivially replaced by one line of `window.dataLayer.push()`. |
+| Architecture | HIGH | Component boundaries and data flow fully specified with code examples. Integration points (locale layout, TrackedCTA pattern, consent state machine) are concrete and follow existing project conventions. |
+| Pitfalls | MEDIUM-HIGH | Consent mode and GTM integration pitfalls verified across official docs and multiple independent community sources. Case study content quality pitfall is based on best practices from marketing research, not technical verification. |
 
 **Overall confidence:** HIGH
 
 ### Gaps to Address
 
-- **Copy quality:** Generated Spanish copy needs native speaker validation. Cannot be verified by code alone.
-- **Resend domain:** Depends on domain purchase (not yet done). Verification must happen before launch.
-- **Vercel commercial terms:** Pro plan ($20/mo) needed before publicly promoting. Can develop on Hobby.
-- **WhatsApp number:** Need a dedicated business WhatsApp number for the CTA.
-- **Professional photo:** Bio page needs a headshot. Placeholder needed until provided.
-- **Testimonials:** Social proof section will need placeholder design until real testimonials are available.
+- **GTM container setup:** Creating a GTM account and container is a prerequisite for Phase 2. This is an account/configuration task outside code scope. Must be done before starting Phase 2 implementation.
+- **GA4 property setup:** Must create a GA4 property and link it as a tag inside GTM before Phase 2 testing. Similarly a configuration prerequisite.
+- **Case study content authorship:** The 3 narratives need to be written (anonymized real engagements with specific metrics). Research confirms structure (Problem/Intervention/Result/metric) but content authoring is outside technical scope and should happen before Phase 4 begins.
+- **GTM container ID:** `NEXT_PUBLIC_GTM_ID` value (`GTM-XXXXXXX`) is not determined until the GTM account is created. Phase 2 can begin with a placeholder; the real ID is needed for testing.
+- **Custom domain DNS:** If deploying to a custom domain during Phase 6, DNS configuration is needed. Vercel handles SSL automatically; DNS propagation can take up to 24 hours.
 
 ## Sources
 
 ### Primary (HIGH confidence)
-- Next.js 16.1 official blog and docs — framework, proxy.ts, App Router
-- next-intl 4.x official docs — i18n routing, App Router setup
-- Resend official docs — Next.js integration, domain verification
-- Tailwind CSS v4 release blog — configuration, performance
-- Vercel docs — hosting plans, commercial terms, environment variables
-- npm registry — all package versions verified
+- [Google Consent Mode v2 Official Docs](https://developers.google.com/tag-platform/security/guides/consent) -- Consent default/update API, required parameters, loading order requirements.
+- [Next.js Third-Party Libraries Guide](https://nextjs.org/docs/app/guides/third-party-libraries) -- Confirmed `GoogleTagManager` props, official recommendation for GTM-only vs combined GA4+GTM.
+- [vercel/next.js Discussion #64497](https://github.com/vercel/next.js/discussions/64497) -- Consent mode not built into `@next/third-parties`, manual `next/script` required.
+- [vercel/next.js Discussion #66718](https://github.com/vercel/next.js/discussions/66718) -- Confirms no consent mode support in `GoogleAnalytics` component from `@next/third-parties`.
+- [vercel/next.js Discussion #67440](https://github.com/vercel/next.js/discussions/67440) -- Additional confirmation of `@next/third-parties` consent mode gap.
+- [Simo Ahava: Consent Mode v2 for Google Tags](https://www.simoahava.com/analytics/consent-mode-v2-google-tags/) -- Authoritative analytics expert on GTM consent implementation patterns.
+- [Vercel Environment Variables Docs](https://vercel.com/docs/environment-variables) -- `NEXT_PUBLIC_` prefix requirement for client-side access.
 
 ### Secondary (MEDIUM confidence)
-- Consulting website design guides (Knapsack Creative, Consulting Success, Squarespace)
-- LatAm market sources (Greenbook, Consultancy.lat, UXpa Magazine)
-- Spanish localization guides (Nimdzi, Vera Content, Trusted Translations)
-- Form optimization research (WPForms, SmartBug Media)
+- [GTM Consent Mode v2 in React (Cloud66)](https://blog.cloud66.com/google-tag-manager-consent-mode-v2-in-react) -- Practical `beforeInteractive` + `afterInteractive` implementation pattern.
+- [GTM with Consent Mode in Next.js (Aclarify)](https://www.aclarify.com/blog/how-to-set-up-google-tag-manager-with-consent-mode-in-nextjs) -- Confirmed consent-before-GTM ordering requirement.
+- [Cookie Consent in Next.js 15 (BuildWithMatija)](https://www.buildwithmatija.com/blog/build-cookie-consent-banner-nextjs-15-server-client) -- No-library approach confirmed viable for Next.js 15+.
+- [GA4 in Next.js 13 with GDPR consent (Gaudion.dev)](https://gaudion.dev/blog/setup-google-analytics-with-gdpr-compliant-cookie-consent-in-nextjs13) -- Working consent update pattern.
+- [Top 7 Consent Mode Mistakes (Bounteous)](https://www.bounteous.com/insights/2025/07/30/top-7-google-consent-mode-mistakes-and-how-fix-them-2025/) -- Common pitfalls list.
+- [Blue Seedling: Anonymous Case Studies as Secret Weapon](https://www.blueseedling.com/blog/how-to-make-anonymous-case-studies-your-secret-weapon/) -- Anonymization strategies, specificity over logos.
+- [Knapsack Creative: Social Proof on Consulting Websites](https://knapsackcreative.com/blog-industry/consulting-website-social-proof) -- Social proof types and strategic placement.
+- [Mimiran: CTAs That Convert for Consultants](https://www.mimiran.com/calls-to-action-that-convert-for-independent-consultant-websites/) -- Deliverable framing for diagnostic CTAs.
+- [Cookie consent on multilingual sites (CookieScript)](https://cookie-script.com/documentation/cookie-consent-on-multilingual-website) -- `path=/` requirement for locale-agnostic consent persistence.
 
 ### Tertiary (LOW confidence)
-- Medium articles on i18n patterns — useful for patterns but not authoritative
-- GA4 multilingual tracking guides — approaches vary, needs testing
+- [Google Analytics GA4 Implementation for Next.js 16 (Medium)](https://medium.com/@aashari/google-analytics-ga4-implementation-guide-for-next-js-16-a7bbf267dbaa) -- Directional guidance on environment variable naming; details verified against official sources.
 
 ---
-*Research completed: 2026-02-16*
+*Research completed: 2026-02-27*
 *Ready for roadmap: yes*
