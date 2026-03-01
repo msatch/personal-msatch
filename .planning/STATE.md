@@ -18,14 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 10 complete -- all messaging & positioning done (v1.1 Proof & Trust)
+**Current focus:** Phase 7 Deployment & Launch -- preparing production deployment (v1.1 Proof & Trust)
 
 ## Current Position
 
-Phase: 10 of 10 (Messaging & Positioning) -- COMPLETE
-Plan: 2 of 2 complete
-Status: Phase 10 complete -- competitive positioning section added to services page
-Last activity: 2026-03-01 — Plan 10-02 complete (competitive positioning section + services page integration)
+Phase: 7 of 10 (Deployment & Launch)
+Plan: 1 of 2 in progress (Task 1 complete, Task 2 checkpoint: human-action)
+Status: 07-01 paused at checkpoint -- awaiting Vercel deployment and env var configuration
+Last activity: 2026-03-01 -- Plan 07-01 Task 1 complete (pre-deployment code preparation)
 
 Progress: [████████████████████] 100% (18/18 plans)
 
@@ -90,7 +90,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- WhatsApp button has placeholder phone number (5215512345678) -- update when business number is known
+- ~~WhatsApp button has placeholder phone number (5215512345678) -- update when business number is known~~ RESOLVED in 07-01 (now reads from NEXT_PUBLIC_WHATSAPP_NUMBER env var)
 - Professional headshot needed for Bio page (BIO-02 uses placeholder initially)
 - Resend domain verification needs 24-48 hours DNS propagation -- start before Phase 7
 - GTM container and GA4 property must be created (cloud config) before Phase 8 testing
@@ -99,5 +99,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 10-02-PLAN.md -- Phase 10 complete (all plans)
+Stopped at: 07-01-PLAN.md Task 2 checkpoint (human-action: Vercel deployment and env var configuration)
 Resume file: None
