@@ -33,7 +33,10 @@ const sectionItemCounts: Record<string, string[]> = {
   dataCollected: ['1', '2', '3', '4', '5'],
   dataUsage: ['1', '2', '3'],
   userRights: ['1', '2', '3'],
+  cookies: ['1', '2', '3'],
 };
+
+const sectionsWithControl = ['cookies'] as const;
 
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -70,6 +73,11 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                   </li>
                 ))}
               </ul>
+            )}
+            {sectionsWithControl.includes(key as typeof sectionsWithControl[number]) && (
+              <p className="mt-4 text-base md:text-lg leading-relaxed">
+                {t(`sections.${key}.control`)}
+              </p>
             )}
           </section>
         ))}
