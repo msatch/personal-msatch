@@ -356,6 +356,35 @@
     "ctaBand": {
       "title": "¿Listo para convertir tus objetivos en resultados?",
       "subtitle": "Agenda una llamada de diagnóstico gratuita y recibe un plan de acción personalizado para tu empresa."
+    },
+    "caseStudies": {
+      "title": "Resultados reales de proyectos reales",
+      "subtitle": "Ejemplos anonimizados de consultorias recientes, cada uno con un camino claro del desafio al resultado medible.",
+      "labels": {
+        "problem": "El desafio",
+        "intervention": "La intervencion",
+        "result": "El resultado"
+      },
+      "items": {
+        "1": {
+          "industry": "Fintech Serie A -- equipo de ingenieria de 12 personas",
+          "problem": "El equipo lanzaba funcionalidades pero los ciclos de entrega tomaban 6 semanas. Los plazos se incumplian constantemente y el esfuerzo de ingenieria no se traducia en resultados de negocio.",
+          "intervention": "Reestructure la cadencia de sprints, elimine las dependencias entre equipos que bloqueaban los releases e introduje metricas de entrega vinculadas a objetivos comerciales.",
+          "result": "Los ciclos de entrega se redujeron de 6 semanas a 2 semanas. La tasa de entregas a tiempo paso de ~40% a 85% en 3 meses."
+        },
+        "2": {
+          "industry": "Empresa de logistica mediana -- 45 empleados, equipo de desarrollo de 8 personas",
+          "problem": "Las decisiones de tecnologia se tomaban sin alineacion estrategica. La arquitectura acumulaba deuda tecnica y no existia una hoja de ruta que conectara la tecnologia con los planes de crecimiento del negocio.",
+          "intervention": "Realice una revision completa de la arquitectura, mapee las capacidades tecnicas contra los objetivos de negocio y entregue una hoja de ruta tecnica a 12 meses con hitos trimestrales.",
+          "result": "La hoja de ruta quedo alineada con el plan de crecimiento. Los primeros dos trimestres se ejecutaron segun lo planificado y la velocidad del equipo aumento un 35% tras la limpieza de dependencias."
+        },
+        "3": {
+          "industry": "Plataforma SaaS regional -- Serie B, equipo de producto e ingenieria de 30 personas",
+          "problem": "Producto e ingenieria operaban como silos separados. La produccion de los sprints estaba desconectada de las prioridades comerciales y los lanzamientos no movian las metricas clave del negocio.",
+          "intervention": "Facilite talleres multifuncionales para definir OKRs compartidos y redisene el framework de priorizacion para vincular cada item del sprint con un resultado de negocio medible.",
+          "result": "La produccion de sprints con impacto medible en el negocio paso del 30% al 75%. El tiempo de lanzamiento de funcionalidades generadoras de ingreso se redujo un 40%."
+        }
+      }
     }
   },
   "footer": {

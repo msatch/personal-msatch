@@ -356,6 +356,35 @@
     "ctaBand": {
       "title": "Ready to turn your goals into results?",
       "subtitle": "Book a free diagnostic call and receive a personalized action plan for your company."
+    },
+    "caseStudies": {
+      "title": "Real results from real engagements",
+      "subtitle": "Anonymized examples from recent consulting engagements, each showing a clear path from challenge to measurable outcome.",
+      "labels": {
+        "problem": "The challenge",
+        "intervention": "The intervention",
+        "result": "The outcome"
+      },
+      "items": {
+        "1": {
+          "industry": "Series A Fintech -- 12-person engineering team",
+          "problem": "The team was shipping features but delivery cycles stretched to 6 weeks. Deadlines were consistently missed, and engineering effort was not translating into business results.",
+          "intervention": "Restructured the sprint cadence, eliminated cross-team dependencies blocking releases, and introduced delivery metrics tied to business outcomes.",
+          "result": "Delivery cycles shortened from 6 weeks to 2 weeks. On-time delivery rate went from ~40% to 85% within 3 months."
+        },
+        "2": {
+          "industry": "Mid-size logistics company -- 45 employees, 8-person development team",
+          "problem": "Technology decisions were being made without strategic alignment. The architecture had accumulated significant technical debt, and there was no roadmap connecting technical work to business growth.",
+          "intervention": "Conducted a full architecture review, mapped technical capabilities to business objectives, and delivered a 12-month technical roadmap with quarterly milestones.",
+          "result": "Technical roadmap aligned with the business growth plan. First two quarters delivered on schedule, and development team velocity increased 35% after dependency cleanup."
+        },
+        "3": {
+          "industry": "Regional SaaS platform -- Series B, 30-person product and engineering team",
+          "problem": "Product and engineering were operating in silos. Sprint output was disconnected from commercial priorities, and feature releases were not moving key business metrics.",
+          "intervention": "Facilitated cross-functional workshops to define shared OKRs and redesigned the prioritization framework to tie every sprint item to a measurable business outcome.",
+          "result": "Sprint output with measurable business impact increased from 30% to 75%. Time-to-market for revenue-generating features was cut by 40%."
+        }
+      }
     }
   },
   "footer": {
