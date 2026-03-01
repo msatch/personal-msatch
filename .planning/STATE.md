@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Proof & Trust
-status: unknown
-last_updated: "2026-03-01T01:01:57.412Z"
+status: in-progress
+last_updated: "2026-03-01T01:37:58Z"
 progress:
-  total_phases: 7
+  total_phases: 8
   completed_phases: 7
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 16
+  completed_plans: 15
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 8 — Privacy & Analytics Foundation (v1.1 Proof & Trust)
+**Current focus:** Phase 9 — Case Study Narratives (v1.1 Proof & Trust)
 
 ## Current Position
 
-Phase: 8 of 10 (Privacy & Analytics Foundation) — first v1.1 phase
-Plan: 2 of 2
-Status: Phase 8 complete — all plans executed
-Last activity: 2026-02-28 — Plan 08-02 complete (GTM analytics provider + cookie consent banner)
+Phase: 9 of 10 (Case Study Narratives)
+Plan: 1 of 2 complete
+Status: Plan 09-01 complete — bilingual case study content authored
+Last activity: 2026-02-28 — Plan 09-01 complete (bilingual case study narratives in translation files)
 
-Progress: [██████████████████░░] 90% (14/15 plans estimated)
+Progress: [██████████████████░░] 94% (15/16 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: 3 min
-- Total execution time: 0.70 hours
+- Total execution time: 0.72 hours
 
 **By Phase:**
 
@@ -47,9 +47,10 @@ Progress: [██████████████████░░] 90% (14
 | 5. Contact Form | 2/2 | 6 min | 3 min |
 | 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
 | 8. Privacy & Analytics Foundation | 2/2 | 5 min | 2.5 min |
+| 9. Case Study Narratives | 1/2 | 1 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 2 min, 3 min, 3 min, 2 min
+- Last 5 plans: 2 min, 3 min, 3 min, 2 min, 1 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -71,6 +72,8 @@ Recent decisions affecting current work:
 - [Phase 8-02]: bg-background used instead of bg-surface (bg-surface not in design system)
 - [Phase 8-02]: Dual persistence (localStorage + cookie with path=/) for consent across locale switches
 - [Phase 8-02]: AnalyticsProvider outside NextIntlClientProvider; CookieConsentBanner inside
+- [Phase 9-01]: Unaccented Spanish text maintained in case study content per existing convention
+- [Phase 9-01]: Labels: desafio/intervencion/resultado (ES) and challenge/intervention/outcome (EN)
 
 ### Pending Todos
 
@@ -82,10 +85,10 @@ None yet.
 - Professional headshot needed for Bio page (BIO-02 uses placeholder initially)
 - Resend domain verification needs 24-48 hours DNS propagation -- start before Phase 7
 - GTM container and GA4 property must be created (cloud config) before Phase 8 testing
-- Case study content (3 anonymized narratives) must be authored before Phase 9 implementation
+- ~~Case study content (3 anonymized narratives) must be authored before Phase 9 implementation~~ RESOLVED in 09-01
 
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 08-02-PLAN.md -- Phase 8 fully complete
+Stopped at: Completed 09-01-PLAN.md -- Case study content authored
 Resume file: None

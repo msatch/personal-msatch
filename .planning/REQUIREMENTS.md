@@ -94,8 +94,8 @@ Requirements for milestone v1.1: Proof & Trust. Adds social proof, messaging ref
 ### Social Proof
 
 - [ ] **PROOF-01**: Home page displays 3 anonymized case study narratives with problem/intervention/result structure — Phase 9
-- [ ] **PROOF-02**: Each case narrative includes industry context and specific measurable outcomes (timelines, team sizes, efficiency gains) — Phase 9
-- [ ] **PROOF-03**: Case study content is bilingual (ES/EN) via existing i18n message files — Phase 9
+- [x] **PROOF-02**: Each case narrative includes industry context and specific measurable outcomes (timelines, team sizes, efficiency gains) — Phase 9
+- [x] **PROOF-03**: Case study content is bilingual (ES/EN) via existing i18n message files — Phase 9
 
 ### Messaging
 
@@ -189,8 +189,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | ANLYT-02 | Phase 8 | Complete |
 | ANLYT-03 | Phase 8 | Complete |
 | PROOF-01 | Phase 9 | Pending |
-| PROOF-02 | Phase 9 | Pending |
-| PROOF-03 | Phase 9 | Pending |
+| PROOF-02 | Phase 9 | Complete |
+| PROOF-03 | Phase 9 | Complete |
 | MSG-01 | Phase 10 | Pending |
 | MSG-02 | Phase 10 | Pending |
 | MSG-03 | Phase 10 | Pending |
