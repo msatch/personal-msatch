@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Proof & Trust
-status: unknown
-last_updated: "2026-03-01T01:46:28.483Z"
+status: in-progress
+last_updated: "2026-03-01T17:43:06Z"
 progress:
-  total_phases: 8
+  total_phases: 9
   completed_phases: 8
-  total_plans: 16
-  completed_plans: 16
+  total_plans: 18
+  completed_plans: 17
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 9 complete — ready for Phase 10 (v1.1 Proof & Trust)
+**Current focus:** Phase 10 in progress -- messaging & positioning (v1.1 Proof & Trust)
 
 ## Current Position
 
-Phase: 9 of 10 (Case Study Narratives) -- COMPLETE
-Plan: 2 of 2 complete
-Status: Phase 9 complete — case study component integrated into home page
-Last activity: 2026-02-28 — Plan 09-02 complete (CaseStudiesSection integrated into home page)
+Phase: 10 of 10 (Messaging & Positioning) -- IN PROGRESS
+Plan: 1 of 2 complete
+Status: Plan 10-01 complete -- LatAm value props and deliverable CTAs rewritten
+Last activity: 2026-03-01 — Plan 10-01 complete (LatAm value proposition + deliverable CTA rewrite)
 
-Progress: [████████████████████] 100% (16/16 plans)
+Progress: [█████████████████░░░] 94% (17/18 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
+- Total plans completed: 17
 - Average duration: 3 min
-- Total execution time: 0.74 hours
+- Total execution time: 0.82 hours
 
 **By Phase:**
 
@@ -48,9 +48,10 @@ Progress: [████████████████████] 100% (1
 | 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
 | 8. Privacy & Analytics Foundation | 2/2 | 5 min | 2.5 min |
 | 9. Case Study Narratives | 2/2 | 2 min | 1 min |
+| 10. Messaging & Positioning | 1/2 | 5 min | 5 min |
 
 **Recent Trend:**
-- Last 5 plans: 3 min, 3 min, 2 min, 1 min, 1 min
+- Last 5 plans: 3 min, 2 min, 1 min, 1 min, 5 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -76,6 +77,9 @@ Recent decisions affecting current work:
 - [Phase 9-01]: Labels: desafio/intervencion/resultado (ES) and challenge/intervention/outcome (EN)
 - [Phase 9-02]: No delay on CaseStudiesSection ScrollReveal -- enters viewport independently
 - [Phase 9-02]: bg-muted/30 background on case studies section for visual rhythm alternation
+- [Phase 10-01]: Deliverable name: "brief de accion priorizado" (ES) / "prioritized action brief" (EN) -- consistent across all CTA touchpoints
+- [Phase 10-01]: Accented Spanish maintained for existing v1.0 keys; unaccented for Phase 8+ new keys
+- [Phase 10-01]: Spanish CTA button at 38 chars (under 40-char mobile limit)
 
 ### Pending Todos
 
@@ -91,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-28
-Stopped at: Completed 09-02-PLAN.md -- Phase 9 complete
+Last session: 2026-03-01
+Stopped at: Completed 10-01-PLAN.md -- Plan 10-01 complete
 Resume file: None
