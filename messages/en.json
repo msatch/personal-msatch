@@ -92,7 +92,7 @@
       "steps": {
         "1": {
           "title": "45-minute diagnostic",
-          "description": "We start with a free conversation where I learn about your current situation, your business goals, and the main obstacles your technical team faces. By the end of the call, we both know whether it makes sense to work together."
+          "description": "We start with a free session where I learn about your current situation, your business goals, and the main obstacles your technical team faces. By the end, you receive a prioritized action brief and we both know whether it makes sense to work together."
         },
         "2": {
           "title": "Deep assessment",
@@ -117,7 +117,7 @@
       "items": {
         "1": {
           "question": "What is the typical scope of an engagement?",
-          "answer": "It depends on your situation, but most engagements include diagnosis, an action plan, and hands-on execution support. Some clients need a focused intervention spanning a few weeks; others prefer ongoing support over several months. We define the scope together after the initial diagnostic."
+          "answer": "It depends on your situation, but most engagements include a diagnostic with a prioritized action brief, an execution plan, and hands-on support. Some clients need a focused intervention spanning a few weeks; others prefer ongoing support over several months. We define the scope together after the initial diagnostic."
         },
         "2": {
           "question": "How long does it take to see results?",
@@ -125,7 +125,7 @@
         },
         "3": {
           "question": "How does pricing work?",
-          "answer": "I use a value-based pricing model, not hourly rates. The price is set based on the scope of the engagement and the expected impact on your business. This aligns my incentives with your results: it is in my interest that you succeed. We discuss specifics after the free diagnostic."
+          "answer": "I use a value-based pricing model, not hourly rates. The price is set based on the scope of the engagement and the expected impact on your business. This aligns my incentives with your results: it is in my interest that you succeed. We discuss specifics after the free diagnostic, where you already receive your prioritized action brief."
         },
         "4": {
           "question": "What does communication look like during an engagement?",
@@ -133,7 +133,7 @@
         },
         "5": {
           "question": "What happens after the diagnostic call?",
-          "answer": "If we both see a fit, I send you a proposal with the detailed scope, timeline, and investment. If we decide the timing is not right, you walk away with valuable insights from the conversation at no cost. The diagnostic call is genuinely free and pressure-free."
+          "answer": "If we both see a fit, I send you a proposal with the detailed scope, timeline, and investment. If we decide the timing is not right, you walk away with your prioritized action brief -- a concrete document with the key decisions for your team, at no cost. The diagnostic is genuinely free and pressure-free."
         },
         "6": {
           "question": "What types of companies do you work with?",
@@ -142,22 +142,22 @@
       }
     },
     "cta": {
-      "title": "Start with a free 45-minute diagnostic",
-      "subtitle": "Let us talk about your team's challenges and explore together how I can help you turn your goals into concrete execution."
+      "title": "Get your prioritized action brief -- no cost",
+      "subtitle": "In a free diagnostic session, we analyze your challenges and I deliver a prioritized action brief with the 3-5 key decisions your team needs to make."
     }
   },
   "bio": {
     "pageTitle": "About M. Gripe",
     "hero": {
       "title": "Behind the consulting",
-      "subtitle": "Meet the consultant helping LatAm companies execute better, faster, and with measurable results."
+      "subtitle": "Meet the consultant helping companies navigate the regulatory, cultural, and operational complexity of Latin America -- and turn it into technical execution with measurable results."
     },
     "narrative": {
       "title": "Your technical challenge is my specialty",
       "paragraphs": {
         "1": "I work with founders, managers, and tech teams across Latin America who know what they want to achieve but need a bridge between their business goals and technical execution. My role is to give you clarity on what to do, in what order, and how to measure progress -- so your team moves forward with confidence and your projects deliver real results.",
         "2": "My approach blends senior technical leadership with a deeply business-oriented mindset. I understand both software architecture and the metrics your board cares about. That allows me to translate complex technical problems into actionable plans, and walk alongside you through every step until results materialize.",
-        "3": "I chose to focus on Latin America because I know firsthand the challenges of scaling tech teams in the region: tight budgets, distributed talent, the need to do more with less. It is a market with enormous potential, and I am driven to help companies in the region compete with the same strategic clarity as the best in the world."
+        "3": "I chose to focus on Latin America because I know firsthand the challenges of scaling tech teams in the region: regulations that vary across jurisdictions, communication styles and decision-making patterns shaped by distinct cultural nuances, tight budgets, distributed talent, and the need to do more with less. Operating within the same Americas timezone lets me be present for critical decisions in real time. It is a market with enormous potential, and I am driven to help companies in the region compete with the same strategic clarity as the best in the world."
       }
     },
     "credentials": {
@@ -168,8 +168,8 @@
           "description": "Leading engineering teams and defining technical strategy from startups to established enterprises."
         },
         "2": {
-          "title": "50+ companies across LatAm",
-          "description": "Advising organizations throughout the region on digital transformation, delivery, and business-tech alignment."
+          "title": "50+ companies across Latin America",
+          "description": "Advising organizations across multiple jurisdictions and regulatory environments in the region on digital transformation, delivery, and business-tech alignment."
         },
         "3": {
           "title": "Bilingual Spanish-English",
@@ -188,7 +188,7 @@
     },
     "cta": {
       "title": "Want to discuss how I can help your team?",
-      "subtitle": "Let's start with a 45-minute diagnostic call. No commitment, no cost -- just a direct conversation about your challenges."
+      "subtitle": "Let's start with a free diagnostic where I deliver a prioritized action brief with the key decisions for your team. No commitment, no cost."
     }
   },
   "privacy": {
@@ -251,18 +251,18 @@
   },
   "metadata": {
     "title": "M. Gripe | Technical & Business Consulting",
-    "description": "I help companies in LatAm convert business goals into technical execution with clarity, speed, and measurable outcomes.",
+    "description": "I help companies convert business goals into technical execution, with the regulatory, cultural, and operational expertise that Latin America demands.",
     "bio": {
       "title": "Bio | M. Gripe",
       "description": "Senior technical consultant with LatAm experience. Helping teams deliver measurable results with clarity and speed."
     },
     "services": {
       "title": "Services | M. Gripe",
-      "description": "Strategic technical advisory, delivery acceleration, product-business alignment, and fractional leadership for LatAm companies."
+      "description": "Strategic technical advisory, delivery acceleration, product-business alignment, and fractional leadership with deep expertise in Latin America's regulatory and cultural landscape."
     },
     "contact": {
       "title": "Contact | M. Gripe",
-      "description": "Book your 45-minute diagnostic call. Let's discuss your team's technical and business challenges."
+      "description": "Get your prioritized action brief in a free diagnostic. We analyze your team's technical and business challenges together."
     },
     "privacy": {
       "title": "Privacy Policy | M. Gripe",
@@ -270,7 +270,7 @@
     }
   },
   "common": {
-    "cta": "Book your 45-min diagnostic",
+    "cta": "Get your prioritized action brief",
     "language": "Language",
     "whatsapp": "Contact via WhatsApp",
     "skipToContent": "Skip to main content",
@@ -284,11 +284,11 @@
   "home": {
     "hero": {
       "title": "Converting business goals into technical execution",
-      "subtitle": "Strategic consulting for founders, managers, and SMEs in Latin America who need clarity, speed, and measurable results from their technology projects."
+      "subtitle": "Strategic consulting for founders, managers, and SMEs navigating the regulatory, cultural, and operational complexity of Latin America -- where clarity, speed, and measurable results demand deep local expertise."
     },
     "problem": {
       "title": "The challenges holding your business back",
-      "subtitle": "If your company is facing any of these problems, you are not alone. These are the most common obstacles I see in tech teams across LatAm.",
+      "subtitle": "If your company is facing any of these problems, you are not alone. These are the most common obstacles in tech teams navigating the regulatory and cultural complexity of Latin America.",
       "painPoints": {
         "1": {
           "title": "Slow delivery and missed deadlines",
@@ -309,7 +309,7 @@
       },
       "solution": {
         "title": "A different approach",
-        "description": "I work with you to close the gap between what your business needs and what your technical team delivers. I translate your business goals into clear execution plans with real metrics, realistic timelines, and hands-on support every step of the way."
+        "description": "I work with you to close the gap between what your business needs and what your technical team delivers. With direct knowledge of Latin America's regulatory landscape, cultural dynamics, and regional markets, I translate your business goals into clear execution plans with real metrics, realistic timelines, and hands-on support every step of the way."
       }
     },
     "services": {
@@ -341,7 +341,7 @@
       "steps": {
         "1": {
           "title": "Initial diagnostic",
-          "description": "In a 45-minute call, we assess your current situation, your goals, and the obstacles in your way. No commitment, no cost."
+          "description": "In a 45-minute session, we assess your current situation, your goals, and the obstacles in your way. You walk away with a prioritized action brief outlining the key decisions. No commitment, no cost."
         },
         "2": {
           "title": "Action plan",
@@ -355,7 +355,7 @@
     },
     "ctaBand": {
       "title": "Ready to turn your goals into results?",
-      "subtitle": "Book a free diagnostic call and receive a personalized action plan for your company."
+      "subtitle": "Book a free diagnostic and receive your prioritized action brief -- a concrete plan with the key decisions your company needs to make."
     },
     "caseStudies": {
       "title": "Real results from real engagements",

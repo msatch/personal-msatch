@@ -92,7 +92,7 @@
       "steps": {
         "1": {
           "title": "Diagnóstico de 45 minutos",
-          "description": "Empezamos con una conversación gratuita donde entiendo tu situación actual, tus objetivos de negocio y los principales obstáculos que enfrenta tu equipo técnico. Al final de la llamada, ambos sabemos si tiene sentido trabajar juntos."
+          "description": "Empezamos con una sesión gratuita donde entiendo tu situación actual, tus objetivos de negocio y los principales obstáculos que enfrenta tu equipo técnico. Al final, recibís un brief de acción priorizado y ambos sabemos si tiene sentido trabajar juntos."
         },
         "2": {
           "title": "Evaluación profunda",
@@ -117,7 +117,7 @@
       "items": {
         "1": {
           "question": "¿Cuál es el alcance típico de un engagement?",
-          "answer": "Depende de tu situación, pero la mayoría de los engagements incluyen diagnóstico, plan de acción y acompañamiento en la ejecución. Algunos clientes necesitan una intervención puntual de pocas semanas; otros prefieren un acompañamiento continuo de varios meses. Definimos el alcance juntos después del diagnóstico inicial."
+          "answer": "Depende de tu situación, pero la mayoría de los engagements incluyen diagnóstico con un brief de acción priorizado, plan de ejecución y acompañamiento. Algunos clientes necesitan una intervención puntual de pocas semanas; otros prefieren un acompañamiento continuo de varios meses. Definimos el alcance juntos después del diagnóstico inicial."
         },
         "2": {
           "question": "¿Cuánto tiempo toma ver resultados?",
@@ -125,7 +125,7 @@
         },
         "3": {
           "question": "¿Cómo funciona el modelo de precios?",
-          "answer": "Trabajo con un modelo basado en valor, no en horas. El precio se define según el alcance del engagement y el impacto esperado para tu negocio. Esto alinea mis incentivos con tus resultados: me conviene que te vaya bien. Los detalles los discutimos después del diagnóstico gratuito."
+          "answer": "Trabajo con un modelo basado en valor, no en horas. El precio se define según el alcance del engagement y el impacto esperado para tu negocio. Esto alinea mis incentivos con tus resultados: me conviene que te vaya bien. Los detalles los discutimos después del diagnóstico gratuito, donde ya recibís tu brief de acción priorizado."
         },
         "4": {
           "question": "¿Cómo es la comunicación durante el engagement?",
@@ -133,7 +133,7 @@
         },
         "5": {
           "question": "¿Qué pasa después de la llamada de diagnóstico?",
-          "answer": "Si ambos vemos que hay un fit, te envío una propuesta con el alcance, el timeline y la inversión detallada. Si decidimos que no es el momento, te quedas con insights valiosos de la conversación sin ningún compromiso. La llamada de diagnóstico es genuinamente gratuita y sin presión."
+          "answer": "Si ambos vemos que hay un fit, te envío una propuesta con el alcance, el timeline y la inversión detallada. Si decidimos que no es el momento, te quedás con tu brief de acción priorizado -- un documento concreto con las decisiones clave para tu equipo, sin ningún compromiso. El diagnóstico es genuinamente gratuito y sin presión."
         },
         "6": {
           "question": "¿Con qué tipo de empresas trabajas?",
@@ -142,22 +142,22 @@
       }
     },
     "cta": {
-      "title": "Empieza con un diagnóstico gratuito de 45 minutos",
-      "subtitle": "Conversemos sobre los desafíos de tu equipo y exploremos juntos cómo puedo ayudarte a convertir tus objetivos en ejecución concreta."
+      "title": "Recibí tu brief de acción priorizado -- sin costo",
+      "subtitle": "En una sesión de diagnóstico gratuita analizamos tus desafíos y te entrego un brief de acción priorizado con las 3-5 decisiones clave que tu equipo necesita tomar."
     }
   },
   "bio": {
     "pageTitle": "Sobre M. Gripe",
     "hero": {
       "title": "Detrás de la consultoría",
-      "subtitle": "Conoce al consultor que ayuda a empresas en LatAm a ejecutar mejor, más rápido y con resultados medibles."
+      "subtitle": "Conoce al consultor que ayuda a empresas a navegar la complejidad regulatoria, cultural y operativa de Latinoamérica -- y convertirla en ejecución técnica con resultados medibles."
     },
     "narrative": {
       "title": "Tu desafío técnico es mi especialidad",
       "paragraphs": {
         "1": "Trabajo con fundadores, gerentes y equipos de tecnología en Latinoamérica que saben lo que quieren lograr pero necesitan un puente entre sus objetivos de negocio y la ejecución técnica. Mi rol es darte claridad sobre qué hacer, en qué orden y cómo medir el progreso -- para que tu equipo avance con confianza y tus proyectos entreguen resultados reales.",
         "2": "Mi enfoque combina liderazgo técnico senior con una mentalidad profundamente orientada al negocio. Entiendo tanto la arquitectura de software como las métricas que le importan a tu directorio. Eso me permite traducir problemas técnicos complejos en planes de acción ejecutables, y acompañarte en cada paso hasta que los resultados se materialicen.",
-        "3": "Elegí enfocarme en Latinoamérica porque conozco de primera mano los desafíos de escalar equipos técnicos en la región: presupuestos ajustados, talento distribuido, necesidad de hacer más con menos. Es un mercado con un potencial enorme, y me motiva ayudar a empresas de la región a competir con la misma claridad estratégica que las mejores del mundo."
+        "3": "Elegí enfocarme en Latinoamérica porque conozco de primera mano los desafíos de escalar equipos técnicos en la región: regulaciones que varían entre jurisdicciones, estilos de comunicación y toma de decisiones con matices culturales propios, presupuestos ajustados, talento distribuido y la necesidad de hacer más con menos. Operar dentro del mismo huso horario de las Américas me permite estar presente en las decisiones clave en tiempo real. Es un mercado con un potencial enorme, y me motiva ayudar a empresas de la región a competir con la misma claridad estratégica que las mejores del mundo."
       }
     },
     "credentials": {
@@ -168,8 +168,8 @@
           "description": "Dirigiendo equipos de ingeniería y definiendo estrategia técnica desde startups hasta empresas establecidas."
         },
         "2": {
-          "title": "+50 empresas en LatAm",
-          "description": "Asesorando organizaciones de toda la región en transformación digital, delivery y alineación técnica-negocio."
+          "title": "+50 empresas en Latinoamérica",
+          "description": "Asesorando organizaciones en múltiples jurisdicciones y entornos regulatorios de la región en transformación digital, delivery y alineación técnica-negocio."
         },
         "3": {
           "title": "Bilingüe español-inglés",
@@ -188,7 +188,7 @@
     },
     "cta": {
       "title": "¿Quieres conversar sobre cómo puedo ayudar a tu equipo?",
-      "subtitle": "Empecemos con una llamada de diagnóstico de 45 minutos. Sin compromiso, sin costo -- solo una conversación directa sobre tus desafíos."
+      "subtitle": "Empecemos con un diagnóstico gratuito donde te entrego un brief de acción priorizado con las decisiones clave para tu equipo. Sin compromiso, sin costo."
     }
   },
   "privacy": {
@@ -251,18 +251,18 @@
   },
   "metadata": {
     "title": "M. Gripe | Consultoría Técnica y de Negocios",
-    "description": "Ayudo a empresas en LatAm a convertir objetivos de negocio en ejecución técnica con claridad, velocidad y resultados medibles.",
+    "description": "Ayudo a empresas a convertir objetivos de negocio en ejecución técnica, con el conocimiento regulatorio, cultural y operativo que exige Latinoamérica.",
     "bio": {
       "title": "Bio | M. Gripe",
       "description": "Consultor técnico senior con experiencia en LatAm. Ayudo a equipos a entregar resultados medibles con claridad y velocidad."
     },
     "services": {
       "title": "Servicios | M. Gripe",
-      "description": "Asesoría técnica estratégica, aceleración de delivery, alineación producto-negocio y liderazgo fraccional para empresas en LatAm."
+      "description": "Asesoría técnica estratégica, aceleración de delivery, alineación producto-negocio y liderazgo fraccional con conocimiento profundo del entorno regulatorio y cultural de Latinoamérica."
     },
     "contact": {
       "title": "Contacto | M. Gripe",
-      "description": "Agenda tu diagnóstico de 45 minutos. Conversemos sobre los desafíos técnicos y de negocio de tu equipo."
+      "description": "Recibí tu brief de acción priorizado en un diagnóstico gratuito. Analizamos juntos los desafíos técnicos y de negocio de tu equipo."
     },
     "privacy": {
       "title": "Política de Privacidad | M. Gripe",
@@ -270,7 +270,7 @@
     }
   },
   "common": {
-    "cta": "Agenda tu diagnóstico de 45 min",
+    "cta": "Recibí tu brief de acción priorizado",
     "language": "Idioma",
     "whatsapp": "Contactar por WhatsApp",
     "skipToContent": "Ir al contenido principal",
@@ -284,11 +284,11 @@
   "home": {
     "hero": {
       "title": "Convierto objetivos de negocio en ejecución técnica",
-      "subtitle": "Consultoría estratégica para fundadores, gerentes y PYMEs en Latinoamérica que necesitan claridad, velocidad y resultados medibles en sus proyectos de tecnología."
+      "subtitle": "Consultoría estratégica para fundadores, gerentes y PYMEs que operan en la complejidad regulatoria, cultural y operativa de Latinoamérica -- donde la claridad, la velocidad y los resultados medibles exigen conocimiento local profundo."
     },
     "problem": {
       "title": "Los desafíos que frenan tu crecimiento",
-      "subtitle": "Si tu empresa enfrenta alguno de estos problemas, no estás solo. Son los obstáculos más comunes que veo en equipos de tecnología en LatAm.",
+      "subtitle": "Si tu empresa enfrenta alguno de estos problemas, no estás solo. Son los obstáculos más comunes en equipos técnicos que navegan la complejidad regulatoria y cultural de Latinoamérica.",
       "painPoints": {
         "1": {
           "title": "Entregas lentas y plazos incumplidos",
@@ -309,7 +309,7 @@
       },
       "solution": {
         "title": "Un enfoque distinto",
-        "description": "Trabajo contigo para cerrar la brecha entre lo que tu negocio necesita y lo que tu equipo técnico entrega. Es decir, traduzco tus objetivos de negocio en planes de ejecución claros, con métricas, plazos realistas y acompañamiento en cada paso."
+        "description": "Trabajo contigo para cerrar la brecha entre lo que tu negocio necesita y lo que tu equipo técnico entrega. Con conocimiento directo de la regulación, la cultura y los mercados de Latinoamérica, traduzco tus objetivos de negocio en planes de ejecución claros, con métricas, plazos realistas y acompañamiento en cada paso."
       }
     },
     "services": {
@@ -341,7 +341,7 @@
       "steps": {
         "1": {
           "title": "Diagnóstico inicial",
-          "description": "En una llamada de 45 minutos analizamos tu situación actual, tus objetivos y los obstáculos que enfrentas. Sin compromiso, sin costo."
+          "description": "En una sesión de 45 minutos analizamos tu situación actual, tus objetivos y los obstáculos que enfrentas. Te entrego un brief de acción priorizado con las decisiones clave. Sin compromiso, sin costo."
         },
         "2": {
           "title": "Plan de acción",
@@ -355,7 +355,7 @@
     },
     "ctaBand": {
       "title": "¿Listo para convertir tus objetivos en resultados?",
-      "subtitle": "Agenda una llamada de diagnóstico gratuita y recibe un plan de acción personalizado para tu empresa."
+      "subtitle": "Agendá un diagnóstico gratuito y recibí tu brief de acción priorizado -- un plan concreto con las decisiones clave que tu empresa necesita tomar."
     },
     "caseStudies": {
       "title": "Resultados reales de proyectos reales",
