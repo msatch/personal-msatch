@@ -37,6 +37,14 @@ yarn-error.log*
 
 # project-specific
 tmp/
+/docs/
+/README.md
+
+# GSD planning & Claude config
+.planning/
+.claude/
+.mcp.json
+CLAUDE.md
 
 # vercel
 .vercel
