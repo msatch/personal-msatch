@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Proof & Trust
 status: in-progress
-last_updated: "2026-03-01T17:43:06Z"
+last_updated: "2026-03-01T17:48:23Z"
 progress:
   total_phases: 9
-  completed_phases: 8
+  completed_phases: 9
   total_plans: 18
-  completed_plans: 17
+  completed_plans: 18
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 10 in progress -- messaging & positioning (v1.1 Proof & Trust)
+**Current focus:** Phase 10 complete -- all messaging & positioning done (v1.1 Proof & Trust)
 
 ## Current Position
 
-Phase: 10 of 10 (Messaging & Positioning) -- IN PROGRESS
-Plan: 1 of 2 complete
-Status: Plan 10-01 complete -- LatAm value props and deliverable CTAs rewritten
-Last activity: 2026-03-01 — Plan 10-01 complete (LatAm value proposition + deliverable CTA rewrite)
+Phase: 10 of 10 (Messaging & Positioning) -- COMPLETE
+Plan: 2 of 2 complete
+Status: Phase 10 complete -- competitive positioning section added to services page
+Last activity: 2026-03-01 — Plan 10-02 complete (competitive positioning section + services page integration)
 
-Progress: [█████████████████░░░] 94% (17/18 plans)
+Progress: [████████████████████] 100% (18/18 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
+- Total plans completed: 18
 - Average duration: 3 min
-- Total execution time: 0.82 hours
+- Total execution time: 0.85 hours
 
 **By Phase:**
 
@@ -48,10 +48,10 @@ Progress: [█████████████████░░░] 94% (17
 | 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
 | 8. Privacy & Analytics Foundation | 2/2 | 5 min | 2.5 min |
 | 9. Case Study Narratives | 2/2 | 2 min | 1 min |
-| 10. Messaging & Positioning | 1/2 | 5 min | 5 min |
+| 10. Messaging & Positioning | 2/2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 3 min, 2 min, 1 min, 1 min, 5 min
+- Last 5 plans: 2 min, 1 min, 1 min, 5 min, 2 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -80,6 +80,9 @@ Recent decisions affecting current work:
 - [Phase 10-01]: Deliverable name: "brief de accion priorizado" (ES) / "prioritized action brief" (EN) -- consistent across all CTA touchpoints
 - [Phase 10-01]: Accented Spanish maintained for existing v1.0 keys; unaccented for Phase 8+ new keys
 - [Phase 10-01]: Spanish CTA button at 38 chars (under 40-char mobile limit)
+- [Phase 10-02]: Accented Spanish for services.positioning keys -- matching nearby services.* v1.0 convention
+- [Phase 10-02]: Card-based layout (bordered bg-background) for positioning items, bg-muted/30 section background
+- [Phase 10-02]: No competitor names in positioning copy -- generic "staffing platforms" framing
 
 ### Pending Todos
 
@@ -96,5 +99,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 10-01-PLAN.md -- Plan 10-01 complete
+Stopped at: Completed 10-02-PLAN.md -- Phase 10 complete (all plans)
 Resume file: None

@@ -101,7 +101,7 @@ Requirements for milestone v1.1: Proof & Trust. Adds social proof, messaging ref
 
 - [x] **MSG-01**: LatAm expertise is framed as a value proposition explaining why local market knowledge matters — not just a geographic label — Phase 10
 - [x] **MSG-02**: Diagnostic CTA describes a concrete deliverable the visitor receives (e.g., "prioritized action brief") not just "free 45-min call" — Phase 10
-- [ ] **MSG-03**: Site addresses why hiring a solo consultant vs platforms (Toptal, Clutch, etc.) with explicit positioning content — Phase 10
+- [x] **MSG-03**: Site addresses why hiring a solo consultant vs platforms (Toptal, Clutch, etc.) with explicit positioning content — Phase 10
 
 ### Analytics
 
@@ -193,7 +193,7 @@ Deferred to future release. Tracked but not in current roadmap.
 | PROOF-03 | Phase 9 | Complete |
 | MSG-01 | Phase 10 | Complete |
 | MSG-02 | Phase 10 | Complete |
-| MSG-03 | Phase 10 | Pending |
+| MSG-03 | Phase 10 | Complete |
 | DEPLOY-01 | Phase 7 | Pending |
 | DEPLOY-02 | Phase 7 | Pending |
 | DEPLOY-03 | Phase 7 | Pending |
