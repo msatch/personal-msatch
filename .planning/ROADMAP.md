@@ -27,8 +27,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 ### v1.1 Proof & Trust
 
-- [ ] **Phase 8: Privacy & Analytics Foundation** - Privacy policy update, GTM with Consent Mode v2, and GA4 integration
-- [ ] **Phase 9: Case Study Narratives** - 3 anonymized case studies with measurable outcomes in both languages
+- [x] **Phase 8: Privacy & Analytics Foundation** - Privacy policy update, GTM with Consent Mode v2, and GA4 integration
+- [x] **Phase 9: Case Study Narratives** - 3 anonymized case studies with measurable outcomes in both languages
 - [x] **Phase 10: Messaging & Positioning** - LatAm differentiation, concrete diagnostic CTA, and competitive positioning (completed 2026-03-01)
 - [ ] **Phase 7: Deployment & Launch** - Production deployment to Vercel with full launch verification
 
@@ -181,8 +181,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 10-01-PLAN.md -- LatAm value proposition reframing and diagnostic CTA deliverable rewrite in both translation files
-- [ ] 10-02-PLAN.md -- Competitive positioning section for services page and 375px mobile verification
+- [x] 10-01-PLAN.md -- LatAm value proposition reframing and diagnostic CTA deliverable rewrite in both translation files
+- [x] 10-02-PLAN.md -- Competitive positioning section for services page and 375px mobile verification
 
 ### Phase 7: Deployment & Launch
 **Goal**: The site is live on Vercel, accessible via public URL, and verified working in production with all v1.1 features
@@ -194,10 +194,11 @@ Plans:
   3. Contact form submits successfully in production and delivers email via Resend
   4. GTM loads in production with the real NEXT_PUBLIC_GTM_ID, and GA4 receives page view events when consent is granted
   5. WhatsApp CTA works on mobile devices in production
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: TBD
+- [ ] 07-01-PLAN.md -- Pre-deployment code preparation and Vercel deployment with environment variables
+- [ ] 07-02-PLAN.md -- Production smoke test and functional verification checkpoint
 
 ## Progress
 
@@ -215,5 +216,5 @@ Note: Phases 8 and 9 depend only on Phase 6 (complete) and could execute in para
 | 6. Polish, Accessibility & SEO | v1.0 | 2/2 | Complete | 2026-02-24 |
 | 8. Privacy & Analytics Foundation | v1.1 | 2/2 | Complete | 2026-02-28 |
 | 9. Case Study Narratives | v1.1 | 2/2 | Complete | 2026-02-28 |
-| 10. Messaging & Positioning | 2/2 | Complete    | 2026-03-01 | - |
-| 7. Deployment & Launch | v1.1 | 0/TBD | Not started | - |
+| 10. Messaging & Positioning | v1.1 | 2/2 | Complete | 2026-03-01 |
+| 7. Deployment & Launch | v1.1 | 0/2 | Not started | - |
