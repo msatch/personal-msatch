@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/home/hero-section';
 import { ProblemSection } from '@/components/home/problem-section';
 import { ServicesPreview } from '@/components/home/services-preview';
 import { ProcessSection } from '@/components/home/process-section';
+import { CaseStudiesSection } from '@/components/home/case-studies-section';
 import { CtaBand } from '@/components/home/cta-band';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
@@ -26,6 +27,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </ScrollReveal>
       <ScrollReveal delay={100}>
         <ProcessSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <CaseStudiesSection />
       </ScrollReveal>
       <ScrollReveal>
         <CtaBand />
