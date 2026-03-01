@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-const WHATSAPP_NUMBER = '5215512345678';
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5215512345678';
 const WHATSAPP_MESSAGE =
   'Hola, me interesa conocer mas sobre tus servicios de consultoria.';
 
