@@ -141,6 +141,32 @@
         }
       }
     },
+    "positioning": {
+      "title": "Why a dedicated senior consultant",
+      "subtitle": "When evaluating options to scale your technical team, there are key differences between working with a dedicated senior consultant and generic staffing platforms.",
+      "items": {
+        "1": {
+          "title": "Direct senior engagement",
+          "description": "No account managers, no handoffs, no junior substitutions. The same senior consultant from the first conversation through final delivery."
+        },
+        "2": {
+          "title": "LatAm-native market context",
+          "description": "Staffing platforms match on technical skills. They cannot match regulatory knowledge across jurisdictions, cultural communication nuances, or timezone-aligned collaboration within the Americas."
+        },
+        "3": {
+          "title": "Outcome accountability",
+          "description": "Not hourly billing or interchangeable talent. Every engagement is structured around measurable business outcomes with direct accountability."
+        },
+        "4": {
+          "title": "Institutional continuity",
+          "description": "One person builds deep knowledge of the organization across engagements. No ramp-up costs, no context loss between rotations."
+        },
+        "5": {
+          "title": "Immediate start",
+          "description": "No matching algorithms, no interviewing cycles, no platform overhead. The engagement begins when the conversation does."
+        }
+      }
+    },
     "cta": {
       "title": "Get your prioritized action brief -- no cost",
       "subtitle": "In a free diagnostic session, we analyze your challenges and I deliver a prioritized action brief with the 3-5 key decisions your team needs to make."

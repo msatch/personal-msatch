@@ -141,6 +141,32 @@
         }
       }
     },
+    "positioning": {
+      "title": "Por qué un consultor senior dedicado",
+      "subtitle": "Cuando evalúas opciones para escalar tu equipo técnico, hay diferencias clave entre trabajar con un consultor senior dedicado y las plataformas de staffing genéricas.",
+      "items": {
+        "1": {
+          "title": "Interlocutor senior directo",
+          "description": "Sin account managers, sin traspasos, sin sustituciones por perfiles junior. El mismo consultor senior desde la primera conversación hasta la entrega final."
+        },
+        "2": {
+          "title": "Contexto nativo de Latinoamérica",
+          "description": "Las plataformas de staffing filtran por habilidades técnicas. No pueden igualar el conocimiento regulatorio entre jurisdicciones, los matices culturales de comunicación ni la colaboración alineada por huso horario dentro de las Américas."
+        },
+        "3": {
+          "title": "Responsabilidad por resultados",
+          "description": "No es facturación por hora ni talento intercambiable. Cada engagement está estructurado alrededor de resultados de negocio medibles con responsabilidad directa."
+        },
+        "4": {
+          "title": "Continuidad institucional",
+          "description": "Una persona construye conocimiento profundo de la organización a lo largo de los engagements. Sin costos de ramp-up, sin pérdida de contexto entre rotaciones."
+        },
+        "5": {
+          "title": "Inicio inmediato",
+          "description": "Sin algoritmos de matching, sin ciclos de entrevistas, sin overhead de plataforma. El engagement comienza cuando la conversación comienza."
+        }
+      }
+    },
     "cta": {
       "title": "Recibí tu brief de acción priorizado -- sin costo",
       "subtitle": "En una sesión de diagnóstico gratuita analizamos tus desafíos y te entrego un brief de acción priorizado con las 3-5 decisiones clave que tu equipo necesita tomar."
