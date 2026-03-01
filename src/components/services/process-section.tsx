@@ -16,7 +16,7 @@ export async function ProcessSection() {
         <div className="mt-12 space-y-8">
           {['1', '2', '3', '4', '5'].map((id) => (
             <div key={id} className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold text-lg">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent text-on-accent flex items-center justify-center font-bold text-lg">
                 {id}
               </div>
               <div>

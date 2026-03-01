@@ -6,17 +6,17 @@ export async function ServicesCta() {
   const tCommon = await getTranslations('common');
 
   return (
-    <section className="bg-foreground px-4 py-16 md:py-20">
+    <section className="bg-surface-inverted px-4 py-16 md:py-20">
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-on-inverted">
           {t('title')}
         </h2>
-        <p className="mt-4 text-base md:text-lg text-white/80">
+        <p className="mt-4 text-base md:text-lg text-on-inverted/80">
           {t('subtitle')}
         </p>
         <Link
           href="/contact"
-          className="mt-8 inline-block px-8 py-4 bg-accent text-white font-bold rounded-lg hover:bg-accent-dark hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-base md:text-lg"
+          className="mt-8 inline-block px-8 py-4 bg-accent text-on-accent font-bold rounded-lg hover:bg-accent-dark hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-base md:text-lg"
         >
           {tCommon('cta')}
         </Link>

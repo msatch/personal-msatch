@@ -4,6 +4,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const navLinks = [
   { href: '/', labelKey: 'home' },
@@ -66,6 +67,7 @@ export function Header() {
           >
             {otherLocale.toUpperCase()}
           </Link>
+          <ThemeToggle />
 
           {/* Hamburger button (mobile only) */}
           <button
