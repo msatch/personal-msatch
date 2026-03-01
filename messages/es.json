@@ -235,7 +235,13 @@
       },
       "cookies": {
         "title": "Cookies",
-        "content": "Este sitio utiliza unicamente una cookie tecnica (NEXT_LOCALE) para recordar tu preferencia de idioma. No utilizamos cookies de seguimiento, analiticas ni de publicidad."
+        "content": "Este sitio utiliza los siguientes tipos de cookies:",
+        "items": {
+          "1": "Cookie tecnica (NEXT_LOCALE): recuerda tu preferencia de idioma. Es estrictamente necesaria para el funcionamiento del sitio.",
+          "2": "Cookie de consentimiento (cookie_consent): almacena tu decision sobre cookies de analisis. Expira en 1 ano.",
+          "3": "Cookies de Google Analytics (via Google Tag Manager): si aceptas las cookies de analisis, GA4 utiliza cookies como _ga y _ga_* para generar informacion estadistica sobre el uso del sitio, como paginas visitadas y duracion de la visita. Estos datos son anonimos y se procesan de forma agregada."
+        },
+        "control": "Puedes gestionar tus preferencias de cookies en cualquier momento. Si rechazas las cookies de analisis, no se recopilara ningun dato de navegacion. Para retirar tu consentimiento, puedes eliminar las cookies de tu navegador."
       },
       "contact": {
         "title": "Contacto",
@@ -384,5 +390,12 @@
       "title": "Contacto",
       "placeholder": "Contenido disponible pronto."
     }
+  },
+  "consent": {
+    "ariaLabel": "Preferencias de cookies",
+    "message": "Usamos cookies de analisis para entender como se utiliza este sitio y mejorar tu experiencia. Puedes aceptar o rechazar su uso.",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "privacyLink": "Politica de privacidad"
   }
 }
