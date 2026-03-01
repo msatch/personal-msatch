@@ -7,6 +7,9 @@ import { routing } from '@/i18n/routing';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { WhatsAppButton } from '@/components/layout/whatsapp-button';
+import { ThemeSync } from '@/components/ui/theme-sync';
+import { AnalyticsProvider } from '@/components/analytics/analytics-provider';
+import { CookieConsentBanner } from '@/components/analytics/cookie-consent';
 import '@/styles/globals.css';
 
 const geistSans = Geist({
@@ -47,14 +50,28 @@ export default async function LocaleLayout({ children, params }: Props) {
   const tCommon = await getTranslations({ locale, namespace: 'common' });
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});`,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col`}>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-md focus:text-sm focus:font-medium"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-on-accent focus:rounded-md focus:text-sm focus:font-medium"
         >
           {tCommon('skipToContent')}
         </a>
+        <ThemeSync />
+        <AnalyticsProvider />
         <NextIntlClientProvider>
           <Header />
           <main id="main-content" className="flex-1">
@@ -62,6 +79,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </main>
           <Footer />
           <WhatsAppButton />
+          <CookieConsentBanner />
         </NextIntlClientProvider>
       </body>
     </html>
