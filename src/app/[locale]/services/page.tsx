@@ -4,6 +4,7 @@ import { routing } from '@/i18n/routing';
 import { OfferingsSection } from '@/components/services/offerings-section';
 import { ProcessSection } from '@/components/services/process-section';
 import { FaqSection } from '@/components/services/faq-section';
+import { PositioningSection } from '@/components/services/positioning-section';
 import { ServicesCta } from '@/components/services/services-cta';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
@@ -36,6 +37,9 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       </ScrollReveal>
       <ScrollReveal delay={100}>
         <FaqSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <PositioningSection />
       </ScrollReveal>
       <ScrollReveal>
         <ServicesCta />
