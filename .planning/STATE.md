@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 ## Current Position
 
 Phase: 8 of 10 (Privacy & Analytics Foundation) — first v1.1 phase
-Plan: 1 of 2
-Status: Plan 01 complete — executing Plan 02 next
-Last activity: 2026-02-28 — Plan 08-01 complete (privacy policy + consent translations + GTM types)
+Plan: 2 of 2
+Status: Phase 8 complete — all plans executed
+Last activity: 2026-02-28 — Plan 08-02 complete (GTM analytics provider + cookie consent banner)
 
-Progress: [█████████████████░░░] 85% (13/15 plans estimated)
+Progress: [██████████████████░░] 90% (14/15 plans estimated)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
+- Total plans completed: 14
 - Average duration: 3 min
-- Total execution time: 0.67 hours
+- Total execution time: 0.70 hours
 
 **By Phase:**
 
@@ -33,10 +33,10 @@ Progress: [█████████████████░░░] 85% (13
 | 4. Bio & Services | 2/2 | 6 min | 3 min |
 | 5. Contact Form | 2/2 | 6 min | 3 min |
 | 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
-| 8. Privacy & Analytics Foundation | 1/2 | 3 min | 3 min |
+| 8. Privacy & Analytics Foundation | 2/2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 4 min, 2 min, 2 min, 3 min, 3 min
+- Last 5 plans: 2 min, 2 min, 3 min, 3 min, 2 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -55,6 +55,9 @@ Recent decisions affecting current work:
 - [v1.1 Research]: Zero new npm packages for v1.1 -- all capabilities covered by existing stack + cloud services
 - [Phase 8-01]: sectionsWithControl pattern for extensible control paragraph rendering in privacy page
 - [Phase 8-01]: Unaccented Spanish text maintained in translation files to match existing convention
+- [Phase 8-02]: bg-background used instead of bg-surface (bg-surface not in design system)
+- [Phase 8-02]: Dual persistence (localStorage + cookie with path=/) for consent across locale switches
+- [Phase 8-02]: AnalyticsProvider outside NextIntlClientProvider; CookieConsentBanner inside
 
 ### Pending Todos
 
@@ -71,5 +74,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 08-01-PLAN.md -- ready to execute 08-02-PLAN.md
+Stopped at: Completed 08-02-PLAN.md -- Phase 8 fully complete
 Resume file: None
