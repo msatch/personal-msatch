@@ -151,8 +151,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md -- Privacy policy update, consent translations, TypeScript declarations, env var setup
-- [ ] 08-02-PLAN.md -- GTM integration with Consent Mode v2, cookie consent banner, locale layout wiring
+- [x] 08-01-PLAN.md -- Privacy policy update, consent translations, TypeScript declarations, env var setup
+- [x] 08-02-PLAN.md -- GTM integration with Consent Mode v2, cookie consent banner, locale layout wiring
 
 ### Phase 9: Case Study Narratives
 **Goal**: A visitor sees concrete evidence of M. Gripe's delivered value through 3 anonymized case studies that demonstrate real business outcomes
@@ -163,10 +163,11 @@ Plans:
   2. Each case study includes industry context (e.g., "Series A fintech," "mid-size logistics company") and specific measurable outcomes (timelines, team sizes, efficiency gains)
   3. Case study content is fully bilingual -- reading the page in Spanish or English shows complete, naturally-written narratives (not machine-translated)
   4. Case studies render as Server Components with zero client-side JavaScript overhead
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 09-01: TBD
+- [ ] 09-01-PLAN.md -- Bilingual case study content authoring in translation files (3 anonymized narratives)
+- [ ] 09-02-PLAN.md -- CaseStudiesSection Server Component and home page integration
 
 ### Phase 10: Messaging & Positioning
 **Goal**: The site's copy differentiates M. Gripe through LatAm expertise framing, a concrete diagnostic deliverable, and explicit positioning against platform alternatives
