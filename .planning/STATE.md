@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Proof & Trust
 status: in-progress
-last_updated: "2026-03-01T01:37:58Z"
+last_updated: "2026-03-01T01:41:46Z"
 progress:
   total_phases: 8
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 16
-  completed_plans: 15
+  completed_plans: 16
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** A visitor can understand what M. Gripe does, trust his expertise, and contact him -- all within 60 seconds.
-**Current focus:** Phase 9 — Case Study Narratives (v1.1 Proof & Trust)
+**Current focus:** Phase 9 complete — ready for Phase 10 (v1.1 Proof & Trust)
 
 ## Current Position
 
-Phase: 9 of 10 (Case Study Narratives)
-Plan: 1 of 2 complete
-Status: Plan 09-01 complete — bilingual case study content authored
-Last activity: 2026-02-28 — Plan 09-01 complete (bilingual case study narratives in translation files)
+Phase: 9 of 10 (Case Study Narratives) -- COMPLETE
+Plan: 2 of 2 complete
+Status: Phase 9 complete — case study component integrated into home page
+Last activity: 2026-02-28 — Plan 09-02 complete (CaseStudiesSection integrated into home page)
 
-Progress: [██████████████████░░] 94% (15/16 plans)
+Progress: [████████████████████] 100% (16/16 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
+- Total plans completed: 16
 - Average duration: 3 min
-- Total execution time: 0.72 hours
+- Total execution time: 0.74 hours
 
 **By Phase:**
 
@@ -47,10 +47,10 @@ Progress: [██████████████████░░] 94% (15
 | 5. Contact Form | 2/2 | 6 min | 3 min |
 | 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
 | 8. Privacy & Analytics Foundation | 2/2 | 5 min | 2.5 min |
-| 9. Case Study Narratives | 1/2 | 1 min | 1 min |
+| 9. Case Study Narratives | 2/2 | 2 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min, 3 min, 3 min, 2 min, 1 min
+- Last 5 plans: 3 min, 3 min, 2 min, 1 min, 1 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -74,6 +74,8 @@ Recent decisions affecting current work:
 - [Phase 8-02]: AnalyticsProvider outside NextIntlClientProvider; CookieConsentBanner inside
 - [Phase 9-01]: Unaccented Spanish text maintained in case study content per existing convention
 - [Phase 9-01]: Labels: desafio/intervencion/resultado (ES) and challenge/intervention/outcome (EN)
+- [Phase 9-02]: No delay on CaseStudiesSection ScrollReveal -- enters viewport independently
+- [Phase 9-02]: bg-muted/30 background on case studies section for visual rhythm alternation
 
 ### Pending Todos
 
@@ -90,5 +92,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 09-01-PLAN.md -- Case study content authored
+Stopped at: Completed 09-02-PLAN.md -- Phase 9 complete
 Resume file: None
