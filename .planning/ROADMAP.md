@@ -166,8 +166,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md -- Bilingual case study content authoring in translation files (3 anonymized narratives)
-- [ ] 09-02-PLAN.md -- CaseStudiesSection Server Component and home page integration
+- [x] 09-01-PLAN.md -- Bilingual case study content authoring in translation files (3 anonymized narratives)
+- [x] 09-02-PLAN.md -- CaseStudiesSection Server Component and home page integration
 
 ### Phase 10: Messaging & Positioning
 **Goal**: The site's copy differentiates M. Gripe through LatAm expertise framing, a concrete diagnostic deliverable, and explicit positioning against platform alternatives
@@ -178,10 +178,11 @@ Plans:
   2. Every diagnostic CTA on the site describes a concrete deliverable the visitor receives (e.g., "prioritized action brief") rather than just "free 45-min call"
   3. The services page includes positioning content that addresses why a solo senior consultant delivers better outcomes than staffing platforms (Toptal, Clutch, etc.)
   4. All messaging updates render correctly at 375px width in Spanish (the longer language) without layout breaks
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 10-01: TBD
+- [ ] 10-01-PLAN.md -- LatAm value proposition reframing and diagnostic CTA deliverable rewrite in both translation files
+- [ ] 10-02-PLAN.md -- Competitive positioning section for services page and 375px mobile verification
 
 ### Phase 7: Deployment & Launch
 **Goal**: The site is live on Vercel, accessible via public URL, and verified working in production with all v1.1 features
@@ -212,7 +213,7 @@ Note: Phases 8 and 9 depend only on Phase 6 (complete) and could execute in para
 | 4. Bio & Services Pages | v1.0 | 2/2 | Complete | 2026-02-21 |
 | 5. Contact Form & Conversion | v1.0 | 2/2 | Complete | 2026-02-22 |
 | 6. Polish, Accessibility & SEO | v1.0 | 2/2 | Complete | 2026-02-24 |
-| 8. Privacy & Analytics Foundation | v1.1 | 0/TBD | Not started | - |
-| 9. Case Study Narratives | v1.1 | 0/TBD | Not started | - |
-| 10. Messaging & Positioning | v1.1 | 0/TBD | Not started | - |
+| 8. Privacy & Analytics Foundation | v1.1 | 2/2 | Complete | 2026-02-28 |
+| 9. Case Study Narratives | v1.1 | 2/2 | Complete | 2026-02-28 |
+| 10. Messaging & Positioning | v1.1 | 0/2 | Not started | - |
 | 7. Deployment & Launch | v1.1 | 0/TBD | Not started | - |
