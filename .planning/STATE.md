@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 ## Current Position
 
 Phase: 8 of 10 (Privacy & Analytics Foundation) — first v1.1 phase
-Plan: —
-Status: Ready to plan
-Last activity: 2026-02-28 — v1.1 roadmap created (Phases 8-10 + Phase 7 deployment)
+Plan: 1 of 2
+Status: Plan 01 complete — executing Plan 02 next
+Last activity: 2026-02-28 — Plan 08-01 complete (privacy policy + consent translations + GTM types)
 
-Progress: [████████████████░░░░] 80% (12/15 plans estimated)
+Progress: [█████████████████░░░] 85% (13/15 plans estimated)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: 3 min
-- Total execution time: 0.62 hours
+- Total execution time: 0.67 hours
 
 **By Phase:**
 
@@ -33,9 +33,10 @@ Progress: [████████████████░░░░] 80% (12
 | 4. Bio & Services | 2/2 | 6 min | 3 min |
 | 5. Contact Form | 2/2 | 6 min | 3 min |
 | 6. Polish, A11y & SEO | 2/2 | 5 min | 2.5 min |
+| 8. Privacy & Analytics Foundation | 1/2 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 3 min, 4 min, 2 min, 2 min, 3 min
+- Last 5 plans: 4 min, 2 min, 2 min, 3 min, 3 min
 - Trend: Stable (fast)
 
 *Updated after each plan completion*
@@ -52,6 +53,8 @@ Recent decisions affecting current work:
 - [v1.1 Roadmap]: Phases 8 and 9 can run in parallel (independent tracks); Phase 10 follows 9 for messaging context
 - [v1.1 Research]: Manual next/script for GTM (NOT @next/third-parties) -- Consent Mode v2 not supported in GoogleTagManager component
 - [v1.1 Research]: Zero new npm packages for v1.1 -- all capabilities covered by existing stack + cloud services
+- [Phase 8-01]: sectionsWithControl pattern for extensible control paragraph rendering in privacy page
+- [Phase 8-01]: Unaccented Spanish text maintained in translation files to match existing convention
 
 ### Pending Todos
 
@@ -68,5 +71,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: v1.1 roadmap created -- ready to plan Phase 8
+Stopped at: Completed 08-01-PLAN.md -- ready to execute 08-02-PLAN.md
 Resume file: None

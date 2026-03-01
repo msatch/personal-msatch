@@ -107,7 +107,7 @@ Requirements for milestone v1.1: Proof & Trust. Adds social proof, messaging ref
 
 - [ ] **ANLYT-01**: Google Tag Manager container loads on all pages via manual next/script in root layout — Phase 8
 - [ ] **ANLYT-02**: GA4 configured as a tag inside GTM (not a separate script) — Phase 8
-- [ ] **ANLYT-03**: Privacy policy updated in both languages to disclose analytics/tracking cookies — Phase 8
+- [x] **ANLYT-03**: Privacy policy updated in both languages to disclose analytics/tracking cookies — Phase 8
 
 ### Deployment
 
@@ -187,7 +187,7 @@ Deferred to future release. Tracked but not in current roadmap.
 |-------------|-------|--------|
 | ANLYT-01 | Phase 8 | Pending |
 | ANLYT-02 | Phase 8 | Pending |
-| ANLYT-03 | Phase 8 | Pending |
+| ANLYT-03 | Phase 8 | Complete |
 | PROOF-01 | Phase 9 | Pending |
 | PROOF-02 | Phase 9 | Pending |
 | PROOF-03 | Phase 9 | Pending |

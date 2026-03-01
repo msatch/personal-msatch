@@ -148,11 +148,11 @@ Plans:
   2. Google Tag Manager loads on every page via manual next/script with consent defaults set to "denied" before GTM initializes
   3. GA4 is configured as a tag inside GTM (no separate gtag.js script in the codebase) and receives page view data when consent is granted
   4. Visitor can verify in browser Network tab: only gtm.js loads, no separate gtag/js request
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
+- [ ] 08-01-PLAN.md -- Privacy policy update, consent translations, TypeScript declarations, env var setup
+- [ ] 08-02-PLAN.md -- GTM integration with Consent Mode v2, cookie consent banner, locale layout wiring
 
 ### Phase 9: Case Study Narratives
 **Goal**: A visitor sees concrete evidence of M. Gripe's delivered value through 3 anonymized case studies that demonstrate real business outcomes
